@@ -7,3 +7,5 @@ LAG 2019 Project
 # Theme
 Rougelike
 
+# Trello
+https://trello.com/b/AqIbzR8F/team-green-quest-of-the-mysterious-orb
