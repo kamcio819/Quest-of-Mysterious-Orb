@@ -96,7 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a0dcc3da1fe95448c404ceee06e30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerData: {fileID: 11400000, guid: 5d9389b97f4c5e44ca0248cd1fbbc300, type: 2}
+  firstData: {fileID: 11400000, guid: 0879231072c64514cb54887b13ec274a, type: 2}
+  secondData: {fileID: 11400000, guid: 5d9389b97f4c5e44ca0248cd1fbbc300, type: 2}
   cameraTransform: {fileID: 6323540185306299988}
   bodyTransform: {fileID: 6323540185740944369}
   rotationController: {fileID: 6323540187199172801}
@@ -377,6 +378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acbfa006802a3b4d904d4be725beed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerData: {fileID: 11400000, guid: 0879231072c64514cb54887b13ec274a, type: 2}
+  firstData: {fileID: 11400000, guid: 0879231072c64514cb54887b13ec274a, type: 2}
+  secondData: {fileID: 11400000, guid: 5d9389b97f4c5e44ca0248cd1fbbc300, type: 2}
   playerTransform: {fileID: 6323540187199172800}
   mainCamera: {fileID: 6323540185306299987}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256

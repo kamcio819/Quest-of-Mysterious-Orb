@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Transform))]
-public class RotationController : Controller<InputData>, IUpdatable, IEnableable, IDisaable
+public class RotationController : Controller<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
 {
     [SerializeField]
     private Transform playerTransform;
 
     [SerializeField]
     private Camera mainCamera;
+
+    [SerializeField]
+    private LayerMask layerMask;
 
     private Vector3 deltaCursor = Vector3.zero;
 
@@ -35,14 +38,14 @@ public class RotationController : Controller<InputData>, IUpdatable, IEnableable
         Vector3 directionToRotate = pos - transform.position;
         directionToRotate.y = 0;
         Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.right, directionToRotate) * transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, quaternionToRotate, controllerData.GetMouseXAxisSens() * controllerData.GetMouseXAxisFactor() * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, quaternionToRotate, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
 
     }
 
     private Vector3 GetMousePoint() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, layerMask))
         {
             return hit.point;
         }

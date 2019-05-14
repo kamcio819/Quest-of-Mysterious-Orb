@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(Camera))]
-public class CameraMovingController : Controller<MovementData>, IUpdatable, IEnableable, IDisaable
+public class CameraMovingController : Controller<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
 {
     [SerializeField]
     private Transform cameraTransform;
@@ -25,7 +25,7 @@ public class CameraMovingController : Controller<MovementData>, IUpdatable, IEna
         pos.z = 0;
         pos.y /= 6;
         pos.x /= 4;
-        transform.position = Vector3.Lerp(transform.position,bodyTransform.position +  offset - pos, 10f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,bodyTransform.position +  offset - pos, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
     }
 
     public void OnIDisable() {

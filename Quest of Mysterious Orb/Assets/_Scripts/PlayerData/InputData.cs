@@ -3,28 +3,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InputData", menuName = "Quest of Mysterious Orb/ScriptableData/Input", order = 0)]
 public class InputData : Data {
    #region MovementKeyboardFactors
-      [Range(0,10f)] [SerializeField] private float xAxisSens;
-      [Range(0,10f)] [SerializeField] private float yAxisSens;
+      [Range(0f,1f)] [SerializeField] private float xKeyboardAxisSens;
+      [Range(0f,1f)] [SerializeField] private float yKeyboardAxisSens;
    #endregion
 
    #region MovementMouseFactors
-      [Range(5f,10f)] [SerializeField] private float xMouseAxisSens;
-      [Range(5f,10f)] [SerializeField] private float xMouseAxisFactor;
+      [Range(0f,1f)] [SerializeField] private float xMouseAxisSens;
       #endregion
 
    public float GetXAxisSens() {
-      return xAxisSens;
+      return xKeyboardAxisSens;
    }
 
    public float GetYAxisSens() {
-      return yAxisSens;
+      return yKeyboardAxisSens;
    }
 
    public float GetMouseXAxisSens() {
       return xMouseAxisSens;
    }
 
-   public float GetMouseXAxisFactor() {
-      return xMouseAxisFactor;
-   }
 }

@@ -8,12 +8,12 @@ public class PlayerMovingController : Controller<MovementData>, IUpdatable, IDis
     [SerializeField]
     private CharacterController characterController;
 
+
     public void OnIEnable() {
         InputController.keyboardInputProvide += MoveInputProvided;
     }
 
     public void OnIUpdate() {
-        
     }
 
     public void OnIDisable() {
