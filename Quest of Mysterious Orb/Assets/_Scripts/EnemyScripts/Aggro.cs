@@ -10,6 +10,8 @@ public class Aggro: MonoBehaviour
     NavMeshAgent agent;
     public float lookRadius = 10f;
     private static bool aggro = false;
+    public float attackCooldown = 1f;
+    private float attackTimer = 1f;
 
     void Start()
     {
@@ -22,20 +24,35 @@ public class Aggro: MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        if(aggro == false && distance <= lookRadius){
+        if (aggro == false && distance <= lookRadius)
+        {
             aggro = true;
             agent.stoppingDistance = 2f;
             GetComponent<Patrol>().enabled = false;
- 
+
         }
-        if (aggro == true){
-            agent.SetDestination(target.position);
-        }
-        if (distance <= agent.stoppingDistance)
+        if (aggro == true)
         {
-            FaceTarget();
+            attackTimer += Time.deltaTime;
+            agent.SetDestination(target.position);
+            if (distance <= agent.stoppingDistance)
+            {
+                FaceTarget();
+                if (attackTimer >= attackCooldown)
+                {
+                    attack();
+                    attackTimer = 0;
+                }
+
+            }
+        }
+
+        void attack()
+        {
+            //attack animation, sound, damage to the player
         }
     }
+
 
     void FaceTarget()
     {
@@ -44,7 +61,7 @@ public class Aggro: MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
     }
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);

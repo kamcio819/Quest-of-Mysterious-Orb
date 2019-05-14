@@ -119,7 +119,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: c82f8ae7ba003a546811b1b76afaa45a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 08264e8a527e89b4b84501d501b3f6b6, type: 2}
 --- !u!1 &38511921
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ TerrainCollider:
   m_GameObject: {fileID: 540256824}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: a66a47c3955020b4d9bb6d1a69d7d942, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: dcfb912e4d798a7429c002fdc15fd424, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &540256826
 Terrain:
@@ -417,7 +417,7 @@ Terrain:
   m_GameObject: {fileID: 540256824}
   m_Enabled: 1
   serializedVersion: 4
-  m_TerrainData: {fileID: 15600000, guid: a66a47c3955020b4d9bb6d1a69d7d942, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: dcfb912e4d798a7429c002fdc15fd424, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -738,7 +738,6 @@ GameObject:
   - component: {fileID: 1866293464}
   - component: {fileID: 1866293469}
   - component: {fileID: 1866293471}
-  - component: {fileID: 1866293470}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -753,9 +752,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866293463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e4ccf59df6d3040bb82eba947e540b, type: 3}
+  m_Script: {fileID: 11500000, guid: 50229584a4db25b48baeb7935a845e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
@@ -819,7 +818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866293463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.73, y: 0.05, z: 0}
+  m_LocalPosition: {x: 1.06, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1053340784}
@@ -833,9 +832,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866293463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1f3012d16f05340b59da0522657235, type: 3}
+  m_Script: {fileID: 11500000, guid: d4c2e6377bd1aef40815e0497ceda8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   points:
@@ -844,18 +843,6 @@ MonoBehaviour:
   - {fileID: 38511922}
   - {fileID: 1438059418}
   - {fileID: 101261341}
---- !u!114 &1866293470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866293463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d7999a0fdaa6842ae54c1252b0102b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1866293471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +852,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1866293463}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e814954997d9e94cae86897cb7271df, type: 3}
+  m_Script: {fileID: 11500000, guid: ac3a46587be96d548a8a4bb8837ab76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
+  shotTimer: 1

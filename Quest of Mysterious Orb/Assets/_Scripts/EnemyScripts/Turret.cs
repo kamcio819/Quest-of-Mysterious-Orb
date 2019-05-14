@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
     private Transform targetPosition;
     private GameObject target;
     private bool targetLocked = false;
@@ -26,8 +25,10 @@ public class Turret : MonoBehaviour
             transform.LookAt(target.transform);
             shotTimer += Time.deltaTime;
             if (shotTimer >= 1f)
+            {
                 Shoot();
-        
+                shotTimer = 0;
+            }
         }
 
         
@@ -36,6 +37,7 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         //Shooting the player.
+        //Add shoot particle, shot sound, bullet object
     }
 
     
