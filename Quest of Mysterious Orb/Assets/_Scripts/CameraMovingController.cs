@@ -24,7 +24,7 @@ public class CameraMovingController : Controller<InputData, MovementData>, IUpda
         pos.y = pos.z;
         pos.z = 0;
         pos.y /= 6;
-        pos.x /= 4;
+        pos.x /= 3;
         transform.position = Vector3.Lerp(transform.position,bodyTransform.position +  offset - pos, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
     }
 

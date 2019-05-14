@@ -4,7 +4,8 @@ using UnityEditor;
 using UnityEngine;
 
 public class OrbMaker : EditorWindow
-{
+{   
+    GameObject prevObject;
     GameObject gameObject;
     string gameObjectName;
     Editor gameObjectEditor;
@@ -28,11 +29,18 @@ public class OrbMaker : EditorWindow
 
         if (gameObject != null)
         {
-            if (gameObjectEditor == null)
+            Debug.Log(gameObject.name);
+            if(gameObject != prevObject) {
+                gameObjectEditor = null;
+            }
+            if (gameObjectEditor == null) {
                 gameObjectEditor = Editor.CreateEditor(gameObject);
+                prevObject = gameObject;
+            }
 
             gameObjectEditor.OnInteractivePreviewGUI(GUILayoutUtility.GetRect(256, 256), bgColor);
         }
+        
 
         orbType = (OrbType)EditorGUILayout.EnumPopup("Orb Type: ", orbType);
 
@@ -73,3 +81,5 @@ public class OrbMaker : EditorWindow
         return asset;
     }
 }
+
+
