@@ -4,16 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class Orb
 {
-    public Texture icon;
     public string name;
-    public string description;
+    //public string description;
     public int id;
 
     public Orb(Orb d)
     {
-        icon = d.icon;
         name = d.name;
-        description = d.description;
+        //description = d.description;
         id = d.id;
     }
 }
