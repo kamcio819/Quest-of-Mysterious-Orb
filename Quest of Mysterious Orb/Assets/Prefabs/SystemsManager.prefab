@@ -45,7 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputControllers:
   - {fileID: 0}
-  movementControllers:
+  playerMovementControllers:
+  - {fileID: 0}
+  cameraMovementController:
   - {fileID: 0}
   rotationControllers:
   - {fileID: 0}

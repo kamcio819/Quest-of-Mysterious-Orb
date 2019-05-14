@@ -9,7 +9,10 @@ public class SystemManager : Singleton<SystemManager>
     private List<InputController> inputControllers;
 
     [SerializeField]
-    private List<MovingController> movementControllers;
+    private List<PlayerMovingController> playerMovementControllers;
+
+    [SerializeField]
+    private List<CameraMovingController> cameraMovementController;
 
     [SerializeField]
     private List<RotationController> rotationControllers;
@@ -22,7 +25,10 @@ public class SystemManager : Singleton<SystemManager>
         inputControllers.ForEach((x) =>  {
             (x as IEnableable).OnIEnable();
         });
-        movementControllers.ForEach((x) => {
+        playerMovementControllers.ForEach((x) => {
+            (x as IEnableable).OnIEnable();
+        });
+        cameraMovementController.ForEach((x) => {
             (x as IEnableable).OnIEnable();
         });
         rotationControllers.ForEach((x) => {
@@ -34,7 +40,10 @@ public class SystemManager : Singleton<SystemManager>
         inputControllers.ForEach((x) =>  {
             (x as IDisaable).OnIDisable();
         });
-        movementControllers.ForEach((x) => {
+        playerMovementControllers.ForEach((x) => {
+            (x as IDisaable).OnIDisable();
+        });
+        cameraMovementController.ForEach((x) => {
             (x as IDisaable).OnIDisable();
         });
         rotationControllers.ForEach((x) => {
@@ -50,7 +59,10 @@ public class SystemManager : Singleton<SystemManager>
         inputControllers.ForEach((x) =>  {
             (x as IUpdatable).OnIUpdate();
         });
-        movementControllers.ForEach((x) => {
+        playerMovementControllers.ForEach((x) => {
+            (x as IUpdatable).OnIUpdate();
+        });
+        cameraMovementController.ForEach((x) => {
             (x as IUpdatable).OnIUpdate();
         });
         rotationControllers.ForEach((x) => {
@@ -65,7 +77,8 @@ public class SystemManager : Singleton<SystemManager>
     [ContextMenu ("Load controllers")]
     void LoadControllers () {
         inputControllers = FindObjectsOfType<InputController>().ToList();
-        movementControllers = FindObjectsOfType<MovingController>().ToList();
+        playerMovementControllers = FindObjectsOfType<PlayerMovingController>().ToList();
+        cameraMovementController = FindObjectsOfType<CameraMovingController>().ToList();
         rotationControllers = FindObjectsOfType<RotationController>().ToList();
     }   
 }

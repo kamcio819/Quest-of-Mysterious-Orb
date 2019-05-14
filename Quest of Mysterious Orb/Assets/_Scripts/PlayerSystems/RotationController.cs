@@ -11,13 +11,18 @@ public class RotationController : Controller<InputData>, IUpdatable, IEnableable
     [SerializeField]
     private Camera mainCamera;
 
+    private Vector3 deltaCursor = Vector3.zero;
+
+    public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
+
     public void OnIEnable()
     {
         InputController.mouseInputProvide += RotatePlayer;
     }
     public void OnIUpdate()
     {
-
+        Vector3 pos = GetMousePoint();
+        DeltaCursor = transform.position - pos;
     }
 
     public void OnIDisable()
