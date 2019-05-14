@@ -187,6 +187,99 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: startChunk.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: roomChunk.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: deadEndChunk.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: junctionChunk.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: startChunk.Array.data[0]
+      value: 
+      objectReference: {fileID: 7278793885863830837, guid: 4837aa624f01dad45b11476678d8445b,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: roomChunk.Array.data[0]
+      value: 
+      objectReference: {fileID: 7278793885863830837, guid: 4837aa624f01dad45b11476678d8445b,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.data[0]
+      value: 
+      objectReference: {fileID: 8983385874678266964, guid: 8a19b6aee3f039e4492dadd33461e797,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.data[1]
+      value: 
+      objectReference: {fileID: 8983385874678266964, guid: 248979b46df655343bbdaa5ce0d0e158,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: roomChunk.Array.data[1]
+      value: 
+      objectReference: {fileID: 7569292867487617940, guid: 737453387bbad9e499b314a05ffbe393,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: deadEndChunk.Array.data[0]
+      value: 
+      objectReference: {fileID: 7626025717761930257, guid: c11c96b054ed3a549b82e564d9bdb1e8,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: junctionChunk.Array.data[0]
+      value: 
+      objectReference: {fileID: 8983385874678266964, guid: 8a19b6aee3f039e4492dadd33461e797,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: roomChunk.Array.data[2]
+      value: 
+      objectReference: {fileID: 1125329445527373302, guid: 1ecb1c2f5ecc05447a9a29a3a15a0707,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: minL
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: maxL
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: stepsCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4954afdb47372d44d8dc99027de0d152, type: 3}
 --- !u!1 &776947483
