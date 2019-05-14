@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98273722d155b24785a7adfed40d254, type: 3}
-  m_Name: MovementData
+  m_Script: {fileID: 11500000, guid: 1846621a210c839418c2acb6112fc634, type: 3}
+  m_Name: OrbData
   m_EditorClassIdentifier: 
-  speedFactor: 1
-  rotatingFactor: 0
+  orbType: 0
+  movingSpeed: 0
+  acceleretaionFactor: 0
+  chargingOrbParticle: {fileID: 0}

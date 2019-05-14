@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Helper script for Charge enemy interactions.
+
 public class Rush : MonoBehaviour
 {
 
@@ -11,7 +13,7 @@ public class Rush : MonoBehaviour
     private static bool aggro = false;
     public float attackCooldown = 1f;
     private bool attackAbility = true;
-    public float speedMax = 10f;
+    public float speedMax = 20f;
     public float speedDecrease = 1f;
     public float attackRange = 3f;
     public float rushTime = 1f;

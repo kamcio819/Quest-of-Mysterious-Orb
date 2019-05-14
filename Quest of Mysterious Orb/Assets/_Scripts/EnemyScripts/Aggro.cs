@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//For melee enemy, use aggro and patrol scripts.
+
 public class Aggro: MonoBehaviour
 {
     // Start is called before the first frame update

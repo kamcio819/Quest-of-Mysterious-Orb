@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum OrbType {
@@ -15,5 +17,14 @@ public class OrbData : Data {
 
     public virtual void RandomizeParameters() {
       
-   }
+    }
+
+    public virtual List<dynamic> GetData() {
+       return null;
+    }
+
+    public virtual void SetData(List<dynamic> dataTab)
+    {
+       
+    }
 }

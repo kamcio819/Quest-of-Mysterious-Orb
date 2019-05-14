@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//To make an enemy have charge attacks - set Patrol and Charge scripts on, and also put an inactive Rush script.
+
+
 public class Charge : MonoBehaviour
 {
     UnityEngine.AI.NavMeshAgent agent;
     Transform target;
     public float lookRadius = 10f;
     private static bool aggro = false;
-    public float attackCooldown = 1f;
-    private float attackTimer = 1f;
-    public float speedMax = 10;
-    public float speedDecrease = 1f;
-    public float attackRange = 2f;
 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-       
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -33,52 +30,17 @@ public class Charge : MonoBehaviour
         }
         if (aggro == true)
         {
-            Rush();
             GetComponent<Rush>().enabled = true;
             GetComponent<Charge>().enabled = false;
         }
 
     }
-    IEnumerator Rush()
-    {
-        GetComponent<Patrol>().enabled = false;
-        agent.stoppingDistance = attackRange;
-        float distance = Vector3.Distance(target.position, transform.position);
-        attackTimer += Time.deltaTime;
-        agent.SetDestination(target.position);
-        agent.isStopped = true;
-        yield return new WaitForSeconds(3);
-        agent.isStopped = false;
-        agent.speed = speedMax;
-
-        if (distance <= attackRange)
-        {
-            FaceTarget();
-            if (attackTimer >= attackCooldown)
-            {
-                attack();
-                attackTimer = 0;
-            }
-        }
-        Rush();
-    }
 
     
 
 
-    void attack()
-        {
-            //attack animation, sound, damage to the player
-        }
 
 
-    void FaceTarget()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-
-    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
