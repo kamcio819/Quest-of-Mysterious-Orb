@@ -8,8 +8,8 @@ public class InputData : Data {
    #endregion
 
    #region MovementMouseFactors
-      [Range(0,10f)] [SerializeField] private float xMouseAxisSens;
-      [Range(0,10f)] [SerializeField] private float xMouseAxisFactor;
+      [Range(5f,10f)] [SerializeField] private float xMouseAxisSens;
+      [Range(5f,10f)] [SerializeField] private float xMouseAxisFactor;
       #endregion
 
    public float GetXAxisSens() {
