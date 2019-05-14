@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 
     public Orb[] AllOrbs;
     public Orb[] PlayerOrbs;
-
+    private Inventory inventory;
 
 
     void Start()
@@ -29,9 +29,17 @@ public class PlayerStats : MonoBehaviour
     PlayerOrbs[2].description = AllOrbs[2].description;
 }
 
-    private void Update()
+     private void Update()
     //TEST ORBS
     {
+        /*
+        {
+            if (transform.childCount <= 0)
+            {
+                inventory.isFull[i] = false;
+            }
+        } */
+
         if (Input.GetMouseButtonDown(0)) //Primary button
         UsedOrb(PlayerOrbs[0].id);
         if (Input.GetMouseButtonDown(1)) //Secondary button
