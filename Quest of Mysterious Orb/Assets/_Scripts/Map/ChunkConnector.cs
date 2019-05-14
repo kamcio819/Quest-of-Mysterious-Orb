@@ -52,6 +52,7 @@ public class ChunkConnector : MonoBehaviour {
     {
        // Random.InitState(190219981);
         exits = new List<Transform>();
+        generatedChunk = new List<Transform>();
         MapStart();
     }
 
@@ -98,7 +99,6 @@ public class ChunkConnector : MonoBehaviour {
     // Filling exits
 
 
-    // Next chunk
 
 
     // Main path
@@ -213,11 +213,12 @@ public class ChunkConnector : MonoBehaviour {
 
         if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
         {
-            CollisionHandller();
+            Debug.Log("Collision");
+            Debug.Log(nextChunk);
+            // CollisionHandller();
         }
-        else
+        //else
         currentChunk = Instantiate(nextChunk, positionTMP, rotation);
-
         generatedChunk.Add(currentChunk);
 
 }
