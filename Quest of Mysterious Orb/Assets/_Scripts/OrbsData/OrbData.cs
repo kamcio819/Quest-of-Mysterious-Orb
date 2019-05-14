@@ -3,13 +3,17 @@ using UnityEngine;
 public enum OrbType {
    CHARGING,
    BOUNCE,
-   SPIRAL
+   HOMING,
+   GRAY
 }
 
 public class OrbData : Data {
-   [SerializeField]
-   private OrbType orbType;
-   public virtual void RandomizeParameters() {
+    [SerializeField]
+    private OrbType orbType;
+
+    public OrbType OrbType { get => orbType; }
+
+    public virtual void RandomizeParameters() {
       
    }
 }

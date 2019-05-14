@@ -54,9 +54,13 @@ public class OrbMaker : EditorWindow
                     gameData = (ChargingOrbData) EditorGUILayout.ObjectField(gameData, typeof(ChargingOrbData), false);
                     InstantiateOrb<ChargingOrbData>(gameObjectName);
                     break;
-                case OrbType.SPIRAL:
-                    gameData = (SprialOrbData) EditorGUILayout.ObjectField(gameData, typeof(SprialOrbData), false);
-                    InstantiateOrb<SprialOrbData>(gameObjectName);
+                case OrbType.GRAY:
+                    gameData = (GrayOrbData) EditorGUILayout.ObjectField(gameData, typeof(GrayOrbData), false);
+                    InstantiateOrb<GrayOrbData>(gameObjectName);
+                    break;
+                case OrbType.HOMING:
+                    gameData = (HomingOrbData)EditorGUILayout.ObjectField(gameData, typeof(HomingOrbData), false);
+                    InstantiateOrb<HomingOrbData>(gameObjectName);
                     break;
             }
         }
