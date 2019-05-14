@@ -190,26 +190,31 @@ PrefabInstance:
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: startChunk.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
-        type: 3}
-      propertyPath: roomChunk.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
-        type: 3}
-      propertyPath: corridorChunk.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
+      propertyPath: roomChunk.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
       propertyPath: deadEndChunk.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: junctionChunk.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: deadEndWall.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
@@ -221,43 +226,43 @@ PrefabInstance:
         type: 3}
       propertyPath: startChunk.Array.data[0]
       value: 
-      objectReference: {fileID: 7278793885863830837, guid: 4837aa624f01dad45b11476678d8445b,
+      objectReference: {fileID: 5560797978953786769, guid: dc558873b56aecf409015b601224c51d,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: roomChunk.Array.data[0]
       value: 
-      objectReference: {fileID: 7278793885863830837, guid: 4837aa624f01dad45b11476678d8445b,
+      objectReference: {fileID: 5560797978953786769, guid: dc558873b56aecf409015b601224c51d,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: corridorChunk.Array.data[0]
       value: 
-      objectReference: {fileID: 8983385874678266964, guid: 8a19b6aee3f039e4492dadd33461e797,
+      objectReference: {fileID: 5895661435808987467, guid: cacee4ec08d371f43b5de1261e96ce1e,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: corridorChunk.Array.data[1]
       value: 
-      objectReference: {fileID: 8983385874678266964, guid: 248979b46df655343bbdaa5ce0d0e158,
+      objectReference: {fileID: 6772771963402898585, guid: 016bf3016b7ec0948861cc64239bd899,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: roomChunk.Array.data[1]
       value: 
-      objectReference: {fileID: 7569292867487617940, guid: 737453387bbad9e499b314a05ffbe393,
+      objectReference: {fileID: 7257823870747872064, guid: 8f0d41dd1abeaac46aa63a9c7fac2884,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: deadEndChunk.Array.data[0]
       value: 
-      objectReference: {fileID: 7626025717761930257, guid: c11c96b054ed3a549b82e564d9bdb1e8,
+      objectReference: {fileID: 7470781725226341281, guid: f8ed9a72eca5ac54a844a87aafa4c06e,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
       propertyPath: junctionChunk.Array.data[0]
       value: 
-      objectReference: {fileID: 8983385874678266964, guid: 8a19b6aee3f039e4492dadd33461e797,
+      objectReference: {fileID: 6190779386265021121, guid: bd3916e260f5f0f449467d8c660184a3,
         type: 3}
     - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
         type: 3}
@@ -280,6 +285,48 @@ PrefabInstance:
       propertyPath: stepsCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: startChunk.Array.data[1]
+      value: 
+      objectReference: {fileID: 7257823870747872064, guid: 8f0d41dd1abeaac46aa63a9c7fac2884,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.data[2]
+      value: 
+      objectReference: {fileID: 7062540621303994204, guid: 738d70dc88e62aa419f5647f2fbc9153,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: corridorChunk.Array.data[3]
+      value: 
+      objectReference: {fileID: 1891445932267985646, guid: 6c1415af943561948ba6f5a7af538e06,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: junctionChunk.Array.data[1]
+      value: 
+      objectReference: {fileID: 4847370471159154257, guid: 384b0e21ee4170440a4ce437f2ab4705,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: junctionChunk.Array.data[2]
+      value: 
+      objectReference: {fileID: 138675228243291184, guid: 69c7fe4409ae830479ab7c51541b53d2,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: deadEndChunk.Array.data[1]
+      value: 
+      objectReference: {fileID: 5104913778274953092, guid: d350a2a6fded3f1429a258a2012e8cc7,
+        type: 3}
+    - target: {fileID: 5140341493826560001, guid: 4954afdb47372d44d8dc99027de0d152,
+        type: 3}
+      propertyPath: deadEndWall.Array.data[0]
+      value: 
+      objectReference: {fileID: 5104913778274953092, guid: d350a2a6fded3f1429a258a2012e8cc7,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4954afdb47372d44d8dc99027de0d152, type: 3}
 --- !u!1 &776947483
