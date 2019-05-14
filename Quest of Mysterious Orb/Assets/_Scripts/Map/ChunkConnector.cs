@@ -7,37 +7,46 @@ using UnityEngine;
 public class ChunkConnector : MonoBehaviour {
 
 
-    private static GameObject exit;
+    private static GameObject exit;     ///< <summary> zmienna zawierająca wyjście </summary>
 
-    private List<Transform> exits;
+    private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
 
-    [SerializeField]
-    private LayerMask layerMask;
-
-    [SerializeField]
-    private Transform[] startChunk;
-    [SerializeField]
-    private Transform[] roomChunk;
-    [SerializeField]
-    private Transform[] corridorChunk;
-    [SerializeField]
-    private Transform[] junctionChunk;
-    [SerializeField]
-    private Transform[] deadEndChunk;
-    [SerializeField]
-    private Transform deadEndWall;
+    private List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
     [SerializeField]
-    private int minL;
+    private LayerMask layerMask;        ///< <summary> Maska wasrtwy wykrywania kolizji ścian </summary>
+
     [SerializeField]
-    private int maxL;
+    private Transform[] startChunk;     ///< <summary> Chunki startowe </summary>
+    [SerializeField]
+    private Transform[] roomChunk;      ///< <summary> Chunki pokoi </summary>
+    [SerializeField]
+    private Transform[] corridorChunk;      ///< <summary> Chunki korytarzy </summary>
+    [SerializeField]
+    private Transform[] junctionChunk;      ///< <summary> Chunki skrzyrzowań </summary>
+    [SerializeField]
+    private Transform[] deadEndChunk;       ///< <summary> Chunki ślepych korytarzy </summary>
+    [SerializeField]
+    private Transform[] deadEndWall;      ///< <summary> Ściana </summary>
 
-    private Transform nextChunk;
-    private Transform currentChunk;
+    [SerializeField]
+    private int minL;       ///< <summary> minimalna długość ścieżki </summary>
+    [SerializeField]
+    private int maxL;       ///< <summary> maksymalna długość ścieżki </summary>
 
-    private int pathLength;
+    [SerializeField]
+    private int stepsCount;     ///< <summary> ilość kroków do cofnięcia </summary>
 
-    private int prevChunkType;
+    private Transform nextChunk;        ///< <summary> generowany chunk </summary>
+    private Transform currentChunk;     ///< <summary> Ostatnio wygenerowany chunk </summary>
+
+    private int pathLength;     ///< <summary> Długość ścieżki </summary>
+
+    private int currentRoomCount;       ///< <summary> Ściana </summary>
+
+    private bool mainPathFlag;      ///< <summary> Czy generuje główną ścieżkę </summary>
+
+    private int prevChunkType;  ///< <summary> Poprzedni typ chunka </summary>
 
     private void Start()
     {
@@ -52,12 +61,14 @@ public class ChunkConnector : MonoBehaviour {
     {
         currentChunk = Instantiate(startChunk[Random.Range(0, startChunk.Length)], new Vector3(0, 0, 0), Quaternion.identity);
         prevChunkType = 0;
+        mainPathFlag = true;
         pathLength = Random.Range(minL, maxL);
 
-        for (int i = 0; i < pathLength; i++)
+        for (currentRoomCount = 0; currentRoomCount < pathLength; currentRoomCount++)
         {
             NextChunk();
         }
+        mainPathFlag = false;
 
     }
 
@@ -125,11 +136,51 @@ public class ChunkConnector : MonoBehaviour {
 
     // Collision controll
 
+    private void CollisionHandller()
+    {
+        if (mainPathFlag)
+        {
+            //próba wygenerowania innego chunka
+            PickNextChunk();
+            CreateNextChunk();
+            //próba wybrania innego wyjścia w currentChunk
+            NextChunk();
+            //cofnięcie ścieżki o 3 kroki
+            PathReverse(stepsCount);
+            currentRoomCount -= stepsCount;
+        }
+        else
+        {
+            //próba wygenerowania innego typu chunka
+            PickNextChunk();
+            CreateNextChunk();
+            //postawienie DeadEnda
+            SetNextChunkAsDeadEnd();
+            CreateNextChunk();
+        }
+    }
+
+    private void PathReverse(int steps)
+    {
+        for(int g = 0; g < steps; g++)
+        {
+            generatedChunk.Remove(generatedChunk[generatedChunk.Count - 1]);
+            Destroy(currentChunk.gameObject);
+            currentChunk = generatedChunk[generatedChunk.Count - 1];
+        }
+        
+    }
+
+    private void SetNextChunkAsDeadEnd()
+    {
+        nextChunk = deadEndWall[Random.Range(0, deadEndWall.Length)];
+    }
+
     // Connector
 
     private void CreateNextChunk()
     {
-        Transform entrance = nextChunk;//.GetChild(0);
+        Transform entrance = nextChunk;
 
         Vector3 displacement = new Vector3(
             entrance.localPosition.x,
@@ -137,7 +188,7 @@ public class ChunkConnector : MonoBehaviour {
             entrance.localPosition.z);
 
         Quaternion rotation = new Quaternion();
-        rotation.eulerAngles = exit.transform.rotation.eulerAngles;// - currentChunk.rotation.eulerAngles;
+        rotation.eulerAngles = exit.transform.rotation.eulerAngles;
         
 
        
@@ -158,12 +209,17 @@ public class ChunkConnector : MonoBehaviour {
 
         }
         Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
-        if(nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
-        {
-            Debug.Log("Collision");
-        }
 
+
+        if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
+        {
+            CollisionHandller();
+        }
+        else
         currentChunk = Instantiate(nextChunk, positionTMP, rotation);
-    }
+
+        generatedChunk.Add(currentChunk);
+
+}
 
 }
