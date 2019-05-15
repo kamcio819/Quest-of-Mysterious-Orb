@@ -6,22 +6,30 @@ public class GrayOrbData : OrbData
 {
     #region MovementData
     [Range(0, 5f)] [SerializeField] private float movingSpeed;
+
+    public float MovingSpeed { get => movingSpeed; set => movingSpeed = value; }
     #endregion
 
-    public override void RandomizeParameters()
+   public override void RandomizeParameters()
     {
-        movingSpeed = Random.Range(0, 5f);
+        MovingSpeed = Random.Range(0, 5f);
     }
 
     public override List<dynamic> GetData() {
       List<dynamic> dataToReturn = new List<dynamic>();
       dataToReturn.Add("Moving Speed");
-      dataToReturn.Add(movingSpeed);
+      dataToReturn.Add(MovingSpeed);
+      dataToReturn.Add("Orb Cooldown");
+      dataToReturn.Add(cooldownTime);
+      dataToReturn.Add("Orb Damage");
+      dataToReturn.Add(damageGiven);
       return dataToReturn;
    }
 
     public override void SetData(List<dynamic> dataTab)
     {
-       movingSpeed = dataTab[1];
+       MovingSpeed = dataTab[1];
+       cooldownTime = dataTab[3];
+       damageGiven = dataTab[5];
     }
 }

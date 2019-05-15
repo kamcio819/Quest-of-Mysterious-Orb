@@ -71,6 +71,12 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
                 keyboardInputProvide(keyboardInput);
             }
         }
+
+        if(Input.GetMouseButtonDown(0)) {
+            if(mouseLeftButtonClicked != null) {
+                mouseLeftButtonClicked(true);
+            }
+        }
            
     }
 

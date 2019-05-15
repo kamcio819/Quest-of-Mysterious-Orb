@@ -16,7 +16,11 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
 
    public void OnIUpdate()
    {
-      
+      if(isSpawned) {
+         Vector3 newPos = transform.position;
+         newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 2f * Time.deltaTime;
+         transform.position = newPos;
+      }
    }
 
    protected override void OnCollisionEnter(Collision collision)

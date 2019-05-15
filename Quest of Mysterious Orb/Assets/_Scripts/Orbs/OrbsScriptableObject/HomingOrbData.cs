@@ -17,11 +17,17 @@ public class HomingOrbData : OrbData {
       List<dynamic> dataToReturn = new List<dynamic>();
       dataToReturn.Add("Moving Speed");
       dataToReturn.Add(movingSpeed);
+      dataToReturn.Add("Orb Cooldown");
+      dataToReturn.Add(cooldownTime);
+      dataToReturn.Add("Orb Damage");
+      dataToReturn.Add(damageGiven);
       return dataToReturn;
    }
 
     public override void SetData(List<dynamic> dataTab)
     {
        movingSpeed = dataTab[1];
+       cooldownTime = dataTab[3];
+       damageGiven = dataTab[5];
     }
 }
