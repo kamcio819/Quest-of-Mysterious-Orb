@@ -8,7 +8,9 @@ public class Turret : MonoBehaviour
     private GameObject target;
     private bool targetLocked = false;
     public float shotTimer = 1f;
-    private float lookRadius = 10f;
+    public float lookRadius = 10f;
+    public float rotationSpeed = 5f;
+    private float timer = 1f;
 
 
     // Start is called before the first frame update
@@ -29,11 +31,11 @@ public class Turret : MonoBehaviour
         if (targetLocked)
         {
             FaceTarget();
-            shotTimer += Time.deltaTime;
-            if (shotTimer >= 1f)
+            timer += Time.deltaTime;
+            if (timer >= shotTimer)
             {
                 Shoot();
-                shotTimer = 0;
+                timer = 0;
             }
         }
     }
@@ -54,7 +56,7 @@ public class Turret : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
 
     }
 
