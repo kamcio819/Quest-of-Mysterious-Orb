@@ -7,6 +7,10 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
 {
     public static Action<Vector2> keyboardInputProvide;
     public static Action<Vector2> mouseInputProvide;
+    public static Action<bool> mouseRightButtonClicked;
+    public static Action<bool> mouseLeftButtonClicked;
+    public static Action<float> mouseScrollWheelMoved;
+    public static Action<bool> mouseScrollWheelClicked;
 
     private Vector2 keyboardInput = Vector2.zero;
     private Vector2 mouseInput = Vector2.zero;
