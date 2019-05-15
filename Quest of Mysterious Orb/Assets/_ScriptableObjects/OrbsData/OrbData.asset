@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OrbData
   m_EditorClassIdentifier: 
   orbType: 0
+  particleSystem: {fileID: 0}
   movingSpeed: 0
   acceleretaionFactor: 0
-  chargingOrbParticle: {fileID: 0}

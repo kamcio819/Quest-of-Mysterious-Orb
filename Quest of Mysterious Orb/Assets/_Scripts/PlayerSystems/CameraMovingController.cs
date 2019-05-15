@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(Camera))]
-public class CameraMovingController : Controller<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
+public class CameraMovingController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
 {
     [SerializeField]
     private Transform cameraTransform;

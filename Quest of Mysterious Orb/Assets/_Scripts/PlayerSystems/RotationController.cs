@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Transform))]
-public class RotationController : Controller<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
+public class RotationController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
 {
     [SerializeField]
     private Transform playerTransform;

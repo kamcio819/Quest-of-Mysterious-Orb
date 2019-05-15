@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovingController : Controller<MovementData>, IUpdatable, IDisaable, IEnableable
+public class PlayerMovingController : ExecutableController<MovementData>, IUpdatable, IDisaable, IEnableable
 {
     [SerializeField]
     private CharacterController characterController;

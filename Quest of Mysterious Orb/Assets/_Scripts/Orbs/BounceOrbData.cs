@@ -36,4 +36,5 @@ public class BounceOrbData : OrbData {
        bounceSpeed = dataTab[3];
        bounceForce = dataTab[5];
     }
+
 }

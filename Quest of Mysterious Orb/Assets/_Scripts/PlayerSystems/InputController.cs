@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InputController : Controller<InputData>, IUpdatable, IDisaable, IEnableable
+public class InputController : ExecutableController<InputData>, IUpdatable, IDisaable, IEnableable
 {
     public static Action<Vector2> keyboardInputProvide;
     public static Action<Vector2> mouseInputProvide;

@@ -8,10 +8,6 @@ public class ChargingOrbData : OrbData {
       [Range(0,5f)] [SerializeField] private float acceleretaionFactor;
    #endregion
 
-   [SerializeField] private ParticleSystem chargingOrbParticle;
-
-   public ParticleSystem ChargingOrbParticle { get => chargingOrbParticle; set => chargingOrbParticle = value; }
-
    public override void RandomizeParameters()
    {
       movingSpeed = Random.Range(0, 5f);
@@ -24,8 +20,6 @@ public class ChargingOrbData : OrbData {
       dataToReturn.Add(movingSpeed);
       dataToReturn.Add("Acceleretaion Factor");
       dataToReturn.Add(acceleretaionFactor);
-      dataToReturn.Add("Charging Particle");
-      dataToReturn.Add(chargingOrbParticle);
       return dataToReturn;
    }
 

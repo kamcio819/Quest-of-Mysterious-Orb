@@ -111,8 +111,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6323540185740944369}
   - component: {fileID: 4112029135631077895}
+  - component: {fileID: 7667967263500742879}
   - component: {fileID: 6323540185740943887}
   - component: {fileID: 7109741386395384100}
+  - component: {fileID: 4609473464510063473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -154,6 +156,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &7667967263500742879
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323540185740943885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6323540185740943887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +197,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerData: {fileID: 11400000, guid: 5d9389b97f4c5e44ca0248cd1fbbc300, type: 2}
   characterController: {fileID: 4112029135631077895}
+--- !u!114 &4609473464510063473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323540185740943885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810572205e55a3a4e95ef9af1eea7501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6323540187098243341
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +311,6 @@ GameObject:
   - component: {fileID: 6323540187199172800}
   - component: {fileID: 6323540187199172831}
   - component: {fileID: 6323540187199172830}
-  - component: {fileID: 6323540187199172829}
   - component: {fileID: 6323540187199172801}
   m_Layer: 0
   m_Name: PlayerBody
@@ -352,20 +379,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6323540187199172829
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6323540187199172824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6323540187199172801
 MonoBehaviour:
   m_ObjectHideFlags: 0

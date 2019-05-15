@@ -57,7 +57,7 @@ public class PlayerStats : MonoBehaviour
                 print(OrbSlot1.name);
                 foreach (Transform child in OrbSlot1.transform)
                 {
-                    var orbType = child.GetComponent<OrbObject>().OrbData.OrbType;
+                    var orbType = child.GetComponent<OrbGameObject>().OrbData.OrbType;
                     Debug.Log(orbType);
                     GameObject.Destroy(child.gameObject);
                 }
@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour
                 print(OrbSlot2.name);
                 foreach (Transform child in OrbSlot2.transform)
                 {
-                    var orbType = child.GetComponent<OrbObject>().OrbData.OrbType;
+                    var orbType = child.GetComponent<OrbGameObject>().OrbData.OrbType;
                     Debug.Log(orbType);
                     GameObject.Destroy(child.gameObject);
                 }
@@ -76,7 +76,7 @@ public class PlayerStats : MonoBehaviour
                 print(OrbSlot3.name);
                 foreach (Transform child in OrbSlot3.transform)
                 {
-                    var orbType = child.GetComponent<OrbObject>().OrbData.OrbType;
+                    var orbType = child.GetComponent<OrbGameObject>().OrbData.OrbType;
                     Debug.Log(orbType);
                     GameObject.Destroy(child.gameObject);
                 }
