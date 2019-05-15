@@ -11,6 +11,10 @@ public class ChunkConnector : MonoBehaviour {
 
     private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
 
+    private List<Transform> allGeneratedExits;
+
+    private List<Transform> fullExits;
+
     private List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
     [SerializeField]
@@ -46,6 +50,8 @@ public class ChunkConnector : MonoBehaviour {
 
     private bool mainPathFlag;      ///< <summary> Czy generuje główną ścieżkę </summary>
 
+    private bool chunkWasGenerated;
+
     private int prevChunkType;  ///< <summary> Poprzedni typ chunka </summary>
 
     private void Start()
@@ -76,15 +82,6 @@ public class ChunkConnector : MonoBehaviour {
     private void NextChunk()
     {
         PickNextChunk();
-        int childCount = currentChunk.childCount;
-        for (int j = 0; j < childCount; j++)
-        {
-            if(currentChunk.GetChild(j).tag == "Exit")
-            {
-                exits.Add(currentChunk.GetChild(j));
-
-            }
-        }
         ChooseExit();
         CreateNextChunk();
     }
@@ -92,6 +89,15 @@ public class ChunkConnector : MonoBehaviour {
 
     private void ChooseExit()
     {
+        int childCount = currentChunk.childCount;
+        for (int j = 0; j < childCount; j++)
+        {
+            if (currentChunk.GetChild(j).tag == "Exit")
+            {
+                exits.Add(currentChunk.GetChild(j));
+
+            }
+        }
         exit = exits[Random.Range(0, exits.Count)].gameObject;
         exits.Clear();
     }
@@ -138,37 +144,81 @@ public class ChunkConnector : MonoBehaviour {
 
     private void CollisionHandller()
     {
+
         if (mainPathFlag)
         {
-            //próba wygenerowania innego chunka
-            PickNextChunk();
-            CreateNextChunk();
             //próba wybrania innego wyjścia w currentChunk
-            NextChunk();
-            //cofnięcie ścieżki o 3 kroki
-            PathReverse(stepsCount);
-            currentRoomCount -= stepsCount;
+            PickDifferentChunk();
+            ChooseExit();
+            bool flag = true;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!CreateDiferentChunk())
+                {
+                    PickDifferentChunk();
+                    ChooseExit();
+                }
+                else
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            Debug.Log(flag);
+            if (flag)
+            {
+                //Wybranie innego chunka na ścieżkę
+
+                /* SCRAPPED
+                //cofnięcie ścieżki o 3 kroki
+
+                if (currentRoomCount > stepsCount)
+                {
+                    PathReverse(stepsCount);
+                    currentRoomCount -= stepsCount;
+                    Debug.Log("!");
+
+                }*/
+
+            }
         }
         else
         {
             //próba wygenerowania innego typu chunka
-            PickNextChunk();
-            CreateNextChunk();
+            PickDifferentChunk();
+            CreateDiferentChunk();
             //postawienie DeadEnda
             SetNextChunkAsDeadEnd();
-            CreateNextChunk();
+            CreateDiferentChunk();
         }
+        
     }
 
     private void PathReverse(int steps)
     {
-        for(int g = 0; g < steps; g++)
+        for (int g = 0; g < steps; g++)
         {
+
             generatedChunk.Remove(generatedChunk[generatedChunk.Count - 1]);
+
             Destroy(currentChunk.gameObject);
             currentChunk = generatedChunk[generatedChunk.Count - 1];
+            PickDifferentChunk();
+            ChooseExit();
+            for (int i = 0; i < 10; i++)
+            {
+                if (!CreateDiferentChunk())
+                {
+                    PickDifferentChunk();
+                    ChooseExit();
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
-        
     }
 
     private void SetNextChunkAsDeadEnd()
@@ -176,10 +226,29 @@ public class ChunkConnector : MonoBehaviour {
         nextChunk = deadEndWall[Random.Range(0, deadEndWall.Length)];
     }
 
+    void PickDifferentChunk()
+    {
+        switch (prevChunkType)
+        {
+            case 1:
+                nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
+                break;
+            case 2:
+                nextChunk = corridorChunk[Random.Range(0, corridorChunk.Length)];
+                break;
+            case 3:
+                nextChunk = junctionChunk[Random.Range(0, junctionChunk.Length)];
+                break;
+
+        }
+        Debug.Log(nextChunk.name, nextChunk);
+    }
+
     // Connector
 
     private void CreateNextChunk()
     {
+        chunkWasGenerated = false;
         Transform entrance = nextChunk;
 
         Vector3 displacement = new Vector3(
@@ -213,14 +282,62 @@ public class ChunkConnector : MonoBehaviour {
 
         if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
         {
-            Debug.Log("Collision");
-            Debug.Log(nextChunk);
-            // CollisionHandller();
-        }
-        //else
-        currentChunk = Instantiate(nextChunk, positionTMP, rotation);
-        generatedChunk.Add(currentChunk);
+            Debug.Log(generatedChunk.Count);
 
+            CollisionHandller();
+        }
+        else
+        {
+            currentChunk = Instantiate(nextChunk, positionTMP, rotation);
+            generatedChunk.Add(currentChunk);
+        }
 }
+    private bool CreateDiferentChunk()
+    {
+        chunkWasGenerated = false;
+        Transform entrance = nextChunk;
+
+        Vector3 displacement = new Vector3(
+            entrance.localPosition.x,
+            0,
+            entrance.localPosition.z);
+
+        Quaternion rotation = new Quaternion();
+        rotation.eulerAngles = exit.transform.rotation.eulerAngles;
+
+
+
+        if (rotation.eulerAngles.y >= 179)
+        {
+            displacement.z *= -1;
+
+        }
+        if (rotation.eulerAngles.y <= 181 && rotation.eulerAngles.y >= 89)
+        {
+            displacement.x *= -1;
+        }
+        if ((rotation.eulerAngles.y >= 89 && rotation.eulerAngles.y <= 91) || (rotation.eulerAngles.y >= 269 && rotation.eulerAngles.y <= 271))
+        {
+            float tmp = displacement.z;
+            displacement.z = displacement.x;
+            displacement.x = tmp;
+
+        }
+        Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
+
+
+        if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
+        {
+            return false;
+        }
+        else
+        {
+            Debug.Log("Generated:");
+            Debug.Log(generatedChunk.Count);
+            currentChunk = Instantiate(nextChunk, positionTMP, rotation);
+            generatedChunk.Add(currentChunk);
+            return true;
+        }
+    }
 
 }
