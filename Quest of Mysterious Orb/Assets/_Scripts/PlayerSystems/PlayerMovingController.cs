@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovingController : Controller<MovementData>, IUpdatable, IDisaable, IEnableable
+public class PlayerMovingController : ExecutableController<MovementData>, IUpdatable, IDisaable, IEnableable, ILateUpdatable
 {
     [SerializeField]
     private CharacterController characterController;
@@ -23,5 +23,9 @@ public class PlayerMovingController : Controller<MovementData>, IUpdatable, IDis
     private void MoveInputProvided(Vector2 keyboardInput) {
         Vector3 moveInput = new Vector3(keyboardInput.x * controllerData.GetSpeedFactor(), 0, keyboardInput.y * controllerData.GetSpeedFactor());
         characterController.Move(moveInput);
+    }
+
+    public void OnILateUpdate()
+    {
     }
 }
