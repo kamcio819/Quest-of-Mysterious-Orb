@@ -9,10 +9,9 @@ public class Rush : MonoBehaviour
 
     UnityEngine.AI.NavMeshAgent agent;
     Transform target;
+    public float attackDamage = 10f;
     public float lookRadius = 10f;
-    private static bool aggro = false;
     public float attackCooldown = 1f;
-    private bool attackAbility = true;
     public float speedMax = 20f;
     public float speedDecrease = 1f;
     public float attackRange = 3f;
@@ -29,21 +28,18 @@ public class Rush : MonoBehaviour
 
     IEnumerator StartRush()
     {
-        attackAbility = true;
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= attackRange)
         {
             FaceTarget();
-            if (attackAbility == true)
-            {
-                attack();
-                Debug.Log("Make attack");
-            }
+            Debug.Log("Make attack");
+            attack();
         }
         agent.autoBraking = true;
-        GetComponent<Patrol>().enabled = false;
+        this.GetComponent<Patrol>().enabled = false;
         agent.stoppingDistance = attackRange;
         agent.SetDestination(target.position);
+        //tutaj mozna wstawic jakas animacje przygotoywania sie do ataku (boostery czy cos tam)
         agent.isStopped = true;
         yield return new WaitForSeconds(initialRushDelay);
         agent.isStopped = false;
@@ -55,14 +51,28 @@ public class Rush : MonoBehaviour
         StartCoroutine(StartRush());
     }
 
-
-
-
     void attack()
     {
-        //attack animation, sound, damage to the player
+        //Tutaj bedzie animacja ataku, ogdlos ataku, obrazenia dla gracza itp.
     }
 
+    /*private void OnTriggerEnter(Collider collision) //     nie chce to dzialac
+    {
+        if (collision.tag.Equals("Player"))
+        {
+            Debug.Log("hit");
+            //Tutaj mozna dac odglos walniecia, obrazenia dla gracza, itd.
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hitObject) //      to tez qq
+    {
+        if (hitObject.collider.tag.Equals("Player"))
+        {
+            Debug.Log("hit");
+            //Tutaj mozna dac odglos walniecia, obrazenia dla gracza, itd.
+        }
+    }*/
 
     void FaceTarget()
     {

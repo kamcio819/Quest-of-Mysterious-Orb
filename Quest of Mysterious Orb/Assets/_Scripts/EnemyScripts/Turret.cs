@@ -7,9 +7,9 @@ public class Turret : MonoBehaviour
     private Transform targetPosition;
     private GameObject target;
     private bool targetLocked = false;
-    private bool shotReady = true;
     public float shotTimer = 1f;
-    
+    private float lookRadius = 10f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,15 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!targetLocked)
+        {
+            float distance = Vector3.Distance(target.transform.position, transform.position);
+            if (distance <= lookRadius) targetLocked = true;
+        }
+
         if (targetLocked)
         {
-            transform.LookAt(target.transform);
+            FaceTarget();
             shotTimer += Time.deltaTime;
             if (shotTimer >= 1f)
             {
@@ -30,8 +36,6 @@ public class Turret : MonoBehaviour
                 shotTimer = 0;
             }
         }
-
-        
     }
 
     void Shoot()
@@ -40,10 +44,18 @@ public class Turret : MonoBehaviour
         //Add shoot particle, shot sound, bullet object
     }
 
-    
-    private void OnTriggerEnter(Collider other)
+    void OnDrawGizmos()
     {
-        target = other.gameObject;
-        targetLocked = true;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+
+    }
+
 }

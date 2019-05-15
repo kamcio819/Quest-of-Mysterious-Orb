@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+//skrypt pomocniczy dla rusha - ne ma wiekszego znaczenia dla calosci
 //To make an enemy have charge attacks - set Patrol and Charge scripts on, and also put an inactive Rush script.
 
 
