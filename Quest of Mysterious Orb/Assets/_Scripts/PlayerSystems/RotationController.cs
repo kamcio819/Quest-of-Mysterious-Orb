@@ -15,6 +15,7 @@ public class RotationController : ExecutableController<InputData, MovementData>,
     private LayerMask layerMask;
 
     private Vector3 deltaCursor = Vector3.zero;
+    private Vector3 pos = Vector3.zero;
 
     public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
 
@@ -34,12 +35,20 @@ public class RotationController : ExecutableController<InputData, MovementData>,
     }
 
     public void RotatePlayer(Vector2 mouseInput) {
-        Vector3 pos = GetMousePoint();
+        pos = GetMousePoint();
         Vector3 directionToRotate = pos - transform.position;
         directionToRotate.y = 0;
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.right, directionToRotate) * transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, quaternionToRotate, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
+        
+        Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, directionToRotate) * transform.rotation;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+    }
 
+    void OnDrawGizmosSelected()
+    {
+        Debug.DrawLine(transform.position, pos, Color.blue);
+        Debug.DrawLine(pos - transform.position, pos, Color.green);
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(pos, new Vector3(0.2f, 0.2f, 0.2f));
     }
 
     private Vector3 GetMousePoint() {
