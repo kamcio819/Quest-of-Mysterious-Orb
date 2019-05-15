@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollisionController : ExecutableController, IEnableable, IUpdatable, IDisaable
+public class PlayerCollisionController : ExecutableController, IEnableable, IUpdatable, IDisaable, ILateUpdatable
 {
-   [SerializeField]
-   private List<OrbObject> orbsCollected = new List<OrbObject>();
+   public static Action<OrbObject> OrbCollected;
 
    public void OnIDisable()
    {
@@ -15,6 +15,11 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    public void OnIEnable()
    {
       //throw new System.NotImplementedException();
+   }
+
+   public void OnILateUpdate()
+   {
+
    }
 
    public void OnIUpdate()
@@ -27,7 +32,10 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    }
 
    private void OnTriggerEnter(Collider other) {
+      Debug.Log(other.name);
       ChargingOrb charging = other.GetComponent<ChargingOrb>();
-      orbsCollected.Add(charging);
+      if(OrbCollected != null) {
+         OrbCollected(charging);
+      }
    }
 }

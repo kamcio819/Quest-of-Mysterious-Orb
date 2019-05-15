@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Transform))]
-public class RotationController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable
+public class RotationController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable, ILateUpdatable
 {
     [SerializeField]
     private Transform playerTransform;
@@ -52,5 +52,9 @@ public class RotationController : ExecutableController<InputData, MovementData>,
         else {
             return Vector3.zero;
         }
+    }
+
+    public void OnILateUpdate()
+    {
     }
 }

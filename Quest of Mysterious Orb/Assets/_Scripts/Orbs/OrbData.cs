@@ -14,10 +14,15 @@ public class OrbData : Data {
     private OrbType orbType;
 
     [SerializeField]
-    private ParticleSystem particleSystem;
+    private ParticleSystem orbParticleSystem;
+
+    [SerializeField]
+    private RenderTexture orbRenderTexture;
 
     public OrbType OrbType { get => orbType; }
-    public ParticleSystem ParticleSystem { get => particleSystem; set => particleSystem = value; }
+    public ParticleSystem ParticleSystem { get => orbParticleSystem; set => orbParticleSystem = value; }
+    public RenderTexture OrbRenderTexture { get => orbRenderTexture; set => orbRenderTexture = value; }
+    
     public virtual void RandomizeParameters() {
 
     }
