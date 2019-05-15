@@ -6,55 +6,40 @@ using UnityEngine;
 public class SystemManager : Singleton<SystemManager>
 {
     [SerializeField]
-    private List<InputController> inputControllers;
+    private List<Controller> controllers;
 
-    [SerializeField]
-    private List<MovingController> movementControllers;
-
-    [SerializeField]
-    private List<RotationController> rotationControllers;
 
     private void Awake() {
 
     }
 
     private void OnEnable() {
-        inputControllers.ForEach((x) =>  {
+        controllers.ForEach((x) =>  {
             (x as IEnableable).OnIEnable();
         });
-        movementControllers.ForEach((x) => {
-            (x as IEnableable).OnIEnable();
-        });
-        rotationControllers.ForEach((x) => {
-            (x as IEnableable).OnIEnable();
-        });
+        
     }
 
     private void OnDisable() {
-        inputControllers.ForEach((x) =>  {
-            (x as IDisaable).OnIDisable();
-        });
-        movementControllers.ForEach((x) => {
-            (x as IDisaable).OnIDisable();
-        });
-        rotationControllers.ForEach((x) => {
+        controllers.ForEach((x) =>  {
             (x as IDisaable).OnIDisable();
         });
     }
 
     private void Start() {
-
+        
     }
 
     private void Update() {
-        inputControllers.ForEach((x) =>  {
+        controllers.ForEach((x) =>  {
             (x as IUpdatable).OnIUpdate();
         });
-        movementControllers.ForEach((x) => {
-            (x as IUpdatable).OnIUpdate();
-        });
-        rotationControllers.ForEach((x) => {
-            (x as IUpdatable).OnIUpdate();
+        
+    }
+
+    private void LateUpdate() {
+        controllers.ForEach((x) => {
+            (x as ILateUpdatable).OnILateUpdate();
         });
     }
 
@@ -64,8 +49,6 @@ public class SystemManager : Singleton<SystemManager>
 
     [ContextMenu ("Load controllers")]
     void LoadControllers () {
-        inputControllers = FindObjectsOfType<InputController>().ToList();
-        movementControllers = FindObjectsOfType<MovingController>().ToList();
-        rotationControllers = FindObjectsOfType<RotationController>().ToList();
+        controllers = FindObjectsOfType<Controller>().ToList();
     }   
 }

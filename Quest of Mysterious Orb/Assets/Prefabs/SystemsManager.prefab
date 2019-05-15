@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6681723406953313824}
   - component: {fileID: 6681723406953313825}
+  - component: {fileID: 614817505}
   m_Layer: 0
   m_Name: SystemsManager
   m_TagString: Untagged
@@ -43,9 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df1ea4fdeaab7844940a1018c8c3160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputControllers:
+  controllers:
+  - {fileID: 614817505}
   - {fileID: 0}
-  movementControllers:
   - {fileID: 0}
-  rotationControllers:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &614817505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c3174b62f1e9d4f8ddbb24e8e1f1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbsList: []

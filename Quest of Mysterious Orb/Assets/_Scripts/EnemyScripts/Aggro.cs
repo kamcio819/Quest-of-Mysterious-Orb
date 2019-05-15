@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//For melee enemy, use aggro and patrol scripts.
+
 public class Aggro: MonoBehaviour
 {
     // Start is called before the first frame update
+
     Transform target;
     NavMeshAgent agent;
     public float lookRadius = 10f;
     private static bool aggro = false;
     public float attackCooldown = 1f;
     private float attackTimer = 1f;
+    public float attackDamage = 10f;
 
     void Start()
     {

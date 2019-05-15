@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InputController : Controller<InputData>, IUpdatable, IDisaable, IEnableable
+public class InputController : ExecutableController<InputData>, IUpdatable, ILateUpdatable, IDisaable, IEnableable
 {
     public static Action<Vector2> keyboardInputProvide;
     public static Action<Vector2> mouseInputProvide;
+    public static Action<bool> mouseRightButtonClicked;
+    public static Action<bool> mouseLeftButtonClicked;
+    public static Action<float> mouseScrollWheelMoved;
+    public static Action<bool> mouseScrollWheelClicked;
 
     private Vector2 keyboardInput = Vector2.zero;
     private Vector2 mouseInput = Vector2.zero;
@@ -72,5 +76,9 @@ public class InputController : Controller<InputData>, IUpdatable, IDisaable, IEn
 
     public void OnIDisable() {
 
+    }
+
+    public void OnILateUpdate()
+    {
     }
 }

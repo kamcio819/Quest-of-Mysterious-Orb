@@ -5,11 +5,9 @@ using System.Collections;
 
 public class Patrol : MonoBehaviour
 {
-
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
-
 
     void Start()
     {
@@ -17,6 +15,7 @@ public class Patrol : MonoBehaviour
         agent.autoBraking = false;
         agent.stoppingDistance = 0;
         GotoNextPoint();
+
     }
 
 

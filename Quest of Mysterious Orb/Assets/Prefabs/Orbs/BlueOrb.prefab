@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4569504468649903423}
   - component: {fileID: 2314624255563371198}
   - component: {fileID: 192423158430862952}
+  - component: {fileID: 1667001067353474063}
   m_Layer: 5
   m_Name: BlueOrb
   m_TagString: Untagged
@@ -118,3 +119,16 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &1667001067353474063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450059338236968646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3034572ead70def4b9391a61690c19ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbData: {fileID: 11400000, guid: 87d23fdaa0a1c8645b0b5412365e5987, type: 2}
