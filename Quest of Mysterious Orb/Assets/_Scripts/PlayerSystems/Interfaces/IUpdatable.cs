@@ -1,3 +1,3 @@
 ﻿public interface IUpdatable {
-    void OnIUpdate();  
+    void OnIUpdate(); 
 }

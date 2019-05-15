@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDisaable
+public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable
 {
     [SerializeField]
     private List<OrbObject> orbsList;
@@ -11,12 +11,12 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
 
     public void OnIDisable()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnIEnable()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnIUpdate()
@@ -24,6 +24,10 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
         orbsList.ForEach((x) => {
             (x as IUpdatable).OnIUpdate();
         });
+    }
+    
+    public void OnILateUpdate() {
+
     }
 
     public void AddToOrbList(OrbGameObject orbObject) {

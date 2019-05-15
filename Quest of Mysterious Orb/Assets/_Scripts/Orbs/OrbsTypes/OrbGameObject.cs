@@ -13,6 +13,10 @@ public abstract class OrbGameObject<T> : OrbObject
     protected abstract void OnCollisionEnter(Collision collision);
     protected abstract void OnTriggerEneter(Collider collider);
 
+    public override OrbData GetData() {
+        return orbData;
+    } 
+
 }
 
 public abstract class OrbGameObject : OrbObject
@@ -24,4 +28,8 @@ public abstract class OrbGameObject : OrbObject
 
     protected abstract void OnCollisionEnter(Collision collision);
     protected abstract void OnTriggerEneter(Collider collider);
+
+    public override OrbData GetData() {
+        return orbData;
+    } 
 }

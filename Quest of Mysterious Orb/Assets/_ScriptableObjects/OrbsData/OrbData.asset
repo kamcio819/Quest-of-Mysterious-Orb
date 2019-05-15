@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OrbData
   m_EditorClassIdentifier: 
   orbType: 0
-  particleSystem: {fileID: 0}
-  movingSpeed: 0
+  orbParticleSystem: {fileID: 0}
+  orbRenderTexture: {fileID: 8400000, guid: 1b6b4addadb1469439d6047b06217a7d, type: 2}
+  movingSpeed: 2.1
   acceleretaionFactor: 0

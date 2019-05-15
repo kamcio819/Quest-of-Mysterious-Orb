@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53aeb15115b733240ad57d8431f72ef6, type: 3}
   m_Name: BounceOrbData
   m_EditorClassIdentifier: 
-  orbType: 1
+  orbType: 0
+  orbParticleSystem: {fileID: 0}
+  orbRenderTexture: {fileID: 0}
   movingSpeed: 2
   bounceSpeed: 2
   bounceForce: 2

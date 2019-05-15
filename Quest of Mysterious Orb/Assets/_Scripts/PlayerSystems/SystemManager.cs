@@ -27,7 +27,7 @@ public class SystemManager : Singleton<SystemManager>
     }
 
     private void Start() {
-
+        
     }
 
     private void Update() {
@@ -35,6 +35,12 @@ public class SystemManager : Singleton<SystemManager>
             (x as IUpdatable).OnIUpdate();
         });
         
+    }
+
+    private void LateUpdate() {
+        controllers.ForEach((x) => {
+            (x as ILateUpdatable).OnILateUpdate();
+        });
     }
 
     private void FixedUpdate() {
