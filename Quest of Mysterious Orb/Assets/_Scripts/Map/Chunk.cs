@@ -6,6 +6,9 @@ public class Chunk : MonoBehaviour{
 
 	public Transform[] spawnerPoints; ///< <summary> Punkty spawnu </summary>
 
+    
+    public int chunkType;
+
     [HideInInspector]
     public bool mainPath; /// <summary> Informacja czy chunk jest w głównej ścieżce </summary>
 

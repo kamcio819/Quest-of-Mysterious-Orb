@@ -11,11 +11,11 @@ public class ChunkConnector : MonoBehaviour {
 
     private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
 
-    private List<Transform> allGeneratedExits;
+    private List<Transform> aviableExits;      /// <summary> Lista wszystkich wygenerowanych wyjść </summary>
 
-    private List<Transform> fullExits;
+   // private List<Transform> fullExits;         /// <summary>  </summary>
 
-    private List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
+    public List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
     [SerializeField]
     private LayerMask layerMask;        ///< <summary> Maska wasrtwy wykrywania kolizji ścian </summary>
@@ -59,6 +59,7 @@ public class ChunkConnector : MonoBehaviour {
        // Random.InitState(190219981);
         exits = new List<Transform>();
         generatedChunk = new List<Transform>();
+        aviableExits = new List<Transform>();
         MapStart();
     }
 
@@ -67,7 +68,8 @@ public class ChunkConnector : MonoBehaviour {
     public void MapStart()
     {
         currentChunk = Instantiate(startChunk[Random.Range(0, startChunk.Length)], new Vector3(0, 0, 0), Quaternion.identity);
-        prevChunkType = 0;
+        AddAviableExits();
+        currentChunk.GetComponent<Chunk>().chunkType = 0;
         mainPathFlag = true;
         pathLength = Random.Range(minL, maxL);
 
@@ -84,6 +86,7 @@ public class ChunkConnector : MonoBehaviour {
         PickNextChunk();
         ChooseExit();
         CreateNextChunk();
+        AddAviableExits();
     }
 
 
@@ -94,10 +97,12 @@ public class ChunkConnector : MonoBehaviour {
         {
             if (currentChunk.GetChild(j).tag == "Exit")
             {
+        
                 exits.Add(currentChunk.GetChild(j));
 
             }
         }
+        Debug.Log(currentChunk);
         exit = exits[Random.Range(0, exits.Count)].gameObject;
         exits.Clear();
     }
@@ -110,22 +115,26 @@ public class ChunkConnector : MonoBehaviour {
     // Main path
     private void PickNextChunk()
     {
-        switch (prevChunkType)
+        int nextChunkType;
+        switch (currentChunk.GetComponent<Chunk>().chunkType)
         {
             case 0:
             case 1:
-                prevChunkType = Random.Range(2, 3+1);
+                nextChunkType = Random.Range(2, 3+1);
                 break;
             case 2:
-                prevChunkType = Random.Range(1, 3 + 1);
+                nextChunkType = Random.Range(1, 3 + 1);
                 break;
             case 3:
-                prevChunkType = Random.Range(1, 2 + 1);
+                nextChunkType = Random.Range(1, 2 + 1);
+                break;
+            default:
+                nextChunkType = 2;
                 break;
 
         }
 
-        switch (prevChunkType)
+        switch (nextChunkType)
         {
             case 1:
                 nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
@@ -138,6 +147,24 @@ public class ChunkConnector : MonoBehaviour {
                 break;
 
         }
+    }
+
+    private void AddAviableExits()
+    {
+        int childCount = currentChunk.childCount;
+        for (int j = 0; j < childCount; j++)
+        {
+            if (currentChunk.GetChild(j).tag == "Exit")
+            {
+                aviableExits.Add(currentChunk.GetChild(j));
+
+            }
+        }
+    }
+
+    private void RemoveAviableExits()
+    {
+        aviableExits.Remove(exit.transform);
     }
 
     // Collision controll
@@ -165,10 +192,12 @@ public class ChunkConnector : MonoBehaviour {
                 }
             }
 
-            Debug.Log(flag);
             if (flag)
             {
                 //Wybranie innego chunka na ścieżkę
+                CutPath();
+                ChooseDifrentExit();
+                
 
                 /* SCRAPPED
                 //cofnięcie ścieżki o 3 kroki
@@ -189,46 +218,29 @@ public class ChunkConnector : MonoBehaviour {
             PickDifferentChunk();
             CreateDiferentChunk();
             //postawienie DeadEnda
-            SetNextChunkAsDeadEnd();
-            CreateDiferentChunk();
+            CutPath();
         }
         
     }
 
-    private void PathReverse(int steps)
-    {
-        for (int g = 0; g < steps; g++)
-        {
-
-            generatedChunk.Remove(generatedChunk[generatedChunk.Count - 1]);
-
-            Destroy(currentChunk.gameObject);
-            currentChunk = generatedChunk[generatedChunk.Count - 1];
-            PickDifferentChunk();
-            ChooseExit();
-            for (int i = 0; i < 10; i++)
-            {
-                if (!CreateDiferentChunk())
-                {
-                    PickDifferentChunk();
-                    ChooseExit();
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-    }
-
-    private void SetNextChunkAsDeadEnd()
+    private void CutPath()
     {
         nextChunk = deadEndWall[Random.Range(0, deadEndWall.Length)];
+        CreateDiferentChunk();
     }
+
+    private void ChooseDifrentExit()
+    {
+        int stepBack = Random.Range(generatedChunk.Count > stepsCount ? generatedChunk.Count - stepsCount : 0, generatedChunk.Count);
+        currentChunk = generatedChunk[stepBack];
+        currentRoomCount -= generatedChunk.Count - stepBack;
+    }
+
+    
 
     void PickDifferentChunk()
     {
-        switch (prevChunkType)
+        switch (currentChunk.GetComponent<Chunk>().chunkType) 
         {
             case 1:
                 nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
@@ -241,14 +253,12 @@ public class ChunkConnector : MonoBehaviour {
                 break;
 
         }
-        Debug.Log(nextChunk.name, nextChunk);
     }
 
     // Connector
 
     private void CreateNextChunk()
     {
-        chunkWasGenerated = false;
         Transform entrance = nextChunk;
 
         Vector3 displacement = new Vector3(
@@ -282,19 +292,17 @@ public class ChunkConnector : MonoBehaviour {
 
         if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
         {
-            Debug.Log(generatedChunk.Count);
-
             CollisionHandller();
         }
         else
         {
             currentChunk = Instantiate(nextChunk, positionTMP, rotation);
             generatedChunk.Add(currentChunk);
+            RemoveAviableExits();
         }
 }
     private bool CreateDiferentChunk()
     {
-        chunkWasGenerated = false;
         Transform entrance = nextChunk;
 
         Vector3 displacement = new Vector3(
@@ -332,9 +340,8 @@ public class ChunkConnector : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Generated:");
-            Debug.Log(generatedChunk.Count);
             currentChunk = Instantiate(nextChunk, positionTMP, rotation);
+            RemoveAviableExits();
             generatedChunk.Add(currentChunk);
             return true;
         }
