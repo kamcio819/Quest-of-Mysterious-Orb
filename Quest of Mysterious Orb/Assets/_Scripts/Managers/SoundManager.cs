@@ -27,6 +27,9 @@ public class Sound
 public class SoundManager : Singleton<SoundManager>
 {
 
+    public bool play;
+    public bool playCalm;
+
     [SerializeField]
     private Sound[] sounds;
 
@@ -35,7 +38,9 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private GameObject PlayerCharacterSoundCollider;
     [SerializeField]
-    private AudioSource PlayerCharacterSource;
+    private AudioSource PlayerCharacterSourceCombat;
+    [SerializeField]
+    private AudioSource PlayerCharacterSourceCalm;
     [SerializeField]
     private Sound combatMusic;
     [SerializeField]
@@ -46,12 +51,29 @@ public class SoundManager : Singleton<SoundManager>
 
 
 
-    private void Start()
+    private void Awake()
     {
-        foreach(Sound s in sounds)
+        
+        foreach (Sound s in sounds)
         {
             s.Adjust();
         }
+        PlayerCharacterSourceCombat.Pause();
+    }
+
+    private void Update()
+    {
+        if(play)
+        {
+            PlayCombatMusic();
+            play = false;
+        }
+        if (playCalm)
+        {
+            PlayCalmMusic();
+            playCalm = false;
+        }
+
     }
 
     private void Play(Sound sound, AudioSource source)
@@ -90,26 +112,50 @@ public class SoundManager : Singleton<SoundManager>
 
     private void PlayCombatMusic()
     {
-        StartCoroutine(SwitchMusic(0));
+            SwitchMusic(0);
     }
     private void PlayCalmMusic()
     {
-        StartCoroutine(SwitchMusic(1));
+        SwitchMusic(1);
     }
 
-    private IEnumerator SwitchMusic(int type)
+    private void SwitchMusic(int type)
     {
         if(type == 0)
         {
-            if(PlayerCharacterSource.clip.name == "calm")
+            if(PlayerCharacterSourceCalm.isPlaying)
             {
+                StartCoroutine(FadeOut(PlayerCharacterSourceCalm, PlayerCharacterSourceCombat, speed));
+               // StartCoroutine(FadeIn(PlayerCharacterSourceCombat, speed));
 
             }
         }
-        else
+        else if(type == 1)
         {
+            if (PlayerCharacterSourceCombat.isPlaying)
+            {
+                StartCoroutine(FadeOut(PlayerCharacterSourceCombat, PlayerCharacterSourceCalm, speed));
+               // StartCoroutine(FadeIn(PlayerCharacterSourceCalm, speed));
 
+            }
         }
-        yield return null;
     }
+    private static IEnumerator FadeOut(AudioSource audioSourceIn, AudioSource audioSourceOut, float FadeTime)
+    {
+        float startVolume = 1;
+
+        audioSourceOut.Play();
+
+        while (audioSourceIn.volume > 0)
+        {
+            audioSourceIn.volume -= startVolume * Time.deltaTime / FadeTime;
+            audioSourceOut.volume += startVolume * Time.deltaTime / FadeTime;
+
+
+            yield return null;
+        }
+
+        audioSourceIn.Pause();
+    }
+
 }

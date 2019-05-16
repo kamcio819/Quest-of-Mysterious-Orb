@@ -5,8 +5,10 @@ using UnityEngine;
 public class Chunk : MonoBehaviour{
 
 	public Transform[] spawnerPoints; ///< <summary> Punkty spawnu </summary>
+    public Transform[] spawnerPointsTurrets; ///< <summary> Punkty spawnu </summary>
 
     
+
     public int chunkType;
 
     [HideInInspector]

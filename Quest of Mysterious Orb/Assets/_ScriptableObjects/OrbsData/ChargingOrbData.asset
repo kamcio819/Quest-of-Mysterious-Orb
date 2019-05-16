@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5109b2de94c49994dad3b2c6cce8fd9b, type: 3}
+  m_Name: ChargingOrbData
+  m_EditorClassIdentifier: 
+  orbType: 1
+  orbParticleSystem: {fileID: 4093786512992894641, guid: 79be2894111fa01429f70ad05f829815,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: 3e4cbe47cffcf6646a4a4347c643da8d, type: 2}
+  cooldownTime: 1.5
+  damageGiven: 4.1
+  movingSpeed: 1.07
+  acceleretaionFactor: 2.03

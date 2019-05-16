@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, IDisaable
 {
+   [SerializeField]
+   private EnemyObject nearestEnemyObject;
    public void OnIDisable()
    {
       
