@@ -297,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2409230832118391708}
   m_LocalRotation: {x: -0, y: 0.00000023841855, z: -0, w: 1}
-  m_LocalPosition: {x: 2.659, y: 0.036999702, z: -0.009802103}
+  m_LocalPosition: {x: 2.796, y: 0.036999702, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3151391994289595509}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 7800665891301868018}
   - component: {fileID: 4794070777367239662}
   m_Layer: 0
-  m_Name: GameObject 2
+  m_Name: Przejscie2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPoints: []
+  chunkType: 0
   mainPath: 0
   chunkColliders:
   - size: {x: 2.5, y: 0, z: 3}

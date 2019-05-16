@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 8616636546691865757}
   - component: {fileID: 6673422702526681116}
   m_Layer: 0
-  m_Name: GameObject 11
+  m_Name: Room3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPoints: []
+  chunkType: 0
   mainPath: 0
   chunkColliders:
   - size: {x: 23, y: 0, z: 27}
@@ -833,7 +834,7 @@ GameObject:
   - component: {fileID: 1919503344076408441}
   m_Layer: 0
   m_Name: exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

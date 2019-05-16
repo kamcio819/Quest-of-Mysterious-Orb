@@ -6308,7 +6308,7 @@ GameObject:
   - component: {fileID: 1294595726345534982}
   m_Layer: 0
   m_Name: exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15812,7 +15812,7 @@ GameObject:
   - component: {fileID: 8097619186093719034}
   m_Layer: 0
   m_Name: exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20054,7 +20054,7 @@ GameObject:
   - component: {fileID: 2940071832569789165}
   m_Layer: 0
   m_Name: entrence
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
