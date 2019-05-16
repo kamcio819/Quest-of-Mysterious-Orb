@@ -2584,7 +2584,7 @@ GameObject:
   - component: {fileID: 5640020037554099421}
   m_Layer: 0
   m_Name: exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15011,11 +15011,11 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 51, y: 0, z: 14}
-    offset: {x: -34, y: 0, z: 26.5}
-  - size: {x: 19, y: 0, z: 19.5}
+  - size: {x: 51, y: 3, z: 14}
+    offset: {x: -34, y: 3, z: 26.5}
+  - size: {x: 19, y: 3, z: 19.5}
     offset: {x: -17, y: 0, z: 26.5}
-  - size: {x: 51, y: 0, z: 14}
+  - size: {x: 51, y: 3, z: 14}
     offset: {x: 0, y: 0, z: 26.5}
 --- !u!1 &5091959780116128954
 GameObject:
@@ -20057,7 +20057,7 @@ GameObject:
   - component: {fileID: 2940071832569789165}
   m_Layer: 0
   m_Name: entrence
-  m_TagString: Exit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
