@@ -14,10 +14,13 @@ public class OrbMaker : EditorWindow
     Editor gameObjectEditor;
     OrbData gameData;
     OrbType orbType;
-    float value;
+    
     GameObject particleSystem;
     OrbType prevType = OrbType.BounceOrb;
     RenderTexture renderTexture;   
+
+    float[] value = new float[10];
+
 
 
 
@@ -54,8 +57,8 @@ public class OrbMaker : EditorWindow
             for (int i = 0; i < dataTab.Count - 1; i+=2)
             {
                EditorGUILayout.LabelField(Convert.ToString(dataTab[i]));
-               value = (float)EditorGUILayout.Slider(value, 0f, 5f);
-               dataTab[i + 1] = value;
+               value[i] = (float)EditorGUILayout.Slider(value[i], 0f, 5f);
+               dataTab[i + 1] = value[i];
             }
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Particle System:");
@@ -64,7 +67,7 @@ public class OrbMaker : EditorWindow
             renderTexture = (RenderTexture)EditorGUILayout.ObjectField(renderTexture, typeof(RenderTexture), true);
             if (particleSystem != null)
             {
-               if (particleSystem.GetComponent<ParticleSystem>() == null)
+               if (particleSystem.GetComponentInChildren<ParticleSystem>() == null)
                {
                   particleSystem = null;
                   EditorUtility.DisplayDialog("ALERT", "THERE IS NO PARTICLE SYSTEM COMPONENT ON OBJECT!", "OK");
@@ -168,8 +171,9 @@ public class OrbMaker : EditorWindow
             GameObject prefabToInstantiate = gameObjectToInstant;
             prefabToInstantiate.AddComponent<T>();
             prefabToInstantiate.GetComponent<T>().OrbData = (gameData as W);
-            particleSystem.gameObject.transform.position = Vector3.zero;
-            particleSystem.gameObject.transform.SetParent(prefabToInstantiate.transform);
+            var particleObject = Instantiate<GameObject>(particleSystem);
+            particleObject.gameObject.transform.position = Vector3.zero;
+            particleObject.gameObject.transform.SetParent(prefabToInstantiate.transform);
 
             PrefabUtility.SaveAsPrefabAsset(prefabToInstantiate, "Assets/Prefabs/Orbs/" + gameObjectName + ".prefab");
             gameObjectToInstant = null;

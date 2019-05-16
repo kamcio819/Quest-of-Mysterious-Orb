@@ -77,6 +77,9 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
                 mouseLeftButtonClicked(true);
             }
         }
+        if(mouseScrollWheelMoved != null) {
+            mouseScrollWheelMoved(Input.mouseScrollDelta.y);
+        }
            
     }
 

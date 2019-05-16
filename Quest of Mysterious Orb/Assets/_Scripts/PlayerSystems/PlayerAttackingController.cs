@@ -13,6 +13,9 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
    [SerializeField]
    private Transform playerBody;
 
+   [SerializeField]
+   private OrbsController orbsController;
+
    private List<OrbObject> activeOrbs;
 
    public void OnIAwake() {
@@ -44,7 +47,9 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
       if(orbToSpawn != null) {
          var spawnedOrb = Instantiate<OrbObject>(orbToSpawn,position.position, playerBody.rotation);
          spawnedOrb.isSpawned = true;
+         spawnedOrb.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
          playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
+         orbsController.OrbsList.Add(spawnedOrb);
       }
       
    }
