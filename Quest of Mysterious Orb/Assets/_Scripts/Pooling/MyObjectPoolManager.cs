@@ -47,6 +47,11 @@ public class MyObjectPoolManager : Singleton<MyObjectPoolManager>
         return MyObjectPoolManager.Instance.objectPools[objName].GetObject(shouldActvateObject);
     }
 
+    public GameObject GetObjectActive(string objName, bool shouldDeactvateObject)
+    {
+        return MyObjectPoolManager.Instance.objectPools[objName].GetObjectActive(shouldDeactvateObject);
+    }
+
     public void DisableObejctsFromPool(int layer)
     {
         List<MyObjectPool> listAllPool = MyObjectPoolManager.Instance.objectPools.Values.ToList();

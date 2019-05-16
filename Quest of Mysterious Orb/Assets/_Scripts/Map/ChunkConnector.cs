@@ -345,13 +345,13 @@ public class ChunkConnector : MonoBehaviour {
             exit = aviableExits[aviableExits.Count - i];
             while (!CreateDiferentChunk())
             {
-                Debug.Log(i);
                 i++;
-                exit = aviableExits[aviableExits.Count - i];
-                if (aviableExits.Count - i == 0)
+                if (aviableExits.Count - i != 0)
                 {
-                    mapIsBroken = true;
+                    exit = aviableExits[aviableExits.Count - i];
                 }
+                else
+                    mapIsBroken = true;
             }
         }
         else

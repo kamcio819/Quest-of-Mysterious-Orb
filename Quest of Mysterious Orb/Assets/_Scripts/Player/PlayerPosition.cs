@@ -33,15 +33,15 @@ public class PlayerPosition : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CheckOverlaps(layerMask, transform.position, transform.rotation));
+        spawnManager.StartEnemySpawn();
     }
 
     private IEnumerator CheckOverlaps(int layerMask, Vector3 position, Quaternion rotation)
         {
-
-        //spawnManager.currentPlayerChunk = PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent.parent.gameObject ;
         Debug.Log(PositionDetector.Overlap(position, rotation, layerMask)[0].transform);
         Debug.Log(PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent);
-        Debug.Log(PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent.parent.gameObject);
+        spawnManager.currentPlayerChunk = PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent.parent.gameObject ;
+
         yield return new WaitForSeconds(10);
 
         }
