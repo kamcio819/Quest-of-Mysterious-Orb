@@ -6,93 +6,110 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+    [HideInInspector]
     public string name;
     public AudioClip clip;
-    public bool loop;
 
     [Range(0f, 1f)]
     public float volume = 0.5f;
     [Range(0.5f, 1.5f)]
     public float pitch = 1f;
 
-    public AudioSource source;
-
-    public void SetSource(AudioSource _source)
+    public void Adjust()
     {
-        source = _source;
-        source.clip = clip;
-        source.loop = loop;
+        name = clip.name;
     }
 
-    public void Play()
-    {
-        source.volume = volume;
-        source.pitch = pitch;
-        source.Play();
-    }
-
-    public void Stop()
-    {
-        source.Stop();
-    }
 }
 
 
 
 public class SoundManager : Singleton<SoundManager>
-    {
+{
 
-    public static SoundManager instance;
+    [SerializeField]
+    private Sound[] sounds;
 
-    void Awake()
-    {
-        if (instance != null)
-        {
-            if (instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                instance = this;
-                DontDestroyOnLoad(this);
-            }
-        }
-    }
+    [SerializeField]
+    private GameObject PlayerCharacter;
+    [SerializeField]
+    private GameObject PlayerCharacterSoundCollider;
+    [SerializeField]
+    private AudioSource PlayerCharacterSource;
+    [SerializeField]
+    private Sound combatMusic;
+    [SerializeField]
+    private Sound calmMusic;
+
+    [SerializeField]
+    private float speed;
+
+
 
     private void Start()
     {
-        
+        foreach(Sound s in sounds)
+        {
+            s.Adjust();
+        }
     }
 
-    [SerializeField]
-    public Sound[] sounds;
+    private void Play(Sound sound, AudioSource source)
+    {
+        source.clip = sound.clip;
+        source.pitch = sound.pitch;
+        source.volume = sound.volume;
+        source.Play(0);
+    }
 
-    public void PlaySound(string _name)
+    private void Stop(AudioSource source)
+    {
+        source.Stop();
+    }
+
+    public void PlaySound(string _name, AudioSource source)
     {
         for (int i = 0; i < sounds.Length; i++)
         {
             if (sounds[i].name == _name)
             {
-                sounds[i].Play();
+                Play(sounds[i], source);
                 return;
             }
         }
         Debug.LogWarning("SoundManager: Sound not found in list, " + _name);
     }
 
-    public void StopSound(string _name)
+    public void StopSound(AudioSource source)
     {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            if (sounds[i].name == _name)
-            {
-                sounds[i].Stop();
-                return;
-            }
-        }
-        Debug.LogWarning("SoundManager: Sound not found in list, " + _name);
+        Stop(source);
     }
 
 
+    //Muzyka
+
+    private void PlayCombatMusic()
+    {
+        StartCoroutine(SwitchMusic(0));
+    }
+    private void PlayCalmMusic()
+    {
+        StartCoroutine(SwitchMusic(1));
+    }
+
+    private IEnumerator SwitchMusic(int type)
+    {
+        if(type == 0)
+        {
+            if(PlayerCharacterSource.clip.name == "calm")
+            {
+
+            }
+        }
+        else
+        {
+
+        }
+        yield return null;
+    }
 }
