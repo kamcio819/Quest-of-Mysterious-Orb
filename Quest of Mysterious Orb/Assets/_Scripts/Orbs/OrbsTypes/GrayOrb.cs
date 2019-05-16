@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable, IPickable<GrayOrb>
+public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable
 {
    public void OnIDisable()
    {
@@ -33,7 +33,7 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
       
    }
 
-   public GrayOrb Pick() {
+   public override OrbObject Pick() {
       return this;
    }
 }

@@ -8,4 +8,6 @@ public abstract class OrbObject : MonoBehaviour
    {
       return null;
    }
+
+   public abstract OrbObject Pick();
 }

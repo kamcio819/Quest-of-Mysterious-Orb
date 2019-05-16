@@ -74,8 +74,12 @@ public class OrbMaker : EditorWindow
                }
                else
                {
-                  gameData.ParticleSystem = particleSystem.GetComponent<ParticleSystem>();
+                  gameData.ParticleSystem = particleSystem;
                }
+            }
+
+            if(renderTexture != null) {
+                gameData.OrbRenderTexture = renderTexture;
             }
 
             GUILayout.EndVertical();
@@ -171,9 +175,11 @@ public class OrbMaker : EditorWindow
             GameObject prefabToInstantiate = gameObjectToInstant;
             prefabToInstantiate.AddComponent<T>();
             prefabToInstantiate.GetComponent<T>().OrbData = (gameData as W);
-            var particleObject = Instantiate<GameObject>(particleSystem);
-            particleObject.gameObject.transform.position = Vector3.zero;
+            var particleObject = Instantiate<GameObject>(particleSystem, Vector3.zero, Quaternion.identity);
             particleObject.gameObject.transform.SetParent(prefabToInstantiate.transform);
+            prefabToInstantiate.gameObject.transform.position = Vector3.zero;
+            prefabToInstantiate.AddComponent<SphereCollider>();
+            prefabToInstantiate.GetComponent<SphereCollider>().isTrigger = true;
 
             PrefabUtility.SaveAsPrefabAsset(prefabToInstantiate, "Assets/Prefabs/Orbs/" + gameObjectName + ".prefab");
             gameObjectToInstant = null;
@@ -188,7 +194,7 @@ public class OrbMaker : EditorWindow
     {
         T asset = ScriptableObject.CreateInstance<T>();
 
-        AssetDatabase.CreateAsset(asset, "Assets/_ScriptableObjects/OrbsData/" + scriptableObjectName + ".asset");
+        AssetDatabase.CreateAsset(asset, "Assets/_ScriptableObjects/OrbsData/" + gameObjectName + scriptableObjectName + ".asset");
         AssetDatabase.SaveAssets();
 
         return asset;

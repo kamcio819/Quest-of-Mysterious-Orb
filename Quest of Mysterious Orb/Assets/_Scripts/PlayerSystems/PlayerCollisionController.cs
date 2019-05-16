@@ -8,8 +8,6 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
 {
    public static Action<OrbObject> OrbCollected;
 
-   private List<OrbObject> orbObject = new List<OrbObject>();
-
    public void OnIDisable()
    {
       
@@ -35,13 +33,11 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    }
 
    private void OnTriggerEnter(Collider other) {
-      orbObject.Add(other.GetComponent<GrayOrb>());
-      orbObject.Add(other.GetComponent<BounceOrb>());
-      orbObject.Add(other.GetComponent<ChargingOrb>());
-      orbObject.Add(other.GetComponent<HomingOrb>());
-      if(OrbCollected != null) {
-         OrbCollected(orbObject.FirstOrDefault(v => v != null));
+      var pickedOrb = other.GetComponent<OrbObject>().Pick();
+      if(pickedOrb != null) {
+         if(OrbCollected != null) {
+            OrbCollected(pickedOrb);
+         }
       }
-      orbObject.Clear();
    }
 }

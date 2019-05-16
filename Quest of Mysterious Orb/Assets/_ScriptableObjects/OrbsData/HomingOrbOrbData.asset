@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eac9cea550f151c48934cbb7228ee859, type: 3}
-  m_Name: GrayOrbData
+  m_Script: {fileID: 11500000, guid: f51853c4314a63b4cb706b4899583fbf, type: 3}
+  m_Name: HomingOrbOrbData
   m_EditorClassIdentifier: 
-  orbType: 3
-  movingSpeed: 2
+  orbType: 0
+  orbParticleSystem: {fileID: 0}
+  orbRenderTexture: {fileID: 0}
+  cooldownTime: 0
+  damageGiven: 0
+  movingSpeed: 0

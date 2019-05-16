@@ -47,7 +47,7 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
       if(orbToSpawn != null) {
          var spawnedOrb = Instantiate<OrbObject>(orbToSpawn,position.position, playerBody.rotation);
          spawnedOrb.isSpawned = true;
-         spawnedOrb.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+         spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
          playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
          orbsController.OrbsList.Add(spawnedOrb);
       }

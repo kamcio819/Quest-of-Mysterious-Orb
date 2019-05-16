@@ -11,6 +11,10 @@ public class BounceOrbData : OrbData {
 
    #region ForceData
       [Range(0,5f)] [SerializeField] private float bounceForce;
+
+      public float MovingSpeed { get => movingSpeed; }
+      public float BounceSpeed { get => bounceSpeed; }
+      public float BounceForce { get => bounceForce; }
    #endregion
    public override void RandomizeParameters()
    {
@@ -22,11 +26,11 @@ public class BounceOrbData : OrbData {
    public override List<dynamic> GetData() {
       List<dynamic> dataToReturn = new List<dynamic>();
       dataToReturn.Add("Moving Speed");
-      dataToReturn.Add(movingSpeed);
+      dataToReturn.Add(MovingSpeed);
       dataToReturn.Add("Bounce Speed");
-      dataToReturn.Add(bounceSpeed);
+      dataToReturn.Add(BounceSpeed);
       dataToReturn.Add("Bounce Force");
-      dataToReturn.Add(bounceForce);
+      dataToReturn.Add(BounceForce);
       dataToReturn.Add("Orb Cooldown");
       dataToReturn.Add(cooldownTime);
       dataToReturn.Add("Orb Damage");

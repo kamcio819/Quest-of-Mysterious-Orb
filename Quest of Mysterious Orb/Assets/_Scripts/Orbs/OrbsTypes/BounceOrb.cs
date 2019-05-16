@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, IDisaable, IPickable<BounceOrb>
+public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, IDisaable
 {
    public void OnIEnable()
    {
@@ -11,7 +11,7 @@ public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, 
 
    public void OnIUpdate()
    {
-      
+
    }
 
    public void OnIDisable()
@@ -28,7 +28,7 @@ public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, 
       
    }
 
-   public BounceOrb Pick() {
+   public override OrbObject Pick() {
       return this;
    }
    

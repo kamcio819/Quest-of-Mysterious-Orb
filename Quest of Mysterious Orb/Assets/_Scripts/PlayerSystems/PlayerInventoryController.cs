@@ -48,6 +48,7 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
     private void ProcessOrbCollection(OrbObject obj)
     {
         inventoryOrbs.Add(obj);
+        uIRotatingOrbsController.AddOrbToUI(obj);
         OrbData orbData = obj.GetData();
         uiController.SetOrbsButtons(orbData);
     }

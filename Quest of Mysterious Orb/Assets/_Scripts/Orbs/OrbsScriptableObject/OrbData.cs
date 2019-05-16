@@ -14,7 +14,7 @@ public class OrbData : Data {
     protected OrbType orbType;
 
     [SerializeField]
-    protected ParticleSystem orbParticleSystem;
+    protected GameObject orbParticleSystem;
 
     [SerializeField]
     protected RenderTexture orbRenderTexture;
@@ -26,7 +26,7 @@ public class OrbData : Data {
     protected float damageGiven;
 
     public OrbType OrbType { get => orbType; }
-    public ParticleSystem ParticleSystem { get => orbParticleSystem; set => orbParticleSystem = value; }
+    public GameObject ParticleSystem { get => orbParticleSystem; set => orbParticleSystem = value; }
     public RenderTexture OrbRenderTexture { get => orbRenderTexture; set => orbRenderTexture = value; }    
     public virtual void RandomizeParameters() {
 
@@ -36,7 +36,7 @@ public class OrbData : Data {
        return null;
     }
 
-    public virtual ParticleSystem GetParticleSystem() {
+    public virtual GameObject GetParticleSystem() {
        return ParticleSystem;
     }
 

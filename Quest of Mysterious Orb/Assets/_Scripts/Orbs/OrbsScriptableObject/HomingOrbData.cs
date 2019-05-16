@@ -6,6 +6,8 @@ using UnityEngine;
 public class HomingOrbData : OrbData {
    #region MovementData
       [Range(0,5f)] [SerializeField] private float movingSpeed;
+
+      public float MovingSpeed { get => movingSpeed; set => movingSpeed = value; }
    #endregion
 
    public override void RandomizeParameters()

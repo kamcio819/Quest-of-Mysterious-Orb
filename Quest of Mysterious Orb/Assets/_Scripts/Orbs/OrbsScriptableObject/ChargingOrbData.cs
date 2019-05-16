@@ -6,6 +6,9 @@ public class ChargingOrbData : OrbData {
    #region MovementData
       [Range(0,5f)] [SerializeField] private float movingSpeed;
       [Range(0,5f)] [SerializeField] private float acceleretaionFactor;
+
+      public float MovingSpeed { get => movingSpeed; set => movingSpeed = value; }
+      public float AcceleretaionFactor { get => acceleretaionFactor; set => acceleretaionFactor = value; }
    #endregion
 
    public override void RandomizeParameters()
