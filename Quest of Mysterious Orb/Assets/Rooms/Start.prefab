@@ -631,11 +631,11 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 13, y: 0, z: 25}
+  - size: {x: 13, y: 3, z: 25}
     offset: {x: 0, y: 0, z: 7}
-  - size: {x: 16, y: 0, z: 10}
+  - size: {x: 16, y: 3, z: 10}
     offset: {x: 6, y: 0, z: -8}
-  - size: {x: 16, y: 0, z: 10}
+  - size: {x: 16, y: 3, z: 10}
     offset: {x: -6, y: 0, z: -8}
 --- !u!1 &8895015060209472526
 GameObject:

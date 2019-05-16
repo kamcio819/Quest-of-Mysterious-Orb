@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 2770872116025251462}
   - component: {fileID: 9008654324151484003}
   m_Layer: 0
-  m_Name: GameObject (6)
+  m_Name: Dedend2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 18, y: 0, z: 26.5}
+  - size: {x: 18, y: 3, z: 26.5}
     offset: {x: 0, y: 0, z: 9.5}
 --- !u!1 &4089868336642414950
 GameObject:

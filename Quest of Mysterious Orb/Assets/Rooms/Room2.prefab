@@ -1489,5 +1489,5 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 24.5, y: 0, z: 17.5}
+  - size: {x: 24.5, y: 3, z: 17.5}
     offset: {x: 0, y: 0, z: 13}

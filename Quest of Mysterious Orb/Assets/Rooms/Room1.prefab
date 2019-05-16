@@ -1234,11 +1234,11 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 23, y: 0, z: 23}
+  - size: {x: 23, y: 3, z: 23}
     offset: {x: 0, y: 0, z: 20.8}
-  - size: {x: 9, y: 0, z: 4}
+  - size: {x: 9, y: 3, z: 4}
     offset: {x: 0, y: 0, z: 37}
-  - size: {x: 8.5, y: 0, z: 4}
+  - size: {x: 8.5, y: 3, z: 4}
     offset: {x: 0, y: 0, z: 5}
   - size: {x: 4, y: 0, z: 8.5}
     offset: {x: 16, y: 0, z: 20.8}

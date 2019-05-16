@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4611412046109003913}
   - component: {fileID: 5591230969321669353}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,9 +227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPoints: []
+  chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 39.5, y: 0, z: 13.5}
+  - size: {x: 39.5, y: 3, z: 13.5}
     offset: {x: 0, y: 0, z: 20}
 --- !u!1 &655989586356270418
 GameObject:
