@@ -1,0 +1,32 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 15.05.2019 17:52:43
+
+mtllib kafelek_low.mtl
+
+#
+# object Plane001
+#
+
+v  0.9187 0.0093 -0.0000
+v  0.9187 2.4771 -0.0000
+v  -0.9187 2.4771 -0.0000
+v  -0.9187 0.0093 -0.0000
+# 4 vertices
+
+vn -0.0000 -0.0000 1.0000
+vn 0.0000 -0.0000 1.0000
+# 2 vertex normals
+
+vt 1.0000 0.0000 0.0000
+vt 1.0000 1.0000 0.0000
+vt 0.0000 1.0000 0.0000
+vt 0.0000 0.0000 0.0000
+# 4 texture coords
+
+o Plane001
+g Plane001
+usemtl wire_153228153
+s 1
+f 1/1/1 2/2/2 3/3/2 4/4/1 
+# 1 polygons
+

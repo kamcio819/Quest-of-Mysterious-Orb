@@ -10,13 +10,13 @@ public class ChunkConnector : MonoBehaviour {
     private GameObject exit;     ///< <summary> zmienna zawierająca wyjście </summary>
 
     private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
-    [SerializeField]
+   
     private List<GameObject> aviableExits;      /// <summary> Lista wszystkich wygenerowanych wyjść </summary>
 
     // private List<Transform> fullExits;         /// <summary>  </summary>
 
     private bool mapIsBroken;
-
+    [HideInInspector]
     public List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
     [SerializeField]
@@ -63,7 +63,7 @@ public class ChunkConnector : MonoBehaviour {
     private bool mainPathFlag;      ///< <summary> Czy generuje główną ścieżkę </summary>
 
     private bool chunkWasGenerated;
-
+    [HideInInspector]
     public bool MapGenerated;
 
 
@@ -78,14 +78,20 @@ public class ChunkConnector : MonoBehaviour {
 
     public void MapControll()
     {
+        StartCoroutine(MapHandler());
+        
+    }
+
+    private IEnumerator MapHandler()
+    {
         MapStart();
-        Debug.Log(mapIsBroken);
         if (mapIsBroken)
         {
-            Debug.Log("It works...");
             DestryMap();
+            yield return new WaitForSeconds(1f);
             MapStart();
         }
+        yield return null;
     }
 
     public void MapStart()
@@ -133,7 +139,6 @@ public class ChunkConnector : MonoBehaviour {
             }
         } while (aviableExits.Count!=0);
 
-        Debug.Log(generatedChunk.Count);
         if (generatedChunk.Count < absoluteMinLength) mapIsBroken = true;
         
         MapGenerated = true;
