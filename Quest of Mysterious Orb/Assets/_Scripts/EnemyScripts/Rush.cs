@@ -35,7 +35,7 @@ public class Rush : MonoBehaviour
             attack();
         }
         agent.autoBraking = true;
-        this.GetComponent<Patrol>().enabled = false;
+        //this.GetComponent<Patrol>().enabled = false;
         agent.stoppingDistance = attackRange;
         agent.SetDestination(target.position);
         //tutaj mozna wstawic jakas animacje przygotoywania sie do ataku (boostery czy cos tam)
