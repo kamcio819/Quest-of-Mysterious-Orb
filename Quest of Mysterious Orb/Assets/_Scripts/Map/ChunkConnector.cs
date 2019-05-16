@@ -10,13 +10,13 @@ public class ChunkConnector : MonoBehaviour {
     private GameObject exit;     ///< <summary> zmienna zawierająca wyjście </summary>
 
     private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
-    [SerializeField]
+   
     private List<GameObject> aviableExits;      /// <summary> Lista wszystkich wygenerowanych wyjść </summary>
 
     // private List<Transform> fullExits;         /// <summary>  </summary>
 
     private bool mapIsBroken;
-
+    [HideInInspector]
     public List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
     [SerializeField]
@@ -63,14 +63,12 @@ public class ChunkConnector : MonoBehaviour {
     private bool mainPathFlag;      ///< <summary> Czy generuje główną ścieżkę </summary>
 
     private bool chunkWasGenerated;
-
+    [HideInInspector]
     public bool MapGenerated;
 
 
     private void Start()
     {
-        // Random.InitState(190219981);
-        //MapStart();
         MapControll();
     }
 
@@ -78,14 +76,20 @@ public class ChunkConnector : MonoBehaviour {
 
     public void MapControll()
     {
+        StartCoroutine(MapHandler());
+        
+    }
+
+    private IEnumerator MapHandler()
+    {
         MapStart();
-        Debug.Log(mapIsBroken);
         if (mapIsBroken)
         {
-            Debug.Log("It works...");
             DestryMap();
+            yield return new WaitForSeconds(1f);
             MapStart();
         }
+        yield return null;
     }
 
     public void MapStart()
@@ -133,7 +137,6 @@ public class ChunkConnector : MonoBehaviour {
             }
         } while (aviableExits.Count!=0);
 
-        Debug.Log(generatedChunk.Count);
         if (generatedChunk.Count < absoluteMinLength) mapIsBroken = true;
         
         MapGenerated = true;
@@ -189,8 +192,7 @@ public class ChunkConnector : MonoBehaviour {
         if (!mapIsBroken)
         {
             nextChunk = EndChunk[Random.Range(0, EndChunk.Length)];
-            ChooseExit();
-            CreateNextChunk();
+            ChooseLastExit();
         }
     }
 
@@ -328,16 +330,32 @@ public class ChunkConnector : MonoBehaviour {
     private void ChooseDifrentExit()
     {
         int stepBack = Random.Range(aviableExits.Count > stepsCount ? aviableExits.Count - stepsCount : 0, aviableExits.Count);
-        if (aviableExits.Count == 0 && mainPathFlag)
+        if (aviableExits.Count == 0)
         {
-            //Debug.Log(mainPathFlag);
-            //Debug.Log("Impossible Map!!!");
-            //mapIsBroken = true;
-            //MapStart();
-            //this.gameObject.GetComponent<ChunkConnector>().enabled = false;
+
         }
         else
         currentChunk = aviableExits[stepBack].transform.parent;
+    }
+    private void ChooseLastExit()
+    {
+        if (aviableExits.Count != 0)
+        {
+            int i = 1;
+            exit = aviableExits[aviableExits.Count - i];
+            while (!CreateDiferentChunk())
+            {
+                Debug.Log(i);
+                i++;
+                exit = aviableExits[aviableExits.Count - i];
+                if (aviableExits.Count - i == 0)
+                {
+                    mapIsBroken = true;
+                }
+            }
+        }
+        else
+            mapIsBroken = true;
     }
 
 

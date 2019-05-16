@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cab6cd33e1ad240a8d0b1fd63a9a5a, type: 3}
   m_Name: GrayOrbOrbData
   m_EditorClassIdentifier: 
-  orbType: 0
-  orbParticleSystem: {fileID: 0}
-  orbRenderTexture: {fileID: 0}
-  cooldownTime: 0
-  damageGiven: 0
-  movingSpeed: 0
+  orbType: 3
+  orbParticleSystem: {fileID: 6292122839581362062, guid: 2a7127a7b729c71479249bc7d6179461,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: ebb7253be679ce44c97d7b63f853dc27, type: 2}
+  cooldownTime: 1.5
+  damageGiven: 1
+  movingSpeed: 2

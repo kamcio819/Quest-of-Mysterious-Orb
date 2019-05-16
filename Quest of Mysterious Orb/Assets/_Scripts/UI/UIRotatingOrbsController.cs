@@ -7,16 +7,31 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
 {
     [SerializeField]
     private List<PlayerOrbSlot> playerOrbSlots;
+
+    private int index = 0;
     public void OnIDisable()
     {
+        InputController.mouseScrollWheelMoved -= ChooseSpecificOrb;
     }
 
     public void OnIEnable()
     {
+        InputController.mouseScrollWheelMoved += ChooseSpecificOrb;
     }
 
     public void OnILateUpdate()
     {
+    }
+
+    private void ChooseSpecificOrb (float deltaValue) {
+        playerOrbSlots[index].DeactivateOrb();
+        if(deltaValue > 0 ) {
+            index = ((index + (int)deltaValue) % 3);
+        }
+        else {
+            index = ((index - (int)deltaValue) % 3);
+        }
+        playerOrbSlots[index].SetActiveOrb();
     }
 
     public void OnIUpdate()
@@ -25,6 +40,7 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
     }
 
     public void OnIAwake() {
+        playerOrbSlots[index].SetActiveOrb();
     }
 
     public void AddOrbToUI(OrbObject obj)
