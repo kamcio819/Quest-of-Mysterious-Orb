@@ -18,7 +18,7 @@ public class ChargingOrb : OrbGameObject<ChargingOrbData>, IEnableable, IUpdatab
    {
       if(isSpawned) {
          Vector3 newPos = transform.position;
-         newPos += transform.forward * Mathf.Lerp(0f, 2f, (OrbData as ChargingOrbData).AcceleretaionFactor * Time.deltaTime);
+         newPos += transform.forward * Mathf.Lerp(0f, 2f, (OrbData as ChargingOrbData).AcceleretaionFactor * 3f *  Time.deltaTime);
          transform.position = newPos;
       }
    }

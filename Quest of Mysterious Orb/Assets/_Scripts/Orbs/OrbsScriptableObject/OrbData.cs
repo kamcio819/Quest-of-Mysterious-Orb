@@ -6,7 +6,7 @@ public enum OrbType {
    BounceOrb,
    ChargingOrb,
    HomingOrb,
-   GrayOrb
+   GrayOrb,
 }
 
 public class OrbData : Data {

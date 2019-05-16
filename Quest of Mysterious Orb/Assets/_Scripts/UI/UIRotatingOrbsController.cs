@@ -29,7 +29,23 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
 
     public void AddOrbToUI(OrbObject obj)
     {
-        playerOrbSlots[UnityEngine.Random.Range(0, playerOrbSlots.Count)].OrbObjects.ForEach( x => x.gameObject.SetActive(false));
-        playerOrbSlots[UnityEngine.Random.Range(0, playerOrbSlots.Count)].OrbObjects.Find( x => x.GetType() == obj.GetType()).gameObject.SetActive(true);
+        for(int i =0 ; i < playerOrbSlots.Count; ++i) {
+            if(playerOrbSlots[i].OrbObjects.Find( x => x.GetType() == obj.GetType()).gameObject.activeInHierarchy) {
+                return;
+            }
+        }
+        int index = UnityEngine.Random.Range(0, playerOrbSlots.Count);
+        playerOrbSlots[index].OrbObjects.ForEach( x => x.gameObject.SetActive(false));
+        playerOrbSlots[index].OrbObjects.Find( x => x.GetType() == obj.GetType()).gameObject.SetActive(true);
+    }
+
+    public void EnableGrayOrbDefalut(OrbObject obj) {
+        for(int i =0 ; i < playerOrbSlots.Count; ++i) {
+            if(playerOrbSlots[i].OrbObjects.Find(x => x.GetType() == obj.GetType()).gameObject.activeInHierarchy) {
+                playerOrbSlots[i].OrbObjects.Find(x => x.GetType() == obj.GetType()).gameObject.SetActive(false);
+                playerOrbSlots[i].OrbObjects.Find(x => x.GetType() == typeof(GrayOrb)).gameObject.SetActive(true);
+                return;
+            }
+        }
     }
 }

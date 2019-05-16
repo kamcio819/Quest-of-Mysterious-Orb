@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b9d736ebe933847900331326a51172, type: 3}
+  m_Name: BounceOrbOrbData
+  m_EditorClassIdentifier: 
+  orbType: 0
+  orbParticleSystem: {fileID: 0}
+  orbRenderTexture: {fileID: 0}
+  cooldownTime: 0
+  damageGiven: 0
+  movingSpeed: 0
+  bounceSpeed: 0
+  bounceForce: 0

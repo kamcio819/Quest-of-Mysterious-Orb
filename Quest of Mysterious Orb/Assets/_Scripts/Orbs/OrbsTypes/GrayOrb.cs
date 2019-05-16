@@ -18,7 +18,7 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
    {
       if(isSpawned) {
          Vector3 newPos = transform.position;
-         newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 2f * Time.deltaTime;
+         newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 3f * Time.deltaTime;
          transform.position = newPos;
       }
    }

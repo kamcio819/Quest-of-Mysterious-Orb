@@ -16,6 +16,9 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
    [SerializeField]
    private OrbsController orbsController;
 
+   [SerializeField]
+   private UIRotatingOrbsController uIRotatingOrbsController;
+
    private List<OrbObject> activeOrbs;
 
    public void OnIAwake() {
@@ -50,6 +53,7 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
          spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
          playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
          orbsController.OrbsList.Add(spawnedOrb);
+         uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb);
       }
       
    }
