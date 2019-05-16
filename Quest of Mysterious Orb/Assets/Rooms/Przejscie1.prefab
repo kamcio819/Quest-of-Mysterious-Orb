@@ -203,7 +203,7 @@ MonoBehaviour:
   chunkType: 0
   mainPath: 0
   chunkColliders:
-  - size: {x: 2.3, y: 0, z: 3}
+  - size: {x: 2.3, y: 3, z: 3}
     offset: {x: 0, y: 0, z: 1.4}
 --- !u!1 &1340675351906133267
 GameObject:
