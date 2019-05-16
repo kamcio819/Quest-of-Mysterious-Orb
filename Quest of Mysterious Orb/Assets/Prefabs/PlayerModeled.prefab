@@ -582,8 +582,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.016449928, y: 0.61474997, z: -0.04279995}
-    m_Extent: {x: 0.3915501, y: 0.61354995, z: 0.29220054}
+    m_Center: {x: -0.016449999, y: 0.61475, z: -0.042799994}
+    m_Extent: {x: 0.39155, y: 0.61355, z: 0.2922}
   m_DirtyAABB: 0
 --- !u!1 &568808174273062122
 GameObject:
@@ -891,7 +891,7 @@ MonoBehaviour:
   mainCamera: {fileID: 5775138983751381852}
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
 --- !u!54 &978534297
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -934,13 +934,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5775138983751381854}
-  m_LocalRotation: {x: 0.24476893, y: -0, z: -0, w: 0.9695815}
-  m_LocalPosition: {x: 0, y: 13, z: -23.84}
+  m_LocalRotation: {x: 0.46004254, y: -0, z: -0, w: 0.8878969}
+  m_LocalPosition: {x: 0, y: 8.18, z: -2.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5775138984152477438}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 28.336, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 54.780003, y: 0, z: 0}
 --- !u!20 &5775138983751381852
 Camera:
   m_ObjectHideFlags: 0
@@ -967,7 +967,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 4043374523760914046}
   - component: {fileID: 568808174167740782}
   - component: {fileID: 568808174413651494}
+  - component: {fileID: 1080142719}
   m_Layer: 9
   m_Name: PlayerModeled
   m_TagString: Untagged
@@ -1040,7 +1041,7 @@ Transform:
   m_GameObject: {fileID: 5775138984152477442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.58, y: 0.979, z: -18.89}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 5775138983751381851}
   - {fileID: 568808174992680123}
@@ -1140,6 +1141,25 @@ MonoBehaviour:
   playerBody: {fileID: 1540194238949601583}
   orbsController: {fileID: 0}
   uIRotatingOrbsController: {fileID: 568808174273062120}
+--- !u!114 &1080142719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5775138984152477442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b9546bc926cb14396a6cb13dc03e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PositionDetector:
+    size: {x: 0.5, y: 2, z: 0.5}
+    offset: {x: 0, y: -1.5, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  spawnManager: {fileID: 0}
 --- !u!183 &674291833
 Cloth:
   m_ObjectHideFlags: 0
@@ -1722,8 +1742,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.016449928, y: 0.61474997, z: -0.04279995}
-    m_Extent: {x: 0.3915501, y: 0.61354995, z: 0.29220054}
+    m_Center: {x: -0.016449999, y: 0.61475, z: -0.042799994}
+    m_Extent: {x: 0.39155, y: 0.61355, z: 0.2922}
   m_DirtyAABB: 0
 --- !u!1001 &5315330636432703834
 PrefabInstance:
@@ -2120,6 +2140,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71f401e1705415e4e86e90a871ba18f4, type: 3}
+--- !u!4 &1088782959613649200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8694773217908025777, guid: 71f401e1705415e4e86e90a871ba18f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8626126640570288257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4672877984152084038 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3994496869493970631, guid: 71f401e1705415e4e86e90a871ba18f4,
@@ -2132,12 +2158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f7cd17755318b4b8239e5adc1786e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1088782959613649200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8694773217908025777, guid: 71f401e1705415e4e86e90a871ba18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 8626126640570288257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9173509362972479661
 PrefabInstance:
   m_ObjectHideFlags: 0

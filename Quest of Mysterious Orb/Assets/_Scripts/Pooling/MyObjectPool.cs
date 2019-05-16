@@ -68,6 +68,24 @@ public class MyObjectPool : MonoBehaviour
         return null;
     }
 
+
+    public GameObject GetObjectActive(bool shouldDeactivateObject)
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (pooledObjects[i].activeSelf == true)
+            {
+                if (shouldDeactivateObject)
+                {
+                    pooledObjects[i].SetActive(false);
+                }
+                return pooledObjects[i];
+            }
+        }
+        return null;
+    }
+
+
     public void DisableAllObjects()
     {
         pooledObjects.ForEach(item => item.SetActive(false));

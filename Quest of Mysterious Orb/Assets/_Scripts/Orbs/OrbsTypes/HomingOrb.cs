@@ -7,6 +7,9 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
 {
    [SerializeField]
    private EnemyObject nearestEnemyObject;
+
+   [SerializeField]
+   private Rigidbody rigidbodyComponet;
    public void OnIDisable()
    {
       
@@ -19,7 +22,8 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
 
    public void OnIUpdate()
    {
-      
+      Vector3 direction = nearestEnemyObject.transform.position - transform.position;
+      rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
    }
 
    protected override void OnCollisionEnter(Collision collision)

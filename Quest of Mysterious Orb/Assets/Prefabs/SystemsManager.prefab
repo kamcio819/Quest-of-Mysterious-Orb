@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6681723406953313825}
   - component: {fileID: 614817505}
   - component: {fileID: 8490692926007801841}
+  - component: {fileID: 394306756}
   m_Layer: 0
   m_Name: SystemsManager
   m_TagString: Untagged
@@ -47,8 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllers:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8490692926007801841}
   - {fileID: 614817505}
   - {fileID: 0}
   - {fileID: 0}
@@ -56,7 +56,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 8490692926007801841}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &614817505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +93,17 @@ MonoBehaviour:
   - {fileID: 4136542992174801281, guid: f7ef7087cd4bd8d49b93327600c13d99, type: 3}
   - {fileID: 7733404804474332796, guid: 66a062a1c8fd3134d80fd78408840955, type: 3}
   - {fileID: 2678241086425604312, guid: 5335065b2cbb6824585db9530560c8ce, type: 3}
+--- !u!114 &394306756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70345e3060651c8439fdb3690081a61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerChunk: {fileID: 0}
+  DronsPerDwarf: 5
