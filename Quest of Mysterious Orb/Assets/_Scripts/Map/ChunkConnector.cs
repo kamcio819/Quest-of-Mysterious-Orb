@@ -339,18 +339,23 @@ public class ChunkConnector : MonoBehaviour {
     }
     private void ChooseLastExit()
     {
-        int i = 1;
-        exit = aviableExits[aviableExits.Count - i];
-        while (!CreateDiferentChunk())
-        { 
-            Debug.Log(i);
-            i++;
+        if (aviableExits.Count != 0)
+        {
+            int i = 1;
             exit = aviableExits[aviableExits.Count - i];
-            if(aviableExits.Count-i == 0)
+            while (!CreateDiferentChunk())
             {
-                mapIsBroken = true;
+                Debug.Log(i);
+                i++;
+                exit = aviableExits[aviableExits.Count - i];
+                if (aviableExits.Count - i == 0)
+                {
+                    mapIsBroken = true;
+                }
             }
         }
+        else
+            mapIsBroken = true;
     }
 
 
