@@ -17,12 +17,8 @@ public class OrbMaker : EditorWindow
     
     GameObject particleSystem;
     OrbType prevType = OrbType.BounceOrb;
-    RenderTexture renderTexture;   
-
+    RenderTexture renderTexture;
     float[] value = new float[10];
-
-
-
 
     [MenuItem("Window/OrbMaker")]
     static void Init()
@@ -200,5 +196,3 @@ public class OrbMaker : EditorWindow
         return asset;
     }
 }
-
-

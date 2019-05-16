@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51853c4314a63b4cb706b4899583fbf, type: 3}
   m_Name: HomingOrbOrbData
   m_EditorClassIdentifier: 
-  orbType: 0
-  orbParticleSystem: {fileID: 0}
-  orbRenderTexture: {fileID: 0}
-  cooldownTime: 0
-  damageGiven: 0
-  movingSpeed: 0
+  orbType: 2
+  orbParticleSystem: {fileID: 649970638919955551, guid: 81ef9b1884c5792479cfbafd778e1746,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: 971dd72f582c09d429e64eebe14e8c28, type: 2}
+  cooldownTime: 5
+  damageGiven: 3
+  movingSpeed: 1.5

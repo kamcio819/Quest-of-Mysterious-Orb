@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: BounceOrbOrbData
   m_EditorClassIdentifier: 
   orbType: 0
-  orbParticleSystem: {fileID: 0}
-  orbRenderTexture: {fileID: 0}
-  cooldownTime: 0
-  damageGiven: 0
-  movingSpeed: 0
-  bounceSpeed: 0
-  bounceForce: 0
+  orbParticleSystem: {fileID: 6205307058150808824, guid: b3c55994e61d5cc46b8a87006ad31348,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: 1b6b4addadb1469439d6047b06217a7d, type: 2}
+  cooldownTime: 3.5
+  damageGiven: 3
+  movingSpeed: 3
+  bounceSpeed: 0.1
+  bounceForce: 2

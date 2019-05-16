@@ -11,7 +11,7 @@ public class ChargingOrb : OrbGameObject<ChargingOrbData>, IEnableable, IUpdatab
 
    public void OnIEnable()
    {
-      
+
    }
 
    public void OnIUpdate()

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5109b2de94c49994dad3b2c6cce8fd9b, type: 3}
   m_Name: ChargingOrbOrbData
   m_EditorClassIdentifier: 
-  orbType: 0
-  orbParticleSystem: {fileID: 0}
-  orbRenderTexture: {fileID: 0}
-  cooldownTime: 0
-  damageGiven: 0
-  movingSpeed: 0
-  acceleretaionFactor: 0
+  orbType: 1
+  orbParticleSystem: {fileID: 4093786512992894641, guid: 79be2894111fa01429f70ad05f829815,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: 3e4cbe47cffcf6646a4a4347c643da8d, type: 2}
+  cooldownTime: 2.5
+  damageGiven: 2
+  movingSpeed: 2
+  acceleretaionFactor: 1.5
