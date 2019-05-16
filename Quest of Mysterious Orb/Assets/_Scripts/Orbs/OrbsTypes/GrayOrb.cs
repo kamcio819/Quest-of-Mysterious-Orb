@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable, IPickable<GrayOrb>
+public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable
 {
    public void OnIDisable()
    {
@@ -16,7 +16,11 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
 
    public void OnIUpdate()
    {
-      
+      if(isSpawned) {
+         Vector3 newPos = transform.position;
+         newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 3f * Time.deltaTime;
+         transform.position = newPos;
+      }
    }
 
    protected override void OnCollisionEnter(Collision collision)
@@ -29,7 +33,7 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
       
    }
 
-   public GrayOrb Pick() {
+   public override OrbObject Pick() {
       return this;
    }
 }

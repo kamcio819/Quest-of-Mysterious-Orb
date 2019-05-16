@@ -58,7 +58,7 @@ public class Rush : MonoBehaviour
     {
         if (collision.tag.Equals("Player"))
         {
-            Debug.Log("hit");
+            Debug.Log("hit"); ///
             //Tutaj mozna dac odglos walniecia, obrazenia dla gracza, itd.
         }
     }
@@ -66,7 +66,7 @@ public class Rush : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hitObject) //      to tez qq
     {
         if (hitObject.collider.tag.Equals("Player"))
-        {
+        {sxc
             Debug.Log("hit");
             //Tutaj mozna dac odglos walniecia, obrazenia dla gracza, itd.
         }

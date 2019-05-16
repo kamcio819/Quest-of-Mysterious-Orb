@@ -8,9 +8,13 @@ public class SystemManager : Singleton<SystemManager>
     [SerializeField]
     private List<Controller> controllers;
 
-
     private void Awake() {
-
+        controllers.ForEach((x) =>  {
+            var xd = x as IAwakable;
+            if(xd != null) {
+                xd.OnIAwake();
+            }
+        });
     }
 
     private void OnEnable() {
@@ -27,7 +31,7 @@ public class SystemManager : Singleton<SystemManager>
     }
 
     private void Start() {
-        
+
     }
 
     private void Update() {

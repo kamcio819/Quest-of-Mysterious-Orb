@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, IDisaable, IPickable<HomingOrb>
+public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, IDisaable
 {
    public void OnIDisable()
    {
@@ -30,7 +30,7 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
       
    }
 
-   public HomingOrb Pick() {
+   public override OrbObject Pick() {
       return this;
    }
 }

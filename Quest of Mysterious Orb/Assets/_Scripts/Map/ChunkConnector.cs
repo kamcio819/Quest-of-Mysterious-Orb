@@ -7,13 +7,15 @@ using UnityEngine;
 public class ChunkConnector : MonoBehaviour {
 
 
-    private static GameObject exit;     ///< <summary> zmienna zawierająca wyjście </summary>
+    private GameObject exit;     ///< <summary> zmienna zawierająca wyjście </summary>
 
     private List<Transform> exits;      ///< <summary> Lista wyjść chnka / kolejka wyjść </summary>
+    [SerializeField]
+    private List<GameObject> aviableExits;      /// <summary> Lista wszystkich wygenerowanych wyjść </summary>
 
-    private List<Transform> aviableExits;      /// <summary> Lista wszystkich wygenerowanych wyjść </summary>
+    // private List<Transform> fullExits;         /// <summary>  </summary>
 
-   // private List<Transform> fullExits;         /// <summary>  </summary>
+    private bool mapIsBroken;
 
     public List<Transform> generatedChunk;     ///< <summary> Lista wygenerowanych chunków głównej ścieżki </summary>
 
@@ -32,6 +34,8 @@ public class ChunkConnector : MonoBehaviour {
     private Transform[] deadEndChunk;       ///< <summary> Chunki ślepych korytarzy </summary>
     [SerializeField]
     private Transform[] deadEndWall;      ///< <summary> Ściana </summary>
+    [SerializeField]
+    private Transform[] EndChunk;
 
     [SerializeField]
     private int minL;       ///< <summary> minimalna długość ścieżki </summary>
@@ -39,7 +43,13 @@ public class ChunkConnector : MonoBehaviour {
     private int maxL;       ///< <summary> maksymalna długość ścieżki </summary>
 
     [SerializeField]
+    private int absoluteMinLength;
+
+    [SerializeField]
     private int stepsCount;     ///< <summary> ilość kroków do cofnięcia </summary>
+
+    [SerializeField]
+    private int maxBranchLength;
 
     private Transform nextChunk;        ///< <summary> generowany chunk </summary>
     private Transform currentChunk;     ///< <summary> Ostatnio wygenerowany chunk </summary>
@@ -48,26 +58,47 @@ public class ChunkConnector : MonoBehaviour {
 
     private int currentRoomCount;       ///< <summary> Ściana </summary>
 
+    private int nextChunkType;
+
     private bool mainPathFlag;      ///< <summary> Czy generuje główną ścieżkę </summary>
 
     private bool chunkWasGenerated;
 
-    private int prevChunkType;  ///< <summary> Poprzedni typ chunka </summary>
+    public bool MapGenerated;
+
 
     private void Start()
     {
-       // Random.InitState(190219981);
-        exits = new List<Transform>();
-        generatedChunk = new List<Transform>();
-        aviableExits = new List<Transform>();
-        MapStart();
+        // Random.InitState(190219981);
+        //MapStart();
+        MapControll();
     }
 
     //Main path
 
+    public void MapControll()
+    {
+        MapStart();
+        Debug.Log(mapIsBroken);
+        if (mapIsBroken)
+        {
+            Debug.Log("It works...");
+            DestryMap();
+            MapStart();
+        }
+    }
+
     public void MapStart()
     {
+        MapGenerated = false;
+        exits = new List<Transform>();
+        generatedChunk = new List<Transform>();
+        aviableExits = new List<GameObject>();
+        mapIsBroken = false;
+        generatedChunk.Clear();
+        aviableExits.Clear();
         currentChunk = Instantiate(startChunk[Random.Range(0, startChunk.Length)], new Vector3(0, 0, 0), Quaternion.identity);
+        generatedChunk.Add(currentChunk);
         AddAviableExits();
         currentChunk.GetComponent<Chunk>().chunkType = 0;
         mainPathFlag = true;
@@ -75,77 +106,129 @@ public class ChunkConnector : MonoBehaviour {
 
         for (currentRoomCount = 0; currentRoomCount < pathLength; currentRoomCount++)
         {
-            NextChunk();
+            if (!mapIsBroken)
+            {
+                NextChunk();
+            }
         }
+        GenerateEndChunk();
         mainPathFlag = false;
+        do {
+            if (!mapIsBroken)
+            {
+                for (int i = 0; i < aviableExits.Count; i++)
+                {
+                    if (!mapIsBroken)
+                    {
+                        exit = aviableExits[i].gameObject;
+                        currentChunk = exit.transform.parent.transform;
+                        PickNextChunk();
+                        if (Random.Range(0f, 1f) < (float)(maxBranchLength) / 10)
+                        {
+                            nextChunk = deadEndChunk[Random.Range(0, deadEndChunk.Length)];
+                        }
+                        CreateNextChunk();
+                    }
+                }
+            }
+        } while (aviableExits.Count!=0);
 
+        Debug.Log(generatedChunk.Count);
+        if (generatedChunk.Count < absoluteMinLength) mapIsBroken = true;
+        
+        MapGenerated = true;
+    }
+    public void DestryMap()
+    {
+        foreach (Transform x in generatedChunk)
+        {
+            Destroy(x.gameObject);
+        }
     }
 
     private void NextChunk()
     {
-        PickNextChunk();
-        ChooseExit();
-        CreateNextChunk();
-        AddAviableExits();
+        if (!mapIsBroken)
+        {
+            PickNextChunk();
+            ChooseExit();
+            CreateNextChunk();
+        }
     }
 
 
     private void ChooseExit()
     {
-        int childCount = currentChunk.childCount;
-        for (int j = 0; j < childCount; j++)
+        if (!mapIsBroken)
         {
-            if (currentChunk.GetChild(j).tag == "Exit")
+            int childCount = currentChunk.childCount;
+            for (int j = 0; j < childCount; j++)
             {
-        
-                exits.Add(currentChunk.GetChild(j));
+                if (currentChunk.GetChild(j).tag == "Exit" && aviableExits.Contains(currentChunk.GetChild(j).gameObject))
+                {
 
+                    exits.Add(currentChunk.GetChild(j));
+
+                }
             }
+            if ((exits.Count != 0))
+                exit = exits[Random.Range(0, exits.Count)].gameObject;
+            else
+            {
+                ChooseDifrentExit();
+            }
+
+            exits.Clear();
         }
-        Debug.Log(currentChunk);
-        exit = exits[Random.Range(0, exits.Count)].gameObject;
-        exits.Clear();
     }
 
-    // Filling exits
-
-
-
-
     // Main path
+
+    private void GenerateEndChunk()
+    {
+        if (!mapIsBroken)
+        {
+            nextChunk = EndChunk[Random.Range(0, EndChunk.Length)];
+            ChooseExit();
+            CreateNextChunk();
+        }
+    }
+
     private void PickNextChunk()
     {
-        int nextChunkType;
-        switch (currentChunk.GetComponent<Chunk>().chunkType)
+        if (!mapIsBroken)
         {
-            case 0:
-            case 1:
-                nextChunkType = Random.Range(2, 3+1);
-                break;
-            case 2:
-                nextChunkType = Random.Range(1, 3 + 1);
-                break;
-            case 3:
-                nextChunkType = Random.Range(1, 2 + 1);
-                break;
-            default:
-                nextChunkType = 2;
-                break;
+            switch (currentChunk.GetComponent<Chunk>().chunkType)
+            {
+                case 0:
+                case 1:
+                    nextChunkType = Random.Range(2, 3 + 1);
+                    break;
+                case 2:
+                    nextChunkType = Random.Range(1, 3 + 1);
+                    break;
+                case 3:
+                    nextChunkType = Random.Range(1, 2 + 1);
+                    break;
+                default:
+                    nextChunkType = 2;
+                    break;
 
-        }
+            }
 
-        switch (nextChunkType)
-        {
-            case 1:
-                nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
-                break;
-            case 2:
-                nextChunk = corridorChunk[Random.Range(0, corridorChunk.Length)];
-                break;
-            case 3:
-                nextChunk = junctionChunk[Random.Range(0, junctionChunk.Length)];
-                break;
+            switch (nextChunkType)
+            {
+                case 1:
+                    nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
+                    break;
+                case 2:
+                    nextChunk = corridorChunk[Random.Range(0, corridorChunk.Length)];
+                    break;
+                case 3:
+                    nextChunk = junctionChunk[Random.Range(0, junctionChunk.Length)];
+                    break;
 
+            }
         }
     }
 
@@ -156,7 +239,7 @@ public class ChunkConnector : MonoBehaviour {
         {
             if (currentChunk.GetChild(j).tag == "Exit")
             {
-                aviableExits.Add(currentChunk.GetChild(j));
+                aviableExits.Add(currentChunk.GetChild(j).gameObject);
 
             }
         }
@@ -164,94 +247,122 @@ public class ChunkConnector : MonoBehaviour {
 
     private void RemoveAviableExits()
     {
-        aviableExits.Remove(exit.transform);
+        bool removed;
+        removed = aviableExits.Remove(exit);
     }
+
+
 
     // Collision controll
 
     private void CollisionHandller()
     {
-
-        if (mainPathFlag)
+        if (!mapIsBroken)
         {
-            //próba wybrania innego wyjścia w currentChunk
-            PickDifferentChunk();
-            ChooseExit();
-            bool flag = true;
-            for (int i = 0; i < 10; i++)
+            if (mainPathFlag)
             {
-                if (!CreateDiferentChunk())
+                //próba wybrania innego wyjścia w currentChunk
+                PickDifferentChunk();
+                ChooseExit();
+                bool flag = true;
+                for (int i = 0; i < 10; i++)
                 {
-                    PickDifferentChunk();
-                    ChooseExit();
+                    if (!CreateDiferentChunk())
+                    {
+                        PickDifferentChunk();
+                        ChooseExit();
+                    }
+                    else
+                    {
+                        flag = false;
+                        break;
+                    }
                 }
-                else
+
+                if (flag)
                 {
-                    flag = false;
-                    break;
+                    //Wybranie innego chunka na ścieżkę
+                    CutPath();
+                    ChooseDifrentExit();
+
+                }
+            }
+            else
+            {
+                //próba wygenerowania innego typu chunka
+                PickDifferentChunk();
+                ChooseExit();
+                bool flag = true;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (!CreateDiferentChunk())
+                    {
+                        PickDifferentChunk();
+                        ChooseExit();
+                    }
+                    else
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    //postawienie DeadEnda
+                    CutPath();
                 }
             }
 
-            if (flag)
-            {
-                //Wybranie innego chunka na ścieżkę
-                CutPath();
-                ChooseDifrentExit();
-                
-
-                /* SCRAPPED
-                //cofnięcie ścieżki o 3 kroki
-
-                if (currentRoomCount > stepsCount)
-                {
-                    PathReverse(stepsCount);
-                    currentRoomCount -= stepsCount;
-                    Debug.Log("!");
-
-                }*/
-
-            }
         }
-        else
-        {
-            //próba wygenerowania innego typu chunka
-            PickDifferentChunk();
-            CreateDiferentChunk();
-            //postawienie DeadEnda
-            CutPath();
-        }
-        
     }
-
     private void CutPath()
     {
-        nextChunk = deadEndWall[Random.Range(0, deadEndWall.Length)];
-        CreateDiferentChunk();
+        if (aviableExits.Contains(exit))
+        {
+            nextChunk = deadEndWall[Random.Range(0, deadEndWall.Length)];
+            CreateDiferentChunk();
+        }
+
     }
 
     private void ChooseDifrentExit()
     {
-        int stepBack = Random.Range(generatedChunk.Count > stepsCount ? generatedChunk.Count - stepsCount : 0, generatedChunk.Count);
-        currentChunk = generatedChunk[stepBack];
-        currentRoomCount -= generatedChunk.Count - stepBack;
+        int stepBack = Random.Range(aviableExits.Count > stepsCount ? aviableExits.Count - stepsCount : 0, aviableExits.Count);
+        if (aviableExits.Count == 0 && mainPathFlag)
+        {
+            //Debug.Log(mainPathFlag);
+            //Debug.Log("Impossible Map!!!");
+            //mapIsBroken = true;
+            //MapStart();
+            //this.gameObject.GetComponent<ChunkConnector>().enabled = false;
+        }
+        else
+        currentChunk = aviableExits[stepBack].transform.parent;
     }
 
-    
+
 
     void PickDifferentChunk()
     {
-        switch (currentChunk.GetComponent<Chunk>().chunkType) 
+        if (!mapIsBroken)
         {
-            case 1:
-                nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
-                break;
-            case 2:
-                nextChunk = corridorChunk[Random.Range(0, corridorChunk.Length)];
-                break;
-            case 3:
-                nextChunk = junctionChunk[Random.Range(0, junctionChunk.Length)];
-                break;
+            switch (currentChunk.GetComponent<Chunk>().chunkType)
+            {
+                case 1:
+                    nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
+                    break;
+                case 2:
+                    nextChunk = corridorChunk[Random.Range(0, corridorChunk.Length)];
+                    break;
+                case 3:
+                    nextChunk = junctionChunk[Random.Range(0, junctionChunk.Length)];
+                    break;
+                default:
+                    nextChunk = roomChunk[Random.Range(0, roomChunk.Length)];
+                    break;
 
+            }
+            ChooseExit();
         }
     }
 
@@ -259,92 +370,103 @@ public class ChunkConnector : MonoBehaviour {
 
     private void CreateNextChunk()
     {
-        Transform entrance = nextChunk;
-
-        Vector3 displacement = new Vector3(
-            entrance.localPosition.x,
-            0,
-            entrance.localPosition.z);
-
-        Quaternion rotation = new Quaternion();
-        rotation.eulerAngles = exit.transform.rotation.eulerAngles;
-        
-
-       
-        if (rotation.eulerAngles.y >= 179)
+        if (!mapIsBroken)
         {
-            displacement.z *= -1;
+            Transform entrance = nextChunk;
 
-        }
-        if (rotation.eulerAngles.y <= 181 && rotation.eulerAngles.y >= 89)
-        {
-            displacement.x *= -1;
-        }
-        if ((rotation.eulerAngles.y >= 89 && rotation.eulerAngles.y <= 91)|| (rotation.eulerAngles.y >= 269 && rotation.eulerAngles.y <= 271))
-        {
-            float tmp = displacement.z;
-            displacement.z = displacement.x;
-            displacement.x = tmp;
+            Vector3 displacement = new Vector3(
+                entrance.localPosition.x,
+                0,
+                entrance.localPosition.z);
 
-        }
-        Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
+            Quaternion rotation = new Quaternion();
+            rotation.eulerAngles = exit.transform.rotation.eulerAngles;
 
 
-        if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
-        {
-            CollisionHandller();
-        }
-        else
-        {
-            currentChunk = Instantiate(nextChunk, positionTMP, rotation);
-            generatedChunk.Add(currentChunk);
-            RemoveAviableExits();
+
+            if (rotation.eulerAngles.y >= 179)
+            {
+                displacement.z *= -1;
+
+            }
+            if (rotation.eulerAngles.y <= 181 && rotation.eulerAngles.y >= 89)
+            {
+                displacement.x *= -1;
+            }
+            if ((rotation.eulerAngles.y >= 89 && rotation.eulerAngles.y <= 91) || (rotation.eulerAngles.y >= 269 && rotation.eulerAngles.y <= 271))
+            {
+                float tmp = displacement.z;
+                displacement.z = displacement.x;
+                displacement.x = tmp;
+
+            }
+            Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
+
+
+            if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
+            {
+                CollisionHandller();
+            }
+            else
+            {
+                currentChunk = Instantiate(nextChunk, positionTMP, rotation);
+                generatedChunk.Add(currentChunk);
+                currentChunk.GetComponent<Chunk>().chunkType = nextChunkType;
+                RemoveAviableExits();
+                AddAviableExits();
+            }
         }
 }
     private bool CreateDiferentChunk()
     {
-        Transform entrance = nextChunk;
-
-        Vector3 displacement = new Vector3(
-            entrance.localPosition.x,
-            0,
-            entrance.localPosition.z);
-
-        Quaternion rotation = new Quaternion();
-        rotation.eulerAngles = exit.transform.rotation.eulerAngles;
-
-
-
-        if (rotation.eulerAngles.y >= 179)
+        if (!mapIsBroken)
         {
-            displacement.z *= -1;
+            Transform entrance = nextChunk;
 
-        }
-        if (rotation.eulerAngles.y <= 181 && rotation.eulerAngles.y >= 89)
-        {
-            displacement.x *= -1;
-        }
-        if ((rotation.eulerAngles.y >= 89 && rotation.eulerAngles.y <= 91) || (rotation.eulerAngles.y >= 269 && rotation.eulerAngles.y <= 271))
-        {
-            float tmp = displacement.z;
-            displacement.z = displacement.x;
-            displacement.x = tmp;
+            Vector3 displacement = new Vector3(
+                entrance.localPosition.x,
+                0,
+                entrance.localPosition.z);
 
-        }
-        Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
+            Quaternion rotation = new Quaternion();
+            rotation.eulerAngles = exit.transform.rotation.eulerAngles;
 
 
-        if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
-        {
-            return false;
+
+            if (rotation.eulerAngles.y >= 179)
+            {
+                displacement.z *= -1;
+
+            }
+            if (rotation.eulerAngles.y <= 181 && rotation.eulerAngles.y >= 89)
+            {
+                displacement.x *= -1;
+            }
+            if ((rotation.eulerAngles.y >= 89 && rotation.eulerAngles.y <= 91) || (rotation.eulerAngles.y >= 269 && rotation.eulerAngles.y <= 271))
+            {
+                float tmp = displacement.z;
+                displacement.z = displacement.x;
+                displacement.x = tmp;
+
+            }
+            Vector3 positionTMP = new Vector3(exit.transform.position.x - displacement.x, 0, exit.transform.position.z - displacement.z);
+
+
+            if (nextChunk.GetComponent<Chunk>().CheckOverlaps(layerMask, positionTMP, rotation))
+            {
+                return false;
+            }
+            else
+            {
+                currentChunk = Instantiate(nextChunk, positionTMP, rotation);
+                currentChunk.GetComponent<Chunk>().chunkType = nextChunkType;
+                generatedChunk.Add(currentChunk);
+                RemoveAviableExits();
+                AddAviableExits();
+                return true;
+            }
         }
-        else
-        {
-            currentChunk = Instantiate(nextChunk, positionTMP, rotation);
-            RemoveAviableExits();
-            generatedChunk.Add(currentChunk);
-            return true;
-        }
+        else return false;
     }
 
 }
