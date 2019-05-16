@@ -8,6 +8,7 @@ public class Sound
 {
     public string name;
     public AudioClip clip;
+    public bool loop;
 
     [Range(0f, 1f)]
     public float volume = 0.5f;
@@ -20,6 +21,7 @@ public class Sound
     {
         source = _source;
         source.clip = clip;
+        source.loop = loop;
     }
 
     public void Play()
@@ -27,6 +29,11 @@ public class Sound
         source.volume = volume;
         source.pitch = pitch;
         source.Play();
+    }
+
+    public void Stop()
+    {
+        source.Stop();
     }
 }
 
@@ -53,6 +60,11 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
+    private void Start()
+    {
+        
+    }
+
     [SerializeField]
     public Sound[] sounds;
 
@@ -68,4 +80,19 @@ public class SoundManager : Singleton<SoundManager>
         }
         Debug.LogWarning("SoundManager: Sound not found in list, " + _name);
     }
+
+    public void StopSound(string _name)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                sounds[i].Stop();
+                return;
+            }
+        }
+        Debug.LogWarning("SoundManager: Sound not found in list, " + _name);
+    }
+
+
 }
