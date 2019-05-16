@@ -16,8 +16,7 @@ public class Rush : MonoBehaviour
     public float speedDecrease = 1f;
     public float attackRange = 3f;
     public float rushTime = 1f;
-    public float rushDelay = 2f;
-    private float initialRushDelay = 1f;
+    public float rushDelay = 3f;
 
     void Start()
     {
@@ -41,11 +40,10 @@ public class Rush : MonoBehaviour
         agent.SetDestination(target.position);
         //tutaj mozna wstawic jakas animacje przygotoywania sie do ataku (boostery czy cos tam)
         agent.isStopped = true;
-        yield return new WaitForSeconds(initialRushDelay);
+        yield return new WaitForSeconds(rushDelay);
         agent.isStopped = false;
         agent.speed = speedMax;
         yield return new WaitForSeconds(rushTime);
-        initialRushDelay = rushDelay;
 
         Debug.Log("koniec");
         StartCoroutine(StartRush());
