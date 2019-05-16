@@ -346,6 +346,10 @@ public class ChunkConnector : MonoBehaviour {
             Debug.Log(i);
             i++;
             exit = aviableExits[aviableExits.Count - i];
+            if(aviableExits.Count-i == 0)
+            {
+                mapIsBroken = true;
+            }
         }
     }
 
