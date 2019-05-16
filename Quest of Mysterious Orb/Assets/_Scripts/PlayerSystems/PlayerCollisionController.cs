@@ -9,12 +9,12 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
 
    public void OnIDisable()
    {
-      //throw new System.NotImplementedException();
+      
    }
 
    public void OnIEnable()
    {
-      //throw new System.NotImplementedException();
+      
    }
 
    public void OnILateUpdate()
@@ -24,7 +24,7 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
 
    public void OnIUpdate()
    {
-      //throw new System.NotImplementedException();
+      
    }
 
    private void OnCollisionEnter(Collision collision) {
@@ -32,8 +32,7 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    }
 
    private void OnTriggerEnter(Collider other) {
-      Debug.Log(other.name);
-      ChargingOrb charging = other.GetComponent<ChargingOrb>();
+      GrayOrb charging = other.GetComponent<GrayOrb>();
       if(OrbCollected != null) {
          OrbCollected(charging);
       }

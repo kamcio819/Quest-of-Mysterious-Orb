@@ -1,17 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class PlayerInventoryController : ExecutableController<InventoryData>, IEnableable, IUpdatable, IDisaable, ILateUpdatable
+public class PlayerInventoryController : ExecutableController<InventoryData>, IEnableable, IUpdatable, IDisaable, ILateUpdatable, IAwakable
 {
     [SerializeField]
-    private List<OrbObject> inventoryOrbs;
+    private List<OrbObject> inventoryOrbs = new List<OrbObject>();
 
     [SerializeField]
     private UIController uiController;
 
+    [SerializeField]
+    private GrayOrb grayOrb;
+
+    [SerializeField]
+    private OrbsController orbsController;
+
+    private OrbObject currentSelectedOrb;
+
     public List<OrbObject> InventoryOrbs { get => inventoryOrbs; set => inventoryOrbs = value; }
+    public OrbObject CurrentSelectedOrb { get => inventoryOrbs.FirstOrDefault(v => v != null); set => currentSelectedOrb = value; }
 
     public void OnIDisable()
     {
@@ -25,16 +35,22 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
 
     public void OnIUpdate()
     {
-        
+
     }
 
     public void OnILateUpdate() {
 
     }
 
+    public void OnIAwake() {
+        // for(int i = 0; i < 3; ++i) {
+        //     inventoryOrbs.Add(grayOrb);
+        // }
+    }
+
     private void ProcessOrbCollection(OrbObject obj)
     {
-        Debug.Log(obj.name);
+        orbsController.OrbsList.Add(obj);
         inventoryOrbs.Add(obj);
         OrbData orbData = obj.GetData();
         uiController.SetOrbsButtons(orbData);

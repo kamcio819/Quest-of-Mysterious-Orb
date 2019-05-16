@@ -11,19 +11,17 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
 
     public void OnIDisable()
     {
-        
     }
 
     public void OnIEnable()
     {
-        
     }
 
     public void OnIUpdate()
     {
-        orbsList.ForEach((x) => {
-            (x as IUpdatable).OnIUpdate();
-        });
+        for(int i = 0; i < orbsList.Count; ++i) {
+            (orbsList[i] as IUpdatable).OnIUpdate();
+        }
     }
     
     public void OnILateUpdate() {
@@ -32,5 +30,9 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
 
     public void AddToOrbList(OrbGameObject orbObject) {
         orbsList.Add(orbObject);
+    }
+
+    private void SpawnOrb(bool isActive) {
+        
     }
 }

@@ -13,7 +13,7 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
     private Transform bodyTransform;
 
     [SerializeField]
-    private RotationController rotationController;
+    private PlayerRotationController rotationController;
 
     private Vector3 offset = new Vector3(0, 13, -23);
 

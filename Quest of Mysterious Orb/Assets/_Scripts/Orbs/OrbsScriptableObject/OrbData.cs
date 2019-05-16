@@ -11,18 +11,23 @@ public enum OrbType {
 
 public class OrbData : Data {
     [SerializeField]
-    private OrbType orbType;
+    protected OrbType orbType;
 
     [SerializeField]
-    private ParticleSystem orbParticleSystem;
+    protected ParticleSystem orbParticleSystem;
 
     [SerializeField]
-    private RenderTexture orbRenderTexture;
+    protected RenderTexture orbRenderTexture;
+
+    [SerializeField] [Range(0,5f)]
+    protected float cooldownTime;
+
+    [SerializeField] [Range(0f, 10f)]
+    protected float damageGiven;
 
     public OrbType OrbType { get => orbType; }
     public ParticleSystem ParticleSystem { get => orbParticleSystem; set => orbParticleSystem = value; }
-    public RenderTexture OrbRenderTexture { get => orbRenderTexture; set => orbRenderTexture = value; }
-    
+    public RenderTexture OrbRenderTexture { get => orbRenderTexture; set => orbRenderTexture = value; }    
     public virtual void RandomizeParameters() {
 
     }
@@ -35,8 +40,8 @@ public class OrbData : Data {
        return ParticleSystem;
     }
 
-    public virtual void SetData(List<dynamic> dataTab)
-    {
+    public virtual void SetData(List<dynamic> dataTab) {
 
     }
+
 }

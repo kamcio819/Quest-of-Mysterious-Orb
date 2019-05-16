@@ -16,7 +16,8 @@ public class OrbMaker : EditorWindow
     OrbType orbType;
     float value;
     GameObject particleSystem;
-    OrbType prevType = OrbType.BounceOrb;   
+    OrbType prevType = OrbType.BounceOrb;
+    RenderTexture renderTexture;   
 
 
 
@@ -50,14 +51,17 @@ public class OrbMaker : EditorWindow
             EditorGUILayout.LabelField("Orb Data:");
             gameData = (OrbData)EditorGUILayout.ObjectField(gameData, typeof(OrbData), true);
             List<dynamic> dataTab = gameData.GetData();
-            for (int i = 0; i < dataTab.Count / 2; i += 2)
+            for (int i = 0; i < dataTab.Count - 1; i+=2)
             {
-               EditorGUILayout.Space();
                EditorGUILayout.LabelField(Convert.ToString(dataTab[i]));
                value = (float)EditorGUILayout.Slider(value, 0f, 5f);
                dataTab[i + 1] = value;
             }
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Particle System:");
             particleSystem = (GameObject)EditorGUILayout.ObjectField(particleSystem, typeof(GameObject), true);
+            EditorGUILayout.LabelField("Render Texture:");
+            renderTexture = (RenderTexture)EditorGUILayout.ObjectField(renderTexture, typeof(RenderTexture), true);
             if (particleSystem != null)
             {
                if (particleSystem.GetComponent<ParticleSystem>() == null)
@@ -161,7 +165,6 @@ public class OrbMaker : EditorWindow
         where T : OrbGameObject<W>
     {
         if(gameObjectToInstant != null && particleSystem != null) {
-            Debug.Log(gameObjectToInstant);
             GameObject prefabToInstantiate = gameObjectToInstant;
             prefabToInstantiate.AddComponent<T>();
             prefabToInstantiate.GetComponent<T>().OrbData = (gameData as W);

@@ -27,6 +27,10 @@ public class BounceOrbData : OrbData {
       dataToReturn.Add(bounceSpeed);
       dataToReturn.Add("Bounce Force");
       dataToReturn.Add(bounceForce);
+      dataToReturn.Add("Orb Cooldown");
+      dataToReturn.Add(cooldownTime);
+      dataToReturn.Add("Orb Damage");
+      dataToReturn.Add(damageGiven);
       return dataToReturn;
    }
 
@@ -35,6 +39,8 @@ public class BounceOrbData : OrbData {
        movingSpeed = dataTab[1];
        bounceSpeed = dataTab[3];
        bounceForce = dataTab[5];
+       cooldownTime = dataTab[7];
+       damageGiven = dataTab[9];
     }
 
 }
