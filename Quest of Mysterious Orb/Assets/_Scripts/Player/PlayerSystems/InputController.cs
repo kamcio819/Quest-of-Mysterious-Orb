@@ -84,10 +84,11 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
     }
 
     public void OnIDisable() {
-
+        
     }
 
     public void OnILateUpdate()
     {
+
     }
 }
