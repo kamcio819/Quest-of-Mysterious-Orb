@@ -42,8 +42,10 @@ public class SpawnManager : MonoBehaviour
             }
             foreach (Transform spawn in chunk.spawnerPointsTurrets)
             {
-                MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform.position = spawn.position;
-            }
+                enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
+                enemy.transform.position = spawn.position;
+                enemy.GetComponent<EnemyObject>().isSpawned = true;
+        }
         }
     }
 }
