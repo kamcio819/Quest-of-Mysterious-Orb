@@ -26,7 +26,11 @@ public class ChargingOrb : OrbGameObject<ChargingOrbData>, IEnableable, IUpdatab
       timeTaken = 0f;
    }
 
-   public void OnIUpdate()
+   public void OnIUpdate(){
+
+   }
+
+   public void Update()
    {
       if(isSpawned) {
          timeTaken += Time.deltaTime;

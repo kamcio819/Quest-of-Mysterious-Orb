@@ -85,4 +85,19 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
         
     }
 
+    public override void ProcessHitOrb(OrbData orbData) {
+        EnemyData.EnemyHealth -= orbData.DamageGiven;
+        if(EnemyData.EnemyHealth < 0f) {
+            Die();
+        }
+        else {
+            //DROP ORB
+            //SOUND
+        }
+    }
+
+    private void Die()
+    {
+       throw new NotImplementedException();
+    }
 }

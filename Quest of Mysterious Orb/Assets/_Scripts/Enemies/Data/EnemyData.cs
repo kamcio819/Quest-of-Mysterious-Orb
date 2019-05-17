@@ -17,6 +17,11 @@ public class EnemyData : Data
     [SerializeField]
     private float enemyDamage;
 
+    [SerializeField]
+    private float enemyHealth;
+
     public float EnemyDamage { get => enemyDamage; set => enemyDamage = value; }
+    public float EnemyHealth { get => enemyHealth; set => enemyHealth = value; }
+    public EnemyType EnemyType { get => enemyType; set => enemyType = value; }
 }
 

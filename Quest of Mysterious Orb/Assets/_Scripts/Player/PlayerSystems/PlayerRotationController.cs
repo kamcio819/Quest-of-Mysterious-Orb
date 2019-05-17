@@ -15,7 +15,7 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     private LayerMask layerMask;
 
     private Vector3 deltaCursor = Vector3.zero;
-    private Vector3 pos = Vector3.zero;
+    private Vector3 pos = new Vector3();
 
     public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
 
@@ -25,7 +25,6 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     }
     public void OnIUpdate()
     {
-        Vector3 pos = GetMousePoint();
         DeltaCursor = transform.position - pos;
     }
 
@@ -35,12 +34,13 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     }
 
     public void RotatePlayer(Vector2 mouseInput) {
-        pos = GetMousePoint();
-        Vector3 directionToRotate = pos - transform.position;
-        directionToRotate.y = 0;
-        
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, directionToRotate) * transform.rotation;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            pos = hit.point;
+        }
+
     }
 
     void OnDrawGizmosSelected()
@@ -51,19 +51,12 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
         Gizmos.DrawCube(pos, new Vector3(0.2f, 0.2f, 0.2f));
     }
 
-    private Vector3 GetMousePoint() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask))
-        {
-            return hit.point;
-        }
-        else {
-            return Vector3.zero;
-        }
-    }
-
     public void OnILateUpdate()
     {
+        Vector3 directionToRotate = pos - transform.position;
+        directionToRotate.y = 0;
+        
+        Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, directionToRotate) * transform.rotation;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
     }
 }
