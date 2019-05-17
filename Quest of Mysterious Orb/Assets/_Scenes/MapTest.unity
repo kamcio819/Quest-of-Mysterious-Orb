@@ -201,6 +201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6141572249447170814, guid: dbc368c36b564dd4a814778af2e8c70b,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 156397324}
     - target: {fileID: 6141572249447170815, guid: dbc368c36b564dd4a814778af2e8c70b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -361,6 +366,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5861188477282054139, guid: dbc368c36b564dd4a814778af2e8c70b,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 6141572249249052717, guid: dbc368c36b564dd4a814778af2e8c70b,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -433,6 +443,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4db6b9489f35f46a16469f4f7d0c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &156397324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 18690869411230071, guid: dbc368c36b564dd4a814778af2e8c70b,
+    type: 3}
+  m_PrefabInstance: {fileID: 156397322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &394306756 stripped
@@ -767,10 +789,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerModeled
       objectReference: {fileID: 0}
-    - target: {fileID: 1574920396, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 5775138984152477438, guid: 3b3aea11c1abcf547902d73886ff72a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -840,51 +858,11 @@ PrefabInstance:
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 394306756}
-    - target: {fileID: 5775138983751381852, guid: 3b3aea11c1abcf547902d73886ff72a9,
+    - target: {fileID: 4043374523760914046, guid: 3b3aea11c1abcf547902d73886ff72a9,
         type: 3}
-      propertyPath: field of view
-      value: 37.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775138983751381852, guid: 3b3aea11c1abcf547902d73886ff72a9,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775138983751381852, guid: 3b3aea11c1abcf547902d73886ff72a9,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775138983751381852, guid: 3b3aea11c1abcf547902d73886ff72a9,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775138983751381852, guid: 3b3aea11c1abcf547902d73886ff72a9,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 148318253, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: m_AABB.m_Center.x
-      value: -0.016449999
-      objectReference: {fileID: 0}
-    - target: {fileID: 148318253, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: 0.61475
-      objectReference: {fileID: 0}
-    - target: {fileID: 148318253, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: m_AABB.m_Center.z
-      value: -0.042799994
-      objectReference: {fileID: 0}
-    - target: {fileID: 148318253, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: m_AABB.m_Extent.x
-      value: 0.39155
-      objectReference: {fileID: 0}
-    - target: {fileID: 148318253, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 0.2922
-      objectReference: {fileID: 0}
+      propertyPath: uIController
+      value: 
+      objectReference: {fileID: 156397323}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b3aea11c1abcf547902d73886ff72a9, type: 3}
 --- !u!114 &2008295995 stripped
