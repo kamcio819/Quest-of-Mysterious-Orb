@@ -61,7 +61,6 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private void FaceTarget()
     {
-        Debug.Log("XD");
         Vector3 direction = (target.position - transform.position).normalized;
         direction.y = 0;
         Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, direction) * transform.rotation;

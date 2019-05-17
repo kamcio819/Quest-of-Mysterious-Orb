@@ -11,17 +11,23 @@ public class PlayerOrbSlot : MonoBehaviour
 
    public List<OrbObject> OrbObjects { get => orbObjects; set => orbObjects = value; }
 
+
    public void SetActiveOrb()
    {
-      var activeOrb = orbObjects.FirstOrDefault( x => x.gameObject.activeInHierarchy );
+      var activeOrb = orbObjects.Find( x => x.gameObject.activeInHierarchy );
       var tabOfParticles = activeOrb.GetComponentsInChildren<ParticleSystem>(true);
       tabOfParticles[tabOfParticles.Length - 1].gameObject.SetActive(true);
    }
 
-   internal void DeactivateOrb()
+   public void DeactivateOrb()
    {
-      var activeOrb = orbObjects.FirstOrDefault( x => x.gameObject.activeInHierarchy );
+      var activeOrb = orbObjects.Find( x => x.gameObject.activeInHierarchy );
       var tabOfParticles = activeOrb.GetComponentsInChildren<ParticleSystem>(true);
       tabOfParticles[tabOfParticles.Length - 1].gameObject.SetActive(false);
+   }
+
+   public OrbObject GetCurrentOrb() {
+      var activeOrb = orbObjects.Find( x => x.gameObject.activeInHierarchy );
+      return activeOrb;
    }
 }

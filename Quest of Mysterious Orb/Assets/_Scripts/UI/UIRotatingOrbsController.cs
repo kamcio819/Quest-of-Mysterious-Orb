@@ -55,6 +55,11 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
         playerOrbSlots[index].OrbObjects.Find( x => x.GetType() == obj.GetType()).gameObject.SetActive(true);
     }
 
+    public OrbObject GetActiveOrb()
+    {
+       return playerOrbSlots[index].GetCurrentOrb();
+    }
+
     public void EnableGrayOrbDefalut(OrbObject obj) {
         for(int i =0 ; i < playerOrbSlots.Count; ++i) {
             if(playerOrbSlots[i].OrbObjects.Find(x => x.GetType() == obj.GetType()).gameObject.activeInHierarchy) {

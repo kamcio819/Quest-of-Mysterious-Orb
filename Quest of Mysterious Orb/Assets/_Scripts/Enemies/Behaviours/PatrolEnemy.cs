@@ -31,7 +31,6 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         var quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
 
         transform.rotation = Quaternion.Lerp(transform.rotation, quaternionToRotate, rotationSpeed);
-
     }
 
 

@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerInventoryController : ExecutableController<InventoryData>, IEnableable, IUpdatable, IDisaable, ILateUpdatable, IAwakable
 {
     [SerializeField]
-    private List<OrbObject> inventoryOrbs = new List<OrbObject>();
+    private List<OrbObject> inventoryOrbs;
 
     [SerializeField]
     private UIController uiController;
@@ -20,7 +20,7 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
 
     ///TODO: CHANGE CHANGEING CURRENT SELECTED ORB
     public List<OrbObject> InventoryOrbs { get => inventoryOrbs; set => inventoryOrbs = value; }
-    public OrbObject CurrentSelectedOrb { get => inventoryOrbs.FirstOrDefault(v => v != null); set => currentSelectedOrb = value; }
+    public OrbObject CurrentSelectedOrb { get => GetCurrentSelectedOrb(); set => currentSelectedOrb = value; }
 
     public void OnIDisable()
     {
@@ -47,9 +47,21 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
 
     private void ProcessOrbCollection(OrbObject obj)
     {
-        inventoryOrbs.Add(obj);
-        uIRotatingOrbsController.AddOrbToUI(obj);
-        OrbData orbData = obj.GetData();
-        uiController.SetOrbsButtons(orbData);
+        if(!inventoryOrbs.Find((x) => x.GetType() == obj.GetType())) {
+           inventoryOrbs.Add(obj);
+            uIRotatingOrbsController.AddOrbToUI(obj);
+            OrbData orbData = obj.GetData();
+            uiController.SetOrbsButtons(orbData); 
+        }   
+    }
+
+    private OrbObject GetCurrentSelectedOrb() {
+        var orbToCreate = uIRotatingOrbsController.GetActiveOrb();
+        if(orbToCreate.GetType() == typeof(GrayOrb)) {
+            return orbToCreate;
+        }
+        else {
+            return inventoryOrbs.Find((x) => x.GetType() == orbToCreate.GetType());
+        }
     }
 }

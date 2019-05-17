@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
         //StartCoroutine(MapTest());
     }
 
+
+
     private IEnumerator MapTest()
     {
         GetComponent<ChunkConnector>().MapStart();

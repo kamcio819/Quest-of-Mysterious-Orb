@@ -15,6 +15,7 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
     [SerializeField]
     private PlayerRotationController rotationController;
 
+    [SerializeField]
     private Vector3 offset = new Vector3(0, 13, -10);
 
     public Vector3 Offset { get => offset; set => offset = value; }

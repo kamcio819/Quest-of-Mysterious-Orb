@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class EnemyObject : MonoBehaviour
@@ -6,5 +7,9 @@ public abstract class EnemyObject : MonoBehaviour
    public virtual EnemyData GetData()
    {
       return null;
+   }
+
+   public virtual void ProcessHitOrb(OrbData orbData)
+   {
    }
 }

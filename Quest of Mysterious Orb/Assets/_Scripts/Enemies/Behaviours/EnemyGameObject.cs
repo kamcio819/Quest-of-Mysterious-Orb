@@ -10,8 +10,12 @@ public abstract class EnemyGameObject<T> : EnemyObject
 
     public T EnemyData { get => enemyData; set => enemyData = value; }
 
-    protected abstract void OnCollisionEnter(Collision collision);
-    protected abstract void OnTriggerEneter(Collider collider);
+    protected virtual void OnCollisionEnter(Collision collision) {
+       
+    }
+    protected virtual void OnTriggerEneter(Collider collider) {
+       
+    }
 
     public override EnemyData GetData() {
         return enemyData;
@@ -26,8 +30,12 @@ public abstract class EnemyGameObject: EnemyObject
 
     public EnemyData EnemyData { get => enemyData; set => enemyData = value; }
 
-    protected abstract void OnCollisionEnter(Collision collision);
-    protected abstract void OnTriggerEneter(Collider collider);
+    protected virtual void OnCollisionEnter(Collision collision) {
+
+    }
+    protected virtual void OnTriggerEneter(Collider collider) {
+
+    }
 
     public override EnemyData GetData() {
         return enemyData;

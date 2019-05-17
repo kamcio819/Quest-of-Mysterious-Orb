@@ -582,8 +582,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.016449999, y: 0.61475, z: -0.042799994}
-    m_Extent: {x: 0.39155, y: 0.61355, z: 0.2922}
+    m_Center: {x: -0.016448975, y: 0.6147501, z: -0.042798996}
+    m_Extent: {x: 0.39155042, y: 0.61355, z: 0.2922005}
   m_DirtyAABB: 0
 --- !u!1 &568808174273062122
 GameObject:
@@ -966,9 +966,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  field of view: 30
+  orthographic: 1
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 5775138983751381851}
   bodyTransform: {fileID: 5775138984152477438}
   rotationController: {fileID: 1574920396}
+  offset: {x: 0, y: 13, z: -10}
 --- !u!1 &5775138984152477442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,8 +1743,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.016449999, y: 0.61475, z: -0.042799994}
-    m_Extent: {x: 0.39155, y: 0.61355, z: 0.2922}
+    m_Center: {x: -0.016448975, y: 0.6147501, z: -0.042798996}
+    m_Extent: {x: 0.39155042, y: 0.61355, z: 0.2922005}
   m_DirtyAABB: 0
 --- !u!1001 &5315330636432703834
 PrefabInstance:
@@ -1827,12 +1828,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.29999998
       objectReference: {fileID: 0}
-    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1888,6 +1889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4926786216002692922, guid: 78c19e824fba09545b126ad755268348,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9111962883125049612, guid: 78c19e824fba09545b126ad755268348,
         type: 3}
@@ -2003,6 +2009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 450904091963035813, guid: 78c19e824fba09545b126ad755268348,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: -6748819603077575650, guid: 78c19e824fba09545b126ad755268348,
         type: 3}
@@ -2123,12 +2134,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.29999998
       objectReference: {fileID: 0}
-    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2225,12 +2236,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0

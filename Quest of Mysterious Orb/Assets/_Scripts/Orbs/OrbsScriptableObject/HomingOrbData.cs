@@ -20,7 +20,7 @@ public class HomingOrbData : OrbData {
       dataToReturn.Add("Moving Speed");
       dataToReturn.Add(movingSpeed);
       dataToReturn.Add("Orb Cooldown");
-      dataToReturn.Add(cooldownTime);
+      dataToReturn.Add(CooldownTime);
       dataToReturn.Add("Orb Damage");
       dataToReturn.Add(damageGiven);
       return dataToReturn;
@@ -29,7 +29,7 @@ public class HomingOrbData : OrbData {
     public override void SetData(List<dynamic> dataTab)
     {
        movingSpeed = dataTab[1];
-       cooldownTime = dataTab[3];
+       CooldownTime = dataTab[3];
        damageGiven = dataTab[5];
     }
 }

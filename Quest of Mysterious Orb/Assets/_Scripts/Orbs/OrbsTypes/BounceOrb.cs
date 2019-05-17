@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, IDisaable
+public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, IDisaable, IAwakable
 {
    private float speedAdder = 1f;
+   private float timeTaken;
+
+   public void OnIAwake() {
+      timeTaken = 0f;
+   }
    public void OnIEnable()
    {
    }
 
    private void OnEnable() {
-      if(isSpawned) {
-         GetComponent<SphereCollider>().isTrigger = false;
-      }
+      timeTaken = 0f;
    }
 
-   public void OnIUpdate()
+   public void Update()
    {
       if(isSpawned) {
+         GetComponent<SphereCollider>().isTrigger = false;
+         timeTaken += Time.deltaTime;
          Vector3 newPos = transform.position;
          newPos += transform.forward * (OrbData as BounceOrbData).MovingSpeed * speedAdder * 3f * Time.deltaTime;
          transform.position = newPos;
+         if(timeTaken > OrbData.CooldownTime) {
+            isSpawned = false;
+            gameObject.SetActive(false);
+         }
       }
    }
 
@@ -44,5 +53,9 @@ public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, 
    public override OrbObject Pick() {
       return this;
    }
-   
+
+   public void OnIUpdate()
+   {
+      
+   }
 }
