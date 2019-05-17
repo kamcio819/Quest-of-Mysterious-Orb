@@ -86,6 +86,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
             Die();
         }
         else {
+            //Animation
             //DROP ORB
             //SOUND
         }
@@ -93,6 +94,6 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
    private void Die()
    {
-      throw new NotImplementedException();
+      
    }
 }

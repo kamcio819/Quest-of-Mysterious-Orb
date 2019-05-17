@@ -36,7 +36,6 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
 
     public void RotatePlayer(Vector2 mouseInput) {
         if(mouseInput != Vector2.zero) {
-            Debug.Log(mouseInput);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 50f, layerMask))
@@ -52,23 +51,6 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
             }
         }
 
-    }
-
-    public void Update() {
-       
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Debug.DrawLine(transform.position, pos, Color.blue);
-        Debug.DrawLine(pos - transform.position, pos, Color.green);
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(pos, new Vector3(0.2f, 0.2f, 0.2f));
-    }
-
-    public void LateUpdate()
-    {
-  
     }
 
     public void OnILateUpdate() {
