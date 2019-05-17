@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   enemyDamage: 2
+  enemyHealth: 100
   movingSpeed: 1.44
   acceleretaionFactor: 1.48

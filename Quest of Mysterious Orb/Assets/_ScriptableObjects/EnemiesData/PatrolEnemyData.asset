@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyDamage: 1
+  enemyHealth: 100
   movingSpeed: 1.52
   waitIdleTime: 1.43

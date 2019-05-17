@@ -21,8 +21,9 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private void Awake() {
         startTime = Time.time;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
-
+    
     private void RotateTowardsPoint(Vector3 targetPos, float rotationSpeed)
     {
         Vector3 dir = targetPos - transform.position;
