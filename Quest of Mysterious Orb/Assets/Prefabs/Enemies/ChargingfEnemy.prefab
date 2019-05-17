@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8910782502590853969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7213360692411714242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7463017617836576783}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777312527387810748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4871187122175650034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2311875248103644456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ramieL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8507318665829214222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359569868609534633}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4b987a33d28a124b8b999b45c2956a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   isSpawned: 1
   enemyData: {fileID: 11400000, guid: 4245b2e0a02ef364bada32c97917f833, type: 2}
   rigidbodyComponet: {fileID: 7329297294397009694}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6472679221234107187}
   - component: {fileID: 5664245005878868199}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285520450706268885}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829734317460645227}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4557774097420389350}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5491061936276191092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157572477375019881}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385974081231190837}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ramieP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

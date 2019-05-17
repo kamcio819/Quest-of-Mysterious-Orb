@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fdd55c66fbf3ba4cad8aea4c006d850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   isSpawned: 1
   enemyData: {fileID: 11400000, guid: e584aacaf551c9e40ba9adfc99334ef0, type: 2}
   target: {fileID: 0}

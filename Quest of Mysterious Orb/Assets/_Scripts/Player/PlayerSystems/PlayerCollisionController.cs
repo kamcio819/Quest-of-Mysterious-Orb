@@ -48,12 +48,14 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    }
 
    private void OnTriggerEnter(Collider other) {
-      var pickedOrb = other.GetComponent<OrbObject>().Pick();
+        var pickedOrb = other.GetComponent<OrbObject>();
       if(pickedOrb != null) {
+            var data = pickedOrb.Pick();
          if(OrbCollected != null) {
-            OrbCollected(pickedOrb);
+            OrbCollected(data);
          }
-      }
-      pickedOrb.gameObject.SetActive(false);
+            pickedOrb.gameObject.SetActive(false);
+        }
+
    }
 }

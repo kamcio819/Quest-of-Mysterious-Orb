@@ -24,14 +24,14 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(20);
+            yield return new WaitForSeconds(10);
             chunk = currentPlayerChunk.GetComponent<Chunk>();
 
             foreach (Transform spawn in chunk.spawnerPoints)
             {
                 if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
                 {
-                    enemy = MyObjectPoolManager.Instance.GetObject("Charger", true).transform;
+                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
                 }
                 else
                 {
@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
             }
             foreach (Transform spawn in chunk.spawnerPointsTurrets)
             {
-                enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
+                enemy = MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform;
                 enemy.transform.position = spawn.position;
                 enemy.GetComponent<EnemyObject>().isSpawned = true;
         }
