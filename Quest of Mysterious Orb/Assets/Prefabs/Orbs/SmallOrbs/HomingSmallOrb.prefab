@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2049390967059091520}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 6328887387288996761}
   m_RootOrder: 0
@@ -4809,6 +4809,7 @@ MonoBehaviour:
   isSpawned: 0
   orbData: {fileID: 11400000, guid: 9d8f83941ee7f7642a1af6b0449e3b39, type: 2}
   nearestEnemyObject: {fileID: 0}
+  rigidbodyComponet: {fileID: 0}
 --- !u!135 &6244468679915178738
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9617,7 +9618,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.25, g: 0.5046793, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 0.9
+  m_Range: 0.6
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9692,7 +9693,7 @@ Transform:
   m_GameObject: {fileID: 8344244650666917910}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 6328887387288996761}
   m_RootOrder: 1
@@ -14444,7 +14445,7 @@ Transform:
   m_GameObject: {fileID: 8640537803389260233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 6328887387288996761}
   m_RootOrder: 3
