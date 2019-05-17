@@ -15,6 +15,10 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     private bool targetLocked = false;
     private float timer = 0f;
 
+    private void Awake() {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     protected override void OnCollisionEnter(Collision collision)
     {
         

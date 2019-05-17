@@ -110,11 +110,11 @@ public class SoundManager : Singleton<SoundManager>
 
     //Muzyka
 
-    private void PlayCombatMusic()
+    public void PlayCombatMusic()
     {
             SwitchMusic(0);
     }
-    private void PlayCalmMusic()
+    public void PlayCalmMusic()
     {
         SwitchMusic(1);
     }

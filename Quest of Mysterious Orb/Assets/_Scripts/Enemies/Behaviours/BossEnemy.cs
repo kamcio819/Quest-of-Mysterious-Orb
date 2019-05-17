@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
+public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
     // BLUE ORB
     [SerializeField]
@@ -25,6 +25,10 @@ public class BossEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUpda
         
     }
 
+    private void Awake() {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     public void OnIUpdate()
     { 
         Vector3 dir = target.position - transform.position;
@@ -34,7 +38,7 @@ public class BossEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUpda
         }
         else {
             float distance = Vector3.Distance(target.position, transform.position);
-            if (distance <= (EnemyData as TurretEnemyData).LookRadius)
+            if (distance <= (EnemyData as BossEnemyData).LookRadius)
             { 
                 targetLocked = true;
             }

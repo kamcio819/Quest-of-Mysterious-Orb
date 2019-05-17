@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea7a2849a398c1478e0aed0eadf9ba5, type: 3}
-  m_Name: ChargeEnemyData
+  m_Script: {fileID: 11500000, guid: 96f0c090269ccc047af21c06b44c1d4c, type: 3}
+  m_Name: BossEnemyData
   m_EditorClassIdentifier: 
-  enemyType: 1
-  enemyDamage: 2
+  enemyType: 0
+  enemyDamage: 20
   enemyHealth: 100
-  movingSpeed: 1.44
-  acceleretaionFactor: 1.48
+  rotateFactor: 1.9
+  shootingCooldown: 2
+  shotTimer: 2.19
+  lookRadius: 13.99
+  rotationSpeed: 4.37
+  timer: 1

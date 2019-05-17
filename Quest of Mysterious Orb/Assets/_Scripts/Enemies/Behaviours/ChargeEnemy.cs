@@ -12,6 +12,11 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     [SerializeField]
     private Transform target;
+
+    private void Awake() {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
  
     protected override void OnCollisionEnter(Collision collision)
     {

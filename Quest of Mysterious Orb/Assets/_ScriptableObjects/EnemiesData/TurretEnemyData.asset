@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyDamage: 2
+  enemyHealth: 100
   rotateFactor: 1.5
   shootingCooldown: 1.8
   shotTimer: 1.1
