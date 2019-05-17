@@ -14,11 +14,12 @@ public class CreditsScript : MonoBehaviour
 
 
     // Use this for initialization
+
+
     void Start()
     {
         StartCoroutine(PlayVideo());
     }
-
 
 
     IEnumerator PlayVideo()
