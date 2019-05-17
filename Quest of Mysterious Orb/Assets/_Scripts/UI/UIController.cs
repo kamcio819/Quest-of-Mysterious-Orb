@@ -8,6 +8,9 @@ public class UIController : ExecutableController, IEnableable, IDisaable, IUpdat
     [SerializeField]
     private List<OrbSlot> orbsCollection;
 
+    [SerializeField]
+    private Image healthBar;
+
     private int index = 0;
 
     public void SetOrbsButtons(OrbData orbData) {
@@ -31,5 +34,9 @@ public class UIController : ExecutableController, IEnableable, IDisaable, IUpdat
 
     public void OnILateUpdate() {
         
+    }
+
+    public void RemoveHealthFromBar(float value) {
+        healthBar.fillAmount -= value / 100;
     }
 }

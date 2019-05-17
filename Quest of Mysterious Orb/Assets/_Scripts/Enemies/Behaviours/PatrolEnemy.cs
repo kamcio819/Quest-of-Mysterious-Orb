@@ -6,6 +6,7 @@ using System;
 
 public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
+    //GREEN ORB
     [SerializeField]
     private Transform[] points;
 
@@ -13,9 +14,6 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     private Transform target;
     private int destPoint = 0;
     private int index = 0;
-
-    private Tween moveTween;
-    private bool followPlayer = false;
 
     private float startTime;
 
@@ -86,6 +84,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
             Die();
         }
         else {
+            //Animation
             //DROP ORB
             //SOUND
         }
@@ -93,6 +92,8 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
    private void Die()
    {
-      throw new NotImplementedException();
+       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
+       objectToSpawn.transform.position = gameObject.transform.position;
+       this.gameObject.SetActive(false);
    }
 }

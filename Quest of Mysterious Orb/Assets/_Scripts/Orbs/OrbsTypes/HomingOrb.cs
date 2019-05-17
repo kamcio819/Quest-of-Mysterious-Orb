@@ -10,6 +10,7 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
 
    [SerializeField]
    private Rigidbody rigidbodyComponet;
+
    private float timeTaken;
 
    public void OnIAwake() {
@@ -53,6 +54,9 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
    protected override void OnTriggerEneter(Collider collider)
    {
       nearestEnemyObject = collider.GetComponent<EnemyObject>();
+      if(nearestEnemyObject != null) {
+         Debug.Log("FOUND ENEMY");
+      }
    }
 
    public override OrbObject Pick() {

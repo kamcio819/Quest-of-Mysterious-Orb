@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
+    // BLUE ORB
     [SerializeField]
     private Transform target;
 
@@ -98,6 +99,8 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
-       throw new NotImplementedException();
+       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+       objectToSpawn.transform.position = gameObject.transform.position;
+       this.gameObject.SetActive(false);
     }
-}
+} 

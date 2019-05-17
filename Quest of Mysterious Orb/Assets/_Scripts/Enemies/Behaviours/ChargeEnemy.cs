@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
+    // RED ORB
     [SerializeField]
     private Rigidbody rigidbodyComponet;
 
@@ -58,7 +59,9 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
-       throw new NotImplementedException();
+       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
+       objectToSpawn.transform.position = gameObject.transform.position;
+       this.gameObject.SetActive(false);
     }
 }
 
