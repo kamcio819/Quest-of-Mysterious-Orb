@@ -13,7 +13,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     [SerializeField]
     private Transform target;
 
-    private void Awake() {
+    private void OnEnable() {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

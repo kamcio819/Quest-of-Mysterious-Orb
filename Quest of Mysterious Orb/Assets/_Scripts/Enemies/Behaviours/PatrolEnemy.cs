@@ -19,7 +19,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private float distance;
 
-    private void Awake() {
+    private void OnEnable() {
         startTime = Time.time;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }

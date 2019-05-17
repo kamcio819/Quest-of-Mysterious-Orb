@@ -25,7 +25,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         
     }
 
-    private void Awake() {
+    private void OnEnable() {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
