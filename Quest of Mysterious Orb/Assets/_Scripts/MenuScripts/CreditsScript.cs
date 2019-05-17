@@ -10,7 +10,7 @@ public class CreditsScript : MonoBehaviour
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
-    public float videoTime = 5f;
+    public float videoTime = 23f;
 
 
     // Use this for initialization
@@ -35,5 +35,6 @@ public class CreditsScript : MonoBehaviour
         videoPlayer.Play();
         audioSource.Play();
         yield return new WaitForSeconds(videoTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
