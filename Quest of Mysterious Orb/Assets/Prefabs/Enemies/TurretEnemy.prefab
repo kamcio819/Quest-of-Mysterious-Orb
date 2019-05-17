@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2518475499034353527}
   - component: {fileID: 5510558621985092109}
   - component: {fileID: 918232069440154435}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TurretEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5331522097828182542}
   - component: {fileID: 8326431855241386646}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8730002767773214526}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 3463770184330670022}
   - component: {fileID: 1190045158493108025}
   - component: {fileID: 6126376483999081456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5524339077557784971}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8493221001501786133}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

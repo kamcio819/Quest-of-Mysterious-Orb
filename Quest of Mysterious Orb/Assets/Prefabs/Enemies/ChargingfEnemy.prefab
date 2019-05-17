@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8910782502590853969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7213360692411714242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7463017617836576783}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777312527387810748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4871187122175650034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2311875248103644456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ramieL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8507318665829214222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359569868609534633}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1278432435176476166}
   - component: {fileID: 7566025956812305335}
   - component: {fileID: 5250056930724421071}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ChargingfEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6472679221234107187}
   - component: {fileID: 5664245005878868199}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285520450706268885}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829734317460645227}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4557774097420389350}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5491061936276191092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: legL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157572477375019881}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dlonR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385974081231190837}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ramieP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

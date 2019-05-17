@@ -36,15 +36,10 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private GameObject PlayerCharacter;
     [SerializeField]
-    private GameObject PlayerCharacterSoundCollider;
-    [SerializeField]
     private AudioSource PlayerCharacterSourceCombat;
     [SerializeField]
     private AudioSource PlayerCharacterSourceCalm;
-    [SerializeField]
-    private Sound combatMusic;
-    [SerializeField]
-    private Sound calmMusic;
+
 
     [SerializeField]
     private float speed;
