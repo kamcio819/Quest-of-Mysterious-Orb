@@ -3,7 +3,27 @@ guid: 22734a67dd1cdf24f81fc5a9d779ec49
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light
+    second: {fileID: 2100000, guid: c013212bd3eaff8449fb60b6e47b8a36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: neon
+    second: {fileID: 2100000, guid: 16050137710c5a44aa28f8066d3a6076, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: steel
+    second: {fileID: 2100000, guid: 5e6e2c13f40062c4a925268cb6c36501, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: steel body texture
+    second: {fileID: 2100000, guid: 1523172650a12f34992437c6492aebe0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
