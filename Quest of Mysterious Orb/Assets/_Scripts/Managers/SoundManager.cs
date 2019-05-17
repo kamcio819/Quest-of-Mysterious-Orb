@@ -34,21 +34,25 @@ public class SoundManager : Singleton<SoundManager>
     private Sound[] sounds;
 
     [SerializeField]
-    private GameObject PlayerCharacter;
+    private SpawnManager PlayerCharacter;
     [SerializeField]
     private AudioSource PlayerCharacterSourceCombat;
     [SerializeField]
     private AudioSource PlayerCharacterSourceCalm;
 
+    [SerializeField]
+    private AudioClip bossClip;
 
     [SerializeField]
     private float speed;
 
-
+    private bool notOnBoss;
 
     private void Awake()
     {
-        
+        notOnBoss = true;
+
+
         foreach (Sound s in sounds)
         {
             s.Adjust();
@@ -68,6 +72,10 @@ public class SoundManager : Singleton<SoundManager>
             PlayCalmMusic();
             playCalm = false;
         }
+        if(PlayerCharacter.currentPlayerChunk != null)
+        if (PlayerCharacter.currentPlayerChunk.name == "Arena(Clone)")
+        if (notOnBoss)
+            PlayBossMusic();
 
     }
 
@@ -107,11 +115,11 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayCombatMusic()
     {
-            SwitchMusic(0);
+           if(notOnBoss) SwitchMusic(0);
     }
     public void PlayCalmMusic()
     {
-        SwitchMusic(1);
+           if (notOnBoss) SwitchMusic(1);
     }
 
     private void SwitchMusic(int type)
@@ -151,6 +159,29 @@ public class SoundManager : Singleton<SoundManager>
         }
 
         audioSourceIn.Pause();
+    }
+    private static IEnumerator FadeOutOut(AudioSource audioSourceIn, AudioSource audioSourceOut, float FadeTime, AudioClip bossClip)
+    {
+        float startVolume = 1;
+        audioSourceOut.clip = bossClip;
+        audioSourceOut.volume = 1;
+        audioSourceOut.Play();
+        while (audioSourceIn.volume > 0)
+        {
+            audioSourceIn.volume -= startVolume * Time.deltaTime / FadeTime;
+
+
+            yield return null;
+        }
+
+        audioSourceIn.Pause();
+
+    }
+
+    private void PlayBossMusic()
+    {
+        notOnBoss = false;
+        StartCoroutine(FadeOutOut(PlayerCharacterSourceCombat, PlayerCharacterSourceCalm, speed, bossClip));
     }
 
 }
