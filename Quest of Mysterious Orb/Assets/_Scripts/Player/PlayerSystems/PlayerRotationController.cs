@@ -15,7 +15,8 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     private LayerMask layerMask;
 
     private Vector3 deltaCursor = Vector3.zero;
-    private Vector3 pos = Vector3.zero;
+    private Vector3 pos;
+    private bool hitFlag = false;
 
     public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
 
@@ -25,8 +26,7 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     }
     public void OnIUpdate()
     {
-        Vector3 pos = GetMousePoint();
-        DeltaCursor = transform.position - pos;
+        
     }
 
     public void OnIDisable()
@@ -35,35 +35,25 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     }
 
     public void RotatePlayer(Vector2 mouseInput) {
-        pos = GetMousePoint();
-        Vector3 directionToRotate = pos - transform.position;
-        directionToRotate.y = 0;
-        
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, directionToRotate) * transform.rotation;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
-    }
+        if(mouseInput != Vector2.zero) {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 50f, layerMask))
+            {
+                deltaCursor = transform.position - hit.point;
+                deltaCursor.y = 0;
+                Vector3 lookPoint = hit.point;
 
-    void OnDrawGizmosSelected()
-    {
-        Debug.DrawLine(transform.position, pos, Color.blue);
-        Debug.DrawLine(pos - transform.position, pos, Color.green);
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(pos, new Vector3(0.2f, 0.2f, 0.2f));
-    }
-
-    private Vector3 GetMousePoint() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask))
-        {
-            return hit.point;
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+                
+            }
+            else {
+            }
         }
-        else {
-            return Vector3.zero;
-        }
+
     }
 
-    public void OnILateUpdate()
-    {
+    public void OnILateUpdate() {
+
     }
 }

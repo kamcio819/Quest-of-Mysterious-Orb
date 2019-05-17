@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,6 +43,22 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     public void OnIEnable() {
         
+    }
+
+    public override void ProcessHitOrb(OrbData orbData) {
+        EnemyData.EnemyHealth -= orbData.DamageGiven;
+        if(EnemyData.EnemyHealth < 0f) {
+            Die();
+        }
+        else {
+            //DROP ORB
+            //SOUND
+        }
+    }
+
+    private void Die()
+    {
+       throw new NotImplementedException();
     }
 }
 

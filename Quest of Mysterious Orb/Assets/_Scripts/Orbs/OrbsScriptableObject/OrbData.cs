@@ -23,16 +23,18 @@ public class OrbData : Data {
     [Range(0, 5f)]
     private float cooldownTime;
 
-    [SerializeField] [Range(0f, 10f)]
-    protected float damageGiven;
+   [SerializeField]
+   [Range(0f, 10f)]
+   private float damageGiven;
 
 
-    public OrbType OrbType { get => orbType; }
+   public OrbType OrbType { get => orbType; }
     public GameObject ParticleSystem { get => orbParticleSystem; set => orbParticleSystem = value; }
     public RenderTexture OrbRenderTexture { get => orbRenderTexture; set => orbRenderTexture = value; }
     public float CooldownTime { get => cooldownTime; set => cooldownTime = value; }
+    public float DamageGiven { get => damageGiven; set => damageGiven = value; }
 
-    public virtual void RandomizeParameters() {}
+   public virtual void RandomizeParameters() {}
     public virtual List<dynamic> GetData() {
        return null;
     }

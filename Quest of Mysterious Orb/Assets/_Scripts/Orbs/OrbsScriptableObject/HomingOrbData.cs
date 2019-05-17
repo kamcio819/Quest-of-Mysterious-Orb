@@ -22,7 +22,7 @@ public class HomingOrbData : OrbData {
       dataToReturn.Add("Orb Cooldown");
       dataToReturn.Add(CooldownTime);
       dataToReturn.Add("Orb Damage");
-      dataToReturn.Add(damageGiven);
+      dataToReturn.Add(DamageGiven);
       return dataToReturn;
    }
 
@@ -30,6 +30,6 @@ public class HomingOrbData : OrbData {
     {
        movingSpeed = dataTab[1];
        CooldownTime = dataTab[3];
-       damageGiven = dataTab[5];
+       DamageGiven = dataTab[5];
     }
 }

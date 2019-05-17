@@ -6,7 +6,12 @@ using UnityEngine;
 
 public class PlayerCollisionController : ExecutableController, IEnableable, IUpdatable, IDisaable, ILateUpdatable
 {
+   [SerializeField]
+   private PlayerObject playerObject;
    public static Action<OrbObject> OrbCollected;
+
+   [SerializeField]
+   private UIController uIController;
 
    public void OnIDisable()
    {
@@ -29,7 +34,17 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    }
 
    private void OnCollisionEnter(Collision collision) {
+      var enemyCollided = collision.collider.GetComponent<EnemyGameObject>();
+      playerObject.PlayerData.Health -= enemyCollided.EnemyData.EnemyDamage;
+      if(playerObject.PlayerData.Health < 0f) {
+         uIController.RemoveHealthFromBar(enemyCollided.EnemyData.EnemyDamage);
+         Die();
+      }
+   }
 
+   private void Die()
+   {
+      //TODO
    }
 
    private void OnTriggerEnter(Collider other) {

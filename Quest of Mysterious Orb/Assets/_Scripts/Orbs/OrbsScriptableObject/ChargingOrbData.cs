@@ -26,7 +26,7 @@ public class ChargingOrbData : OrbData {
       dataToReturn.Add("Orb Cooldown");
       dataToReturn.Add(CooldownTime);
       dataToReturn.Add("Orb Damage");
-      dataToReturn.Add(damageGiven);
+      dataToReturn.Add(DamageGiven);
       return dataToReturn;
    }
 
@@ -35,6 +35,6 @@ public class ChargingOrbData : OrbData {
        movingSpeed = dataTab[1];
        acceleretaionFactor = dataTab[3];
        CooldownTime = dataTab[5];
-       damageGiven = dataTab[7];
+       DamageGiven = dataTab[7];
     }
 }

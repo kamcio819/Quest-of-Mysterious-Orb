@@ -32,19 +32,29 @@ public class PlayerPosition : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CheckOverlaps(layerMask, transform.position, transform.rotation));
+        StartCoroutine(CheckOverlaps(layerMask));
         spawnManager.StartEnemySpawn();
     }
 
-    private IEnumerator CheckOverlaps(int layerMask, Vector3 position, Quaternion rotation)
+    private IEnumerator CheckOverlaps(int layerMask)
         {
-        Debug.Log(PositionDetector.Overlap(position, rotation, layerMask)[0].transform);
-        Debug.Log(PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent);
-        spawnManager.currentPlayerChunk = PositionDetector.Overlap(position, rotation, layerMask)[0].transform.parent.parent.gameObject ;
+        while (true)
+        {
+           
+            Debug.Log(PositionDetector.Overlap(transform.position, transform.rotation, layerMask).Length);
+            if (PositionDetector.Overlap(transform.position, transform.rotation, layerMask).Length != 0)
+            {
 
-        yield return new WaitForSeconds(10);
+                Debug.Log(PositionDetector.Overlap(transform.position, transform.rotation, layerMask)[0].transform.parent);
+                Debug.Log(PositionDetector.Overlap(transform.position, transform.rotation, layerMask)[0].transform.parent.parent);
+                spawnManager.currentPlayerChunk = PositionDetector.Overlap(transform.position, transform.rotation, layerMask)[0].transform.parent.parent.gameObject;
+                PositionDetector.Overlap(transform.position, transform.rotation, layerMask)[0] = null;
+            }
+            yield return new WaitForSeconds(4);
 
         }
+    }
+        
 
 
         private void OnDrawGizmosSelected()

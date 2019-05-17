@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections;
 using DG.Tweening;
+using System;
 
 public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
@@ -78,4 +79,21 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     public void OnIEnable() {
 
     }
+
+    public override void ProcessHitOrb(OrbData orbData) {
+        EnemyData.EnemyHealth -= orbData.DamageGiven;
+        if(EnemyData.EnemyHealth < 0f) {
+            Die();
+        }
+        else {
+            //Animation
+            //DROP ORB
+            //SOUND
+        }
+    }
+
+   private void Die()
+   {
+      
+   }
 }

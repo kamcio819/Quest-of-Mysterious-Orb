@@ -11,5 +11,6 @@ public abstract class EnemyObject : MonoBehaviour
 
    public virtual void ProcessHitOrb(OrbData orbData)
    {
+      
    }
 }
