@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
 
     private Chunk chunk;
 
-
+    private Transform enemy;
     public void StartEnemySpawn()
     {
         StartCoroutine(Ressurect());
@@ -29,19 +29,23 @@ public class SpawnManager : MonoBehaviour
 
             foreach (Transform spawn in chunk.spawnerPoints)
             {
-                if (Random.Range(0, DronsPerDwarf) > DronsPerDwarf - 1)
+                if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
                 {
-                    MyObjectPoolManager.Instance.GetObject("ChargeEnemy", true).transform.position = spawn.position;
+                    enemy = MyObjectPoolManager.Instance.GetObject("Charger", true).transform;
                 }
                 else
                 {
-                    MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform.position = spawn.position;
+                    enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
                 }
+                enemy.transform.position = spawn.position;
+                enemy.GetComponent<EnemyObject>().isSpawned = true;
             }
             foreach (Transform spawn in chunk.spawnerPointsTurrets)
             {
-                MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform.position = spawn.position;
-            }
+                enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
+                enemy.transform.position = spawn.position;
+                enemy.GetComponent<EnemyObject>().isSpawned = true;
+        }
         }
     }
 }

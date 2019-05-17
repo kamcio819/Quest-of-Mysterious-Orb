@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 56982a9c6c83c164aaa1599bc3635e1d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sable Lion
+  fontNames:
+  - Sable Lion
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 77008e54fe1cbdd4cbecd81bc042e84f, type: 3}
+  - {fileID: 12800000, guid: e07445284bd3e034ba72b963468ffb11, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

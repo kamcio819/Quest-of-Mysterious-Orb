@@ -3,7 +3,32 @@ guid: 7675e2e9eb0309b46a6d04fef9535b0f
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cable
+    second: {fileID: 2100000, guid: 04823a0f72bc8b04da51231dc2ce13cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: neon
+    second: {fileID: 2100000, guid: c013212bd3eaff8449fb60b6e47b8a36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: neon4
+    second: {fileID: 2100000, guid: 1523172650a12f34992437c6492aebe0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: steel
+    second: {fileID: 2100000, guid: 1523172650a12f34992437c6492aebe0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white material2
+    second: {fileID: 2100000, guid: 5e6e2c13f40062c4a925268cb6c36501, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
