@@ -16,6 +16,6 @@ MonoBehaviour:
   orbParticleSystem: {fileID: 649970638919955551, guid: 81ef9b1884c5792479cfbafd778e1746,
     type: 3}
   orbRenderTexture: {fileID: 8400000, guid: 971dd72f582c09d429e64eebe14e8c28, type: 2}
-  cooldownTime: 5
+  cooldownTime: 2.75
   damageGiven: 3
   movingSpeed: 1.5

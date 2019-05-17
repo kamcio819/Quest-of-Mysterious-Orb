@@ -51,11 +51,11 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
          var spawnedOrb = MyObjectPoolManager.Instance.GetObject(orbToSpawn.GetType().Name, true);
          spawnedOrb.transform.position = position.position;
          spawnedOrb.transform.rotation = playerBody.rotation;
-         spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
          spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
          playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
          orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
          uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
+         spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
       }
       
    }

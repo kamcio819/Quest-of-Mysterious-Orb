@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable
+public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDisaable, IAwakable
 {
+   private float timeTaken;
+
+   public void OnIAwake() {
+      timeTaken = 0f;
+   }
    public void OnIDisable()
    {
       
@@ -14,12 +19,21 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
       
    }
 
-   public void OnIUpdate()
+   private void OnEnable() {
+      timeTaken = 0f;
+   }
+
+   public void Update()
    {
       if(isSpawned) {
+         timeTaken += Time.deltaTime;
          Vector3 newPos = transform.position;
          newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 3f * Time.deltaTime;
          transform.position = newPos;
+         if(timeTaken > OrbData.CooldownTime) {
+            isSpawned = false;
+            gameObject.SetActive(false);
+         }
       }
    }
 
@@ -35,5 +49,10 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
 
    public override OrbObject Pick() {
       return this;
+   }
+
+   public void OnIUpdate()
+   {
+      
    }
 }
