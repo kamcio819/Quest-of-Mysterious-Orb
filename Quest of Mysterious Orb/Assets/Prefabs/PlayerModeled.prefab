@@ -891,7 +891,7 @@ MonoBehaviour:
   mainCamera: {fileID: 5775138983751381852}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1845
+    m_Bits: 256
 --- !u!54 &978534297
 Rigidbody:
   m_ObjectHideFlags: 0
