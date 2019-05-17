@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 455961e746fa5904fa0033dc82833126
+guid: 2a09dd7512fa56f4690acae5a3189867
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: cable.001
-    second: {fileID: 2100000, guid: f16d2a338cd80404881ac83f14826fbd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sci fi material
-    second: {fileID: 2100000, guid: 1523172650a12f34992437c6492aebe0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: steel1
-    second: {fileID: 2100000, guid: 5e6e2c13f40062c4a925268cb6c36501, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: steel2
-    second: {fileID: 2100000, guid: c013212bd3eaff8449fb60b6e47b8a36, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
