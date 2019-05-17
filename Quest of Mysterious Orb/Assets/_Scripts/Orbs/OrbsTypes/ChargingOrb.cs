@@ -46,12 +46,13 @@ public class ChargingOrb : OrbGameObject<ChargingOrbData>, IEnableable, IUpdatab
 
    protected override void OnCollisionEnter(Collision collision)
    {
-      
+      base.OnCollisionEnter(collision);
    }
 
-   protected override void OnTriggerEneter(Collider collider)
+   protected override void OnTriggerEnter(Collider collider)
    {
-      
+      base.OnTriggerEnter(collider);
+      gameObject.SetActive(false);
    }
 
    public override OrbObject Pick() {

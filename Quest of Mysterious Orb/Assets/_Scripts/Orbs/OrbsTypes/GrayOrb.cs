@@ -26,6 +26,7 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
    public void Update()
    {
       if(isSpawned) {
+         GetComponent<SphereCollider>().isTrigger = false;
          timeTaken += Time.deltaTime;
          Vector3 newPos = transform.position;
          newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 3f * Time.deltaTime;
@@ -39,12 +40,13 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
 
    protected override void OnCollisionEnter(Collision collision)
    {
-      
+      base.OnCollisionEnter(collision);
    }
-
-   protected override void OnTriggerEneter(Collider collider)
+   protected override void OnTriggerEnter(Collider collider)
    {
-      
+      base.OnTriggerEnter(collider);
+      gameObject.SetActive(false);
+
    }
 
    public override OrbObject Pick() {

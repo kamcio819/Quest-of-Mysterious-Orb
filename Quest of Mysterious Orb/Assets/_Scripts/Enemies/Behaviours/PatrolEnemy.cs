@@ -23,12 +23,12 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         startTime = Time.time;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    
+
     private void RotateTowardsPoint(Vector3 targetPos, float rotationSpeed)
     {
         Vector3 dir = targetPos - transform.position;
 
-        var quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
+        var quaternionToRotate = Quaternion.FromToRotation(transform.right, dir) * transform.rotation;
 
         transform.rotation = Quaternion.Lerp(transform.rotation, quaternionToRotate, rotationSpeed);
     }
@@ -57,9 +57,9 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     public void OnIUpdate()
     {
         float distance = Vector3.Distance(transform.position, target.position);
-        if(distance > 10f) {
+        if(distance > 6f) {
             transform.position = Vector3.Lerp(transform.position, points[index].position, (EnemyData as PatrolEnemyData).MovingSpeed * Time.deltaTime);
-            if(Vector3.Distance(transform.position, points[index].position) < 0.5f) { 
+            if(Vector3.Distance(transform.position, points[index].position) < 2f) { 
                 index++;
                 index %= 3;
             }

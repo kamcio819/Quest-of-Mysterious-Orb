@@ -34,6 +34,7 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
    public void Update()
    {
       if(isSpawned) {
+         GetComponent<SphereCollider>().isTrigger = false;
          GetComponent<SphereCollider>().radius = 20f;
          timeTaken += Time.deltaTime;
          Vector3 direction = nearestEnemyObject.transform.position - transform.position;
@@ -48,15 +49,13 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
 
    protected override void OnCollisionEnter(Collision collision)
    {
-      
+      base.OnCollisionEnter(collision);   
    }
 
-   protected override void OnTriggerEneter(Collider collider)
+   protected override void OnTriggerEnter(Collider collider)
    {
-      nearestEnemyObject = collider.GetComponent<EnemyObject>();
-      if(nearestEnemyObject != null) {
-         Debug.Log("FOUND ENEMY");
-      }
+      base.OnTriggerEnter(collider);
+      gameObject.SetActive(false);
    }
 
    public override OrbObject Pick() {

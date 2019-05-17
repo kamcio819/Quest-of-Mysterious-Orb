@@ -39,15 +39,17 @@ public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, 
    }
    protected override void OnCollisionEnter(Collision collision)
    {
+      base.OnCollisionEnter(collision);
       speedAdder += (OrbData as BounceOrbData).BounceSpeed;
       Vector3 newDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
-        
       transform.rotation = Quaternion.LookRotation(newDirection);
+
    }
 
-   protected override void OnTriggerEneter(Collider collider)
+   protected override void OnTriggerEnter(Collider collider)
    {
-      
+      base.OnTriggerEnter(collider);
+      gameObject.SetActive(false);
    }
 
    public override OrbObject Pick() {

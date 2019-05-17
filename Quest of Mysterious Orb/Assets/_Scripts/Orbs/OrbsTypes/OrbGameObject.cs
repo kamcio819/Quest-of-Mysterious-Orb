@@ -11,14 +11,13 @@ public abstract class OrbGameObject<T> : OrbObject
     public T OrbData { get => orbData; set => orbData = value; }
 
     protected virtual void OnCollisionEnter(Collision collision) {
-        var enemyObject = collision.collider.GetComponent<EnemyObject>();
+    }
+    protected virtual void OnTriggerEnter(Collider collider) {
+        var enemyObject = collider.GetComponent<EnemyObject>();
         if(enemyObject != null) {
             gameObject.SetActive(false);
             enemyObject.ProcessHitOrb(orbData);
         }
-    }
-    protected virtual void OnTriggerEneter(Collider collider) {
-        
     }
 
     public override OrbData GetData() {
@@ -41,8 +40,12 @@ public abstract class OrbGameObject : OrbObject
             enemyObject.ProcessHitOrb(orbData);
         }
     }
-    protected virtual void OnTriggerEneter(Collider collider) {
-        
+    protected virtual void OnTriggerEnter(Collider collider) {
+        var enemyObject = collider.GetComponent<EnemyObject>();
+        if(enemyObject != null) {
+            gameObject.SetActive(false);
+            enemyObject.ProcessHitOrb(orbData);
+        }
     }
 
     public override OrbData GetData() {

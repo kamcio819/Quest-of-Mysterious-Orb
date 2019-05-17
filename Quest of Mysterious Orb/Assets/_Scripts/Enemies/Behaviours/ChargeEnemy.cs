@@ -31,7 +31,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance < 15f) {  
             Vector3 direction = target.position - transform.position;
-            rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
+            rigidbodyComponet.velocity += direction / 10f * 0.5f * Time.deltaTime;
         }
     }
 
@@ -52,6 +52,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
+        Debug.Log("XD");
         EnemyData.EnemyHealth -= orbData.DamageGiven;
         if(EnemyData.EnemyHealth < 0f) {
             Die();
