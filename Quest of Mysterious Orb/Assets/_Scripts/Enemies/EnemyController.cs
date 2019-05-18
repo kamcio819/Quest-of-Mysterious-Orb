@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
-    private List<EnemyObject> enemiesObject = new List<EnemyObject>();
+    private List<EnemyObject> enemiesObject;
     public List<EnemyObject> EnemiesObject { get => enemiesObject; set => enemiesObject = value; }
 
     [SerializeField]
@@ -15,6 +15,7 @@ public class EnemyController : ExecutableController, IUpdatable, IEnableable, ID
 
     public void OnIAwake()
     { 
+        enemiesObject = new List<EnemyObject>();
         for(int i = 0 ; i < enemiesToSpawn.Count; ++i) {
             MyObjectPoolManager.Instance.CreatePoolIfNotExists(enemiesToSpawn[i].gameObject, 20, 50);
         } 

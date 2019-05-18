@@ -49,7 +49,7 @@ MonoBehaviour:
   isSpawned: 0
   orbData: {fileID: 11400000, guid: 328a5fa2d99dca04cbde20ae77e86976, type: 2}
   nearestEnemyObject: {fileID: 0}
-  rigidbodyComponet: {fileID: 0}
+  rigidbodyComponet: {fileID: -2089795775307014037}
 --- !u!135 &1453187039266573809
 SphereCollider:
   m_ObjectHideFlags: 0

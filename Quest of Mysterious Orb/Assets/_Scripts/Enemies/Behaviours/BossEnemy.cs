@@ -90,20 +90,33 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        EnemyData.EnemyHealth -= orbData.DamageGiven;
-        if(EnemyData.EnemyHealth < 0f) {
+        enemyHealth -= orbData.DamageGiven;
+        if(enemyHealth < 0f) {
             Die();
         }
         else {
-            //DROP ORB
-            //SOUND
+            Hit();
         }
     }
 
-    private void Die()
+    private void Hit()
+    {
+        HitEffect.time = 0;
+        HitEffect.Play();
+    }
+
+   private void Die()
     {
        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
        objectToSpawn.transform.position = gameObject.transform.position;
-       this.gameObject.SetActive(false);
+       StartCoroutine(DieBehaviour());
+    }
+
+    private IEnumerator DieBehaviour()
+    {
+        DestroyEffect.time = 0;
+        DestroyEffect.Play();
+        yield return new WaitForSeconds(0.5f);
+        this.gameObject.SetActive(false);
     }
 } 

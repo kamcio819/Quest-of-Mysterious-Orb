@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
-    private List<OrbObject> orbsList = new List<OrbObject>();
+    private List<OrbObject> orbsList;
 
     public List<OrbObject> OrbsList { get => orbsList; set => orbsList = value; }
 
@@ -12,6 +12,7 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
     private List<OrbObject> orbObject;
 
     public void OnIAwake() {
+        orbsList = new List<OrbObject>();
         for(int i = 0 ; i < orbObject.Count; ++i) {
             MyObjectPoolManager.Instance.CreatePoolIfNotExists(orbObject[i].gameObject, 20, 50);
         } 
