@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : Singleton<SpawnManager>
 {
     [HideInInspector]
     public GameObject currentPlayerChunk;
+
+    [SerializeField]
+    private EnemyController enemyController;
 
 
     [SerializeField]
@@ -14,11 +17,11 @@ public class SpawnManager : MonoBehaviour
     private Chunk chunk;
 
     private Transform enemy;
+    
     public void StartEnemySpawn()
     {
         StartCoroutine(Ressurect());
     }
-
 
     private IEnumerator Ressurect()
     {
@@ -35,17 +38,24 @@ public class SpawnManager : MonoBehaviour
                 }
                 else
                 {
-                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingfEnemy", true).transform;
+                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
                 }
                 enemy.transform.position = spawn.position;
                 enemy.GetComponent<EnemyObject>().isSpawned = true;
+                if(enemyController.EnemiesObject.Count <= 50) {
+                    enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
+                } 
             }
+
             foreach (Transform spawn in chunk.spawnerPointsTurrets)
             {
-                enemy = MyObjectPoolManager.Instance.GetObject("ChargingfEnemy", true).transform;
+                enemy = MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform;
                 enemy.transform.position = spawn.position;
                 enemy.GetComponent<EnemyObject>().isSpawned = true;
-        }
+                if(enemyController.EnemiesObject.Count <= 50) {
+                    enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
+                } 
+            }
         }
     }
 }

@@ -26,7 +26,6 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
    public void Update()
    {
       if(isSpawned) {
-         GetComponent<SphereCollider>().isTrigger = false;
          timeTaken += Time.deltaTime;
          Vector3 newPos = transform.position;
          newPos += transform.forward * (OrbData as GrayOrbData).MovingSpeed * 3f * Time.deltaTime;

@@ -61,7 +61,6 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private void Shoot()
     {
-        Debug.Log("shoot");
     }
 
     private void FaceTarget()

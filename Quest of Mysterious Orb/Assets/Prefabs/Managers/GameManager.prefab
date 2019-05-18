@@ -96,7 +96,7 @@ MonoBehaviour:
   - {fileID: 4611412046109003913, guid: 7abe86cdbbe38b24cbe084489e8b43c7, type: 3}
   minL: 10
   maxL: 16
-  absoluteMinLength: 10
+  absoluteMinLength: 30
   stepsCount: 5
   maxBranchLength: 9
   MapGenerated: 0

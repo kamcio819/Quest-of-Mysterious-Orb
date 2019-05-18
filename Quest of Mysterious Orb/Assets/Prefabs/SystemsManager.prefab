@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllers:
-  - {fileID: 8490692926007801841}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 614817505}
+  - {fileID: 8490692926007801841}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -70,12 +70,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c3174b62f1e9d4f8ddbb24e8e1f1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbsList: []
   orbObject:
-  - {fileID: 2652070779962263791, guid: 37c309b0f8222f64e86efae4bf7a8c9c, type: 3}
-  - {fileID: 5832810917399485215, guid: 6c34411494d2ba84d8be4ac26c5b6dff, type: 3}
-  - {fileID: 8798220748191569884, guid: d57cad6577b786f439b8c28bd230bb7e, type: 3}
-  - {fileID: 6910045791912727241, guid: c8a7de0d7b8680045ab80c27b8259adc, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &8490692926007801841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,11 +87,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59bc8393e9a51f46b4c5a859a106239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesObject: []
   enemiesToSpawn:
-  - {fileID: 4136542992174801281, guid: f7ef7087cd4bd8d49b93327600c13d99, type: 3}
-  - {fileID: 7733404804474332796, guid: 66a062a1c8fd3134d80fd78408840955, type: 3}
-  - {fileID: 2678241086425604312, guid: 5335065b2cbb6824585db9530560c8ce, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  patrolToSpawn:
+  - {fileID: 0}
 --- !u!114 &394306756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerChunk: {fileID: 0}
+  enemyController: {fileID: 8490692926007801841}
   DronsPerDwarf: 5

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
-    [SerializeField]
-    private List<OrbObject> orbsList;
+    private List<OrbObject> orbsList = new List<OrbObject>();
 
     public List<OrbObject> OrbsList { get => orbsList; set => orbsList = value; }
 

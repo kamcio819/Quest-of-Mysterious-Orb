@@ -34,7 +34,6 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
    public void Update()
    {
       if(isSpawned) {
-         GetComponent<SphereCollider>().isTrigger = false;
          GetComponent<SphereCollider>().radius = 20f;
          timeTaken += Time.deltaTime;
          Vector3 direction = nearestEnemyObject.transform.position - transform.position;

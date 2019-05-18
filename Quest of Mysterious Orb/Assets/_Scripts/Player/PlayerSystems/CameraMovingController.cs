@@ -43,7 +43,6 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
         pos.y /= 6;
         pos.x /= 3;
         if(pos != Vector3.zero) {
-            Debug.Log("XD");
             transform.position = Vector3.Lerp(transform.position, bodyTransform.position +  offset - pos, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
         }
     }

@@ -27,26 +27,5 @@ public class AudioSwitcherController : MonoBehaviour
         {
             soundManager.PlayCalmMusic();
         }
-        
-        /*
-        private void OnTriggerEnter(Collider other) {
-
-            Debug.Log("XD");
-            var enemy = other.GetComponent<EnemyObject>();
-            if(enemy != null) {
-                SoundManager.Instance.PlayCombatMusic();
-            }
-        }
-
-        private void OnTriggerExit(Collider other) {
-
-            for(int i = 0; i < Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size, transform.rotation, layerMask).Length; ++i)
-            {
-                Debug.Log(Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size, transform.rotation, layerMask)[i].name);
-            }
-            if(Physics.OverlapBox( transform.position, GetComponent<BoxCollider>().size, transform.rotation , layerMask).Length == 0) {
-                SoundManager.Instance.PlayCalmMusic();
-            }	
-        }*/
     }
 }

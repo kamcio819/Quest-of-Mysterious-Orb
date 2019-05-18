@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7661970932105481969}
   - component: {fileID: 18690869411230071}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   - {fileID: 3177139762950117326}
   - {fileID: 2394065031228324692}
   - {fileID: 2394065032250139940}
+  healthBar: {fileID: 18690869411230071}
 --- !u!1 &6141572249852538026
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,11 +474,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 949725922895159588, guid: cc41c64c6dd26a844acfe47eff2cd93e,
-        type: 3}
-      propertyPath: m_text
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc41c64c6dd26a844acfe47eff2cd93e, type: 3}
 --- !u!224 &6347020868408455241 stripped
@@ -614,11 +610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 949725922895159588, guid: cc41c64c6dd26a844acfe47eff2cd93e,
-        type: 3}
-      propertyPath: m_text
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc41c64c6dd26a844acfe47eff2cd93e, type: 3}

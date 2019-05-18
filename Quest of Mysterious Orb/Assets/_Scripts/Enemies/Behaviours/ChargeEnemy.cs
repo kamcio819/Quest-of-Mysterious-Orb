@@ -31,7 +31,13 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance < 15f) {  
             Vector3 direction = target.position - transform.position;
-            rigidbodyComponet.velocity += direction / 10f * 0.5f * Time.deltaTime;
+            direction.y = 0;
+            rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
+
+            Vector3 dir = (target.position - transform.position).normalized;
+            dir.y = 0;
+            Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
         }
     }
 
