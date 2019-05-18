@@ -31,18 +31,18 @@ public class SpawnManager : MonoBehaviour
             {
                 if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
                 {
-                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
+                    enemy = MyObjectPoolManager.Instance.GetObject("BossEnemy", true).transform;
                 }
                 else
                 {
-                    enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
+                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingfEnemy", true).transform;
                 }
                 enemy.transform.position = spawn.position;
                 enemy.GetComponent<EnemyObject>().isSpawned = true;
             }
             foreach (Transform spawn in chunk.spawnerPointsTurrets)
             {
-                enemy = MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform;
+                enemy = MyObjectPoolManager.Instance.GetObject("ChargingfEnemy", true).transform;
                 enemy.transform.position = spawn.position;
                 enemy.GetComponent<EnemyObject>().isSpawned = true;
         }

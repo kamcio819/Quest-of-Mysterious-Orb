@@ -7,35 +7,31 @@ using UnityEngine;
 
 public class OrbMaker : EditorWindow
 {   
-    GameObject prevObject;
-    GameObject gameObjectToInstant;
-    string gameObjectName = "Orb";
-    string scriptableObjectName = "OrbData";
-    Editor gameObjectEditor;
-    OrbData gameData;
-    OrbType orbType;
+    private GameObject prevObject;
+    private GameObject gameObjectToInstant;
+    private string gameObjectName = "Orb";
+    private string scriptableObjectName = "OrbData";
+    private Editor gameObjectEditor;
     
-    GameObject particleSystem;
-    OrbType prevType = OrbType.BounceOrb;
-    RenderTexture renderTexture;
-    float[] value = new float[10];
+    private GameObject particleSystem;
+    private OrbType prevType = OrbType.BounceOrb;
+    private RenderTexture renderTexture;
+    private float[] value = new float[10];
+    private OrbData gameData;
 
     [MenuItem("Window/OrbMaker")]
-    static void Init()
-    {
+    static void Init() {
         OrbMaker window = (OrbMaker)EditorWindow.GetWindow(typeof(OrbMaker));
         window.Show();
     }
 
-    private void OnGUI()
-   {
+    private void OnGUI() {
       DrawName();
       DrawGUIObjectPreview();
 
-      orbType = (OrbType)EditorGUILayout.EnumPopup("Orb Type: ", prevType);
+      var orbType = (OrbType)EditorGUILayout.EnumPopup("Orb Type: ", prevType);
 
-      if (orbType != prevType)
-      {
+      if (orbType != prevType) {
          EditorGUILayout.Space();
          EditorGUILayout.LabelField("Orb Data:");
          gameData = (OrbData)EditorGUILayout.ObjectField(null, typeof(OrbData), true);

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7722181116749156824}
   - component: {fileID: 4276321936338494526}
-  - component: {fileID: 6244468679915178738}
   m_Layer: 0
   m_Name: HomingSmallOrb
   m_TagString: Untagged
@@ -49,19 +48,6 @@ MonoBehaviour:
   orbData: {fileID: 11400000, guid: 9d8f83941ee7f7642a1af6b0449e3b39, type: 2}
   nearestEnemyObject: {fileID: 0}
   rigidbodyComponet: {fileID: 0}
---- !u!135 &6244468679915178738
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2547189358693639919}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2316352824834316881
 PrefabInstance:
   m_ObjectHideFlags: 0

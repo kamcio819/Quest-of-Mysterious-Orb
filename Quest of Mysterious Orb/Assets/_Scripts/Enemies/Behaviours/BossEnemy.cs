@@ -59,9 +59,8 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         }       
     }
 
-    private void Shoot()
-    {
-        Debug.Log("shoot");
+    private void Shoot() {
+       
     }
 
     private void FaceTarget()

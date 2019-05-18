@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +16,11 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     private LayerMask layerMask;
 
     private Vector3 deltaCursor = Vector3.zero;
-    private Vector3 pos;
+    private static Vector3 cursorPosition;
     private bool hitFlag = false;
 
     public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
+    public static Vector3 CursorPosition { get => cursorPosition; set => cursorPosition = value; }
 
     public void OnIEnable()
     {
@@ -34,21 +36,29 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
         InputController.mouseInputProvide -= RotatePlayer;
     }
 
-    public void RotatePlayer(Vector2 mouseInput) {
-        if(mouseInput != Vector2.zero) {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 50f, layerMask))
-            {
-                deltaCursor = transform.position - hit.point;
-                deltaCursor.y = 0;
-                Vector3 lookPoint = hit.point;
+    private void RotatePlayer(Vector2 obj)
+    {
+        
+    }
 
-                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-                
-            }
-            else {
-            }
+   private void Update() {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 50f, layerMask))
+        {
+            cursorPosition = new Vector3(hit.point.x, playerTransform.position.y, hit.point.z);
+            playerTransform.LookAt(new Vector3(hit.point.x, playerTransform.position.y, hit.point.z));
+            
+        }
+        else {
+        }
+    }
+    private void OnDrawGizmos() {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 50f, layerMask))
+        {
+            Gizmos.DrawCube(new Vector3(hit.point.x, transform.position.y, hit.point.z), new Vector3(1, 1, 1));
         }
 
     }

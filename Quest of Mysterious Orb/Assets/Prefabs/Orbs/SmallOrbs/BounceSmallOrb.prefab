@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2614417470150112990}
   - component: {fileID: 6326983585176439909}
-  - component: {fileID: 6932117898781206494}
   m_Layer: 0
   m_Name: BounceSmallOrb
   m_TagString: Untagged
@@ -47,19 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawned: 0
   orbData: {fileID: 11400000, guid: 6b95b19a077658041a854d67db9f1e56, type: 2}
---- !u!135 &6932117898781206494
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8574708682364763927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663338045563257982
 PrefabInstance:
   m_ObjectHideFlags: 0

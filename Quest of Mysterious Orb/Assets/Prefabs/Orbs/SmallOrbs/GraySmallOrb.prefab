@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 503272180141517047}
   - component: {fileID: 1063503606581026404}
-  - component: {fileID: 7377470156637973102}
   m_Layer: 0
   m_Name: GraySmallOrb
   m_TagString: Untagged
@@ -47,19 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawned: 0
   orbData: {fileID: 11400000, guid: 842fbc960a86e954bba13297e78b7fa1, type: 2}
---- !u!135 &7377470156637973102
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5520299527279805884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2664777929460063498
 PrefabInstance:
   m_ObjectHideFlags: 0
