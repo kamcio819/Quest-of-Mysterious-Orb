@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
    [SerializeField]
    private UIRotatingOrbsController uIRotatingOrbsController;
 
+   [SerializeField]
+   private Animator playerAnimator;
+
    private List<OrbObject> activeOrbs;
 
    public void OnIAwake() {
@@ -28,11 +32,18 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
    public void OnIDisable()
    {
       InputController.mouseLeftButtonClicked -= SpawnOrb;
+      InputController.mouseLeftButtonClicked -= AnimateShoot;
    }
 
    public void OnIEnable()
    {
       InputController.mouseLeftButtonClicked += SpawnOrb;
+      InputController.mouseLeftButtonClicked += AnimateShoot;
+   }
+
+   private void AnimateShoot(bool obj)
+   {
+      playerAnimator.SetTrigger("Shoot");
    }
 
    public void OnILateUpdate()

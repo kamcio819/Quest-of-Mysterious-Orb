@@ -36,25 +36,27 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
         InputController.mouseInputProvide -= RotatePlayer;
     }
 
-    private void RotatePlayer(Vector2 obj)
-    {
-        
+
+    private void RotatePlayer(Vector2 input) {
+       if(input != Vector2.zero) {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 50f, layerMask))
+            {
+                deltaCursor = transform.position - hit.point;
+                deltaCursor.y = 0;
+                cursorPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+                
+            }
+            else {
+            }
+       }
+       else {
+           deltaCursor = Vector3.zero;
+       }
     }
 
-   private void Update() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 50f, layerMask))
-        {
-            deltaCursor = transform.position - hit.point;
-            deltaCursor.y = 0;
-            cursorPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-            
-        }
-        else {
-        }
-    }
     private void OnDrawGizmos() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

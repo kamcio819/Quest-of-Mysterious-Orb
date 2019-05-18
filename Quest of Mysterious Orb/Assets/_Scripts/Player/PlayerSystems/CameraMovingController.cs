@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(Camera))]
-public class CameraMovingController : ExecutableController<InputData, MovementData>, IUpdatable, ILateUpdatable, IEnableable, IDisaable
+public class CameraMovingController : ExecutableController<InputData, MovementData>, IUpdatable, ILateUpdatable, IEnableable, IDisaable, IAwakable
 {
     [SerializeField]
     private Transform cameraTransform;
@@ -20,6 +20,9 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
 
     public Vector3 Offset { get => offset; set => offset = value; }
 
+    public void OnIAwake() {
+        transform.position = bodyTransform.position +  offset;
+    }
     public void OnIUpdate() {
         
     }
@@ -39,6 +42,9 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
         pos.z = 0;
         pos.y /= 6;
         pos.x /= 3;
-        transform.position = Vector3.Lerp(transform.position,bodyTransform.position +  offset - pos, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
+        if(pos != Vector3.zero) {
+            Debug.Log("XD");
+            transform.position = Vector3.Lerp(transform.position, bodyTransform.position +  offset - pos, ((InputData)GetData<InputData>()).GetMouseXAxisSens() * ((MovementData)GetData<MovementData>()).GetRotatingFactor() * Time.deltaTime);
+        }
     }
 }

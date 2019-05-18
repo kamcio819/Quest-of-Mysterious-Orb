@@ -1080,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 1638519741919801725, guid: 402e4b2f513cc804ca6c309a6b40903f,
         type: 3}
       propertyPath: m_Name
-      value: PlayerModeled
+      value: MainHero
       objectReference: {fileID: 0}
     - target: {fileID: 1638519741919801473, guid: 402e4b2f513cc804ca6c309a6b40903f,
         type: 3}
