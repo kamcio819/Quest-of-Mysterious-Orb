@@ -46,7 +46,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.47324038, y: 20.560272, z: -263.65088}
+    m_Center: {x: 0.47324038, y: 20.560242, z: -263.65082}
     m_Extent: {x: 157.77985, y: 117.98605, z: 245.79584}
   m_DirtyAABB: 0
 --- !u!183 &5086916146206713356
@@ -1139,9 +1139,9 @@ CharacterController:
   m_Height: 3.5
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_StepOffset: 0
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.8, z: 0.18}
 --- !u!114 &1638519741919801727
 MonoBehaviour:
@@ -1584,7 +1584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5000740784870210977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.79999995, z: 0.17999995}
+  m_LocalPosition: {x: 0, y: 0, z: 0.17999995}
   m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1.6666665}
   m_Children:
   - {fileID: 280049486426676553}

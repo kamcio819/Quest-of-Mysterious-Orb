@@ -1794,36 +1794,6 @@ PrefabInstance:
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 394306756}
-    - target: {fileID: 8677407321413894519, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_StepOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677407321413894519, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677407321413894519, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_MinMoveDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767304892574680345, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5086916146206713354, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: 20.560242
-      objectReference: {fileID: 0}
-    - target: {fileID: 5086916146206713354, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_AABB.m_Center.z
-      value: -263.65082
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402e4b2f513cc804ca6c309a6b40903f, type: 3}
 --- !u!114 &5775138983254099258 stripped
