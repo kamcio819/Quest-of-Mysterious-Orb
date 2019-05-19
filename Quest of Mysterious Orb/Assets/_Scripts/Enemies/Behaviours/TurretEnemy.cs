@@ -45,7 +45,6 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
             else {
                 targetLocked = false;
             }
-            Debug.Log(distance + " " + targetLocked);
             if (targetLocked)
             {
                 FaceTarget();
