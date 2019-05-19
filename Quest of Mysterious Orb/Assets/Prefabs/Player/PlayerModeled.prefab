@@ -1276,6 +1276,7 @@ GameObject:
   - component: {fileID: 1638519742336724259}
   - component: {fileID: 1638519742336724258}
   - component: {fileID: 4718799675447375393}
+  - component: {fileID: 871569380}
   m_Layer: 9
   m_Name: CameraComponent
   m_TagString: MainCamera
@@ -1329,7 +1330,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 3895
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -1366,6 +1367,19 @@ MonoBehaviour:
   bodyTransform: {fileID: 5767304892574680345}
   rotationController: {fileID: 5086916148041391749}
   offset: {x: 0, y: 13, z: -10}
+--- !u!114 &871569380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638519742336724257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: d982e879ff67b4d3fb6522d08c3cd5af, type: 2}
 --- !u!1 &3802450673231853406
 GameObject:
   m_ObjectHideFlags: 0

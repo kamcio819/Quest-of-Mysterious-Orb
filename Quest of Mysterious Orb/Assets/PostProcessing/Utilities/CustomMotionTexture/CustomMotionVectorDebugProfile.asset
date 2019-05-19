@@ -41,10 +41,10 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       intensity: 1
-      radius: 0.3
+      radius: 0.6
       sampleCount: 10
       downsampling: 1
       forceForwardCompatibility: 0

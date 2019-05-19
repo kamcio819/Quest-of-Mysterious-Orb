@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: c4656199bedb81045b7631750b9ce49a
+  m_OcclusionCullingData: {fileID: 36300000, guid: 611d8c6a1d3f8c645833dc7a47f3853b,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -952,25 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b8f02c5d425c946b5b659cfb167e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &871569378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1638519742336724257, guid: 402e4b2f513cc804ca6c309a6b40903f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5086916146322945093}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &871569380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871569378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: d982e879ff67b4d3fb6522d08c3cd5af, type: 2}
 --- !u!1001 &969117433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1709,7 +1691,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5086916146322945093}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871569378}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93a0dcc3da1fe95448c404ceee06e30c, type: 3}
@@ -1814,11 +1796,6 @@ PrefabInstance:
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 394306756}
-    - target: {fileID: 1638519742336724259, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: m_RenderingPath
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402e4b2f513cc804ca6c309a6b40903f, type: 3}
 --- !u!114 &5775138983254099258 stripped
