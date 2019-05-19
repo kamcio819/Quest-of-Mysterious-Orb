@@ -49,7 +49,6 @@ public class BounceOrb : OrbGameObject<BounceOrbData>, IEnableable, IUpdatable, 
    protected override void OnTriggerEnter(Collider collider)
    {
       base.OnTriggerEnter(collider);
-      gameObject.SetActive(false);
    }
 
    public override OrbObject Pick() {

@@ -596,11 +596,6 @@ PrefabInstance:
       objectReference: {fileID: 4043374522325664836}
     - target: {fileID: 8490692926007801841, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: enemiesObject.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8490692926007801841, guid: c07e03f8f53e6434d8c905d18d80bb8f,
-        type: 3}
       propertyPath: enemiesToSpawn.Array.data[0]
       value: 
       objectReference: {fileID: 1929889970}
@@ -619,11 +614,6 @@ PrefabInstance:
       propertyPath: patrolToSpawn.Array.data[0]
       value: 
       objectReference: {fileID: 1338115725}
-    - target: {fileID: 8490692926007801841, guid: c07e03f8f53e6434d8c905d18d80bb8f,
-        type: 3}
-      propertyPath: enemiesObject.Array.data[0]
-      value: 
-      objectReference: {fileID: 509643361}
     - target: {fileID: 614817505, guid: c07e03f8f53e6434d8c905d18d80bb8f, type: 3}
       propertyPath: orbObject.Array.data[0]
       value: 
@@ -1726,6 +1716,21 @@ PrefabInstance:
       propertyPath: orbsController
       value: 
       objectReference: {fileID: 465956390}
+    - target: {fileID: 4718799675474857745, guid: 402e4b2f513cc804ca6c309a6b40903f,
+        type: 3}
+      propertyPath: inventoryOrbs.Array.data[0]
+      value: 
+      objectReference: {fileID: 767388226}
+    - target: {fileID: 4718799675474857745, guid: 402e4b2f513cc804ca6c309a6b40903f,
+        type: 3}
+      propertyPath: inventoryOrbs.Array.data[1]
+      value: 
+      objectReference: {fileID: 413419582}
+    - target: {fileID: 4718799675474857745, guid: 402e4b2f513cc804ca6c309a6b40903f,
+        type: 3}
+      propertyPath: inventoryOrbs.Array.data[2]
+      value: 
+      objectReference: {fileID: 969117435}
     - target: {fileID: 4718799675474857745, guid: 402e4b2f513cc804ca6c309a6b40903f,
         type: 3}
       propertyPath: uiController

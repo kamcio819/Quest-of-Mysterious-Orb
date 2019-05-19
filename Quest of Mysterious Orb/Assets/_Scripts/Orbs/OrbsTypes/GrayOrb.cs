@@ -44,8 +44,6 @@ public class GrayOrb : OrbGameObject<GrayOrbData>, IEnableable, IUpdatable, IDis
    protected override void OnTriggerEnter(Collider collider)
    {
       base.OnTriggerEnter(collider);
-      gameObject.SetActive(false);
-
    }
 
    public override OrbObject Pick() {

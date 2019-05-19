@@ -51,7 +51,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
                 Vector3 direction = target.position - transform.position;
                 direction.y = 0;
-                rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
+                rigidbodyComponet.velocity += direction / 2f * 0.5f * Time.deltaTime;
 
                 if(direction.x < 0.5f || direction.z < 0.5f) {
                     enemyAnimator.SetBool("isAttacking", true);
@@ -98,17 +98,18 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
-       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
-       objectToSpawn.transform.position = gameObject.transform.position;
-       StartCoroutine(DieBehaviour());
+        var position = gameObject.transform.position;
+        StartCoroutine(DieBehaviour(position));
     }
 
-    private IEnumerator DieBehaviour()
+    private IEnumerator DieBehaviour(Vector3 position)
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.5f);
         this.gameObject.SetActive(false);
+        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        objectToSpawn.transform.position = position;
     }
 }
 

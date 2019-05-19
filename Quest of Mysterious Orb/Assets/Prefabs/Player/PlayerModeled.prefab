@@ -1197,7 +1197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerData: {fileID: 11400000, guid: 45bb566ed7032404eada517d81c44336, type: 2}
-  inventoryOrbs: []
+  inventoryOrbs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   uiController: {fileID: 0}
   uIRotatingOrbsController: {fileID: 4718799675301395095}
 --- !u!114 &4718799675177599065
@@ -1251,6 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: c1fcf59b5220fe34f96af7cc34d7534b, type: 2}
+  healthPlayer: 100
 --- !u!114 &5086916146781403076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1559,7 @@ MonoBehaviour:
   - {fileID: 1061104433583872021}
   - {fileID: 450710209742225465}
   - {fileID: 4050090631567542754}
+  angleRotation: 35
 --- !u!95 &4718799675301395096
 Animator:
   serializedVersion: 3
@@ -2299,12 +2304,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.29999998
       objectReference: {fileID: 0}
-    - target: {fileID: 173038253763515837, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 2060154353972176273, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2060154353972176273, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 3271730487933865548, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2426,7 +2431,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819502009330340223, guid: 71f401e1705415e4e86e90a871ba18f4,
+    - target: {fileID: 3271730487933865548, guid: 71f401e1705415e4e86e90a871ba18f4,
         type: 3}
       propertyPath: m_IsActive
       value: 0

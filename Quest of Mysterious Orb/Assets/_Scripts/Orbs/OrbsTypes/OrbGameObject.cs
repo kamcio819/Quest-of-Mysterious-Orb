@@ -11,12 +11,21 @@ public abstract class OrbGameObject<T> : OrbObject
     public T OrbData { get => orbData; set => orbData = value; }
 
     protected virtual void OnCollisionEnter(Collision collision) {
+        if(isSpawned) {
+            var enemyObject = collision.collider.GetComponent<EnemyObject>();
+            if(enemyObject != null) {
+                enemyObject.ProcessHitOrb(orbData);
+                gameObject.SetActive(false);
+            }
+        }
     }
     protected virtual void OnTriggerEnter(Collider collider) {
-        var enemyObject = collider.GetComponent<EnemyObject>();
-        if(enemyObject != null) {
-            gameObject.SetActive(false);
-            enemyObject.ProcessHitOrb(orbData);
+        if(isSpawned) {
+            var enemyObject = collider.GetComponent<EnemyObject>();
+            if(enemyObject != null) {
+                enemyObject.ProcessHitOrb(orbData);
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -34,17 +43,21 @@ public abstract class OrbGameObject : OrbObject
     public OrbData OrbData { get => orbData; set => orbData = value; }
 
     protected virtual void OnCollisionEnter(Collision collision) {
-        var enemyObject = collision.collider.GetComponent<EnemyObject>();
-        if(enemyObject != null) {
-            gameObject.SetActive(false);
-            enemyObject.ProcessHitOrb(orbData);
+        if(isSpawned) {
+            var enemyObject = collision.collider.GetComponent<EnemyObject>();
+            if(enemyObject != null) {
+                enemyObject.ProcessHitOrb(orbData);
+                gameObject.SetActive(false);
+            }
         }
     }
     protected virtual void OnTriggerEnter(Collider collider) {
-        var enemyObject = collider.GetComponent<EnemyObject>();
-        if(enemyObject != null) {
-            gameObject.SetActive(false);
-            enemyObject.ProcessHitOrb(orbData);
+        if(isSpawned) {
+            var enemyObject = collider.GetComponent<EnemyObject>();
+            if(enemyObject != null) {
+                enemyObject.ProcessHitOrb(orbData);
+                gameObject.SetActive(false);
+            }
         }
     }
 

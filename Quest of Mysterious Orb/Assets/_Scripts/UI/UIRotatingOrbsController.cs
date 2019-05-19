@@ -8,6 +8,9 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
     [SerializeField]
     private List<PlayerOrbSlot> playerOrbSlots;
 
+    [SerializeField]
+    private float angleRotation = 35f;
+
     private int index = 0;
     public void OnIDisable()
     {
@@ -36,7 +39,7 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
 
     public void OnIUpdate()
     {
-        transform.RotateAround(transform.position, Vector3.up, 35f * Time.deltaTime);
+        transform.RotateAround(transform.position, Vector3.up, angleRotation * Time.deltaTime);
     }
 
     public void OnIAwake() {

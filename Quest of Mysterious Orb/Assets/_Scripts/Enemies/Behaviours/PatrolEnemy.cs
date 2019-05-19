@@ -97,16 +97,17 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
-       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
-       objectToSpawn.transform.position = gameObject.transform.position;
-       StartCoroutine(DieBehaviour());
+        var position = gameObject.transform.position;
+        StartCoroutine(DieBehaviour(position));
     }
 
-    private IEnumerator DieBehaviour()
+    private IEnumerator DieBehaviour(Vector3 position)
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.5f);
         this.gameObject.SetActive(false);
+        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        objectToSpawn.transform.position = position;
     }
 }

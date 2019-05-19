@@ -73,7 +73,6 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         direction.y = 0;
         Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, direction) * transform.rotation;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
-        Debug.Log(quaternionToRotate.x);
         enemyAnimator.SetFloat("X", Mathf.Clamp(quaternionToRotate.x, -1, 1));
     }
 
@@ -112,18 +111,19 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         HitEffect.Play();
     }
 
-   private void Die()
+    private void Die()
     {
-       var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
-       objectToSpawn.transform.position = gameObject.transform.position;
-       StartCoroutine(DieBehaviour());
+        var position = gameObject.transform.position;
+        StartCoroutine(DieBehaviour(position));
     }
 
-    private IEnumerator DieBehaviour()
+    private IEnumerator DieBehaviour(Vector3 position)
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.5f);
         this.gameObject.SetActive(false);
+        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        objectToSpawn.transform.position = position;
     }
 } 

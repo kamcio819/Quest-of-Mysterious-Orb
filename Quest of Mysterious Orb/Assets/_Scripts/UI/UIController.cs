@@ -37,6 +37,6 @@ public class UIController : ExecutableController, IEnableable, IDisaable, IUpdat
     }
 
     public void RemoveHealthFromBar(float value) {
-        healthBar.fillAmount -= value / 100;
+        healthBar.fillAmount = value/100;
     }
 }
