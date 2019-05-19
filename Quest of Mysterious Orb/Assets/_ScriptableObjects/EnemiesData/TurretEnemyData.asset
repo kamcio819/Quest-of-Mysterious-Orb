@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39bcde45305064243b0387e2103cc229, type: 3}
   m_Name: TurretEnemyData
   m_EditorClassIdentifier: 
-  enemyType: 0
-  enemyDamage: 2
+  enemyType: 2
+  enemyDamage: 15
   enemyHealth: 100
   rotateFactor: 1.5
   shootingCooldown: 1.8
   shotTimer: 1.1
-  lookRadius: 25
+  lookRadius: 10
   rotationSpeed: 5
   timer: 1.25

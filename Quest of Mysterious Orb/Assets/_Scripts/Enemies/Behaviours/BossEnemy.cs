@@ -55,12 +55,16 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
                     Shoot();
                     timer = 0;
                 }
+ 
+            }
+            else {
+                enemyAnimator.SetBool("Attack", false);
             }
         }       
     }
 
     private void Shoot() {
-       
+        enemyAnimator.SetBool("Attack", true);
     }
 
     private void FaceTarget()
@@ -69,6 +73,8 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         direction.y = 0;
         Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, direction) * transform.rotation;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+        Debug.Log(quaternionToRotate.x);
+        enemyAnimator.SetFloat("X", Mathf.Clamp(quaternionToRotate.x, -1, 1));
     }
 
     public void OnILateUpdate()
@@ -101,6 +107,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
 
     private void Hit()
     {
+        enemyAnimator.SetTrigger("HitFromBack");
         HitEffect.time = 0;
         HitEffect.Play();
     }

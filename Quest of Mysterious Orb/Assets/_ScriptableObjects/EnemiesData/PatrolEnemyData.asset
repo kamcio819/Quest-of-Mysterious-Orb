@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PatrolEnemyData
   m_EditorClassIdentifier: 
   enemyType: 0
-  enemyDamage: 1
+  enemyDamage: 10
   enemyHealth: 100
   movingSpeed: 1.52
   waitIdleTime: 1.43

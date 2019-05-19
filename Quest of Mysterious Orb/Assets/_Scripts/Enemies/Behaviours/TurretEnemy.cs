@@ -45,7 +45,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
             else {
                 targetLocked = false;
             }
-
+            Debug.Log(distance + " " + targetLocked);
             if (targetLocked)
             {
                 FaceTarget();
@@ -57,14 +57,13 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
                 }
             }
             else {
-                enemyAnimator.SetBool("isShooting", false);
             }
         }       
     }
 
     private void Shoot()
     {
-        enemyAnimator.SetBool("isShooting", true);
+        enemyAnimator.SetTrigger("isShooting");
     }
 
     private void FaceTarget()
@@ -117,6 +116,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private IEnumerator DieBehaviour()
     {
+        DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.5f);
         this.gameObject.SetActive(false);

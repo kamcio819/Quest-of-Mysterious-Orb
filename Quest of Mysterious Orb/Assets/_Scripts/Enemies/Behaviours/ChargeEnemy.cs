@@ -13,7 +13,10 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     [SerializeField]
     private Transform target;
 
+    private float time;
+
     private void OnEnable() {
+        time = 0f;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -28,16 +31,35 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     public void OnIUpdate()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-        if(distance < 15f) {  
-            Vector3 direction = target.position - transform.position;
-            direction.y = 0;
-            rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
+        enemyAnimator.SetBool("isMoving", false);
+        enemyAnimator.SetBool("isAttacking", false);
 
-            Vector3 dir = (target.position - transform.position).normalized;
-            dir.y = 0;
-            Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+        float distance = Vector3.Distance(target.position, transform.position);
+        if(distance < 15f) {
+            time += Time.deltaTime;
+
+            enemyAnimator.SetBool("isMoving", true);
+            enemyAnimator.SetBool("isAttacking", false);
+
+            if(time < 5f) {
+
+                time = 0f;
+                Vector3 dir = (target.position - transform.position).normalized;
+                dir.y = 0;
+                Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+
+                Vector3 direction = target.position - transform.position;
+                direction.y = 0;
+                rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;
+
+                if(direction.x < 0.5f || direction.z < 0.5f) {
+                    enemyAnimator.SetBool("isAttacking", true);
+                    enemyAnimator.SetBool("isMoving", false);
+                }
+                
+            }
+            
         }
     }
 
@@ -69,6 +91,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void Hit()
     {
+        enemyAnimator.SetTrigger("isHit");
         HitEffect.time = 0;
         HitEffect.Play();
     }

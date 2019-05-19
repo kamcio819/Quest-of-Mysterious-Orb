@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f0c090269ccc047af21c06b44c1d4c, type: 3}
   m_Name: BossEnemyData
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 3
   enemyDamage: 20
   enemyHealth: 100
   rotateFactor: 1.9
   shootingCooldown: 2
   shotTimer: 2.19
-  lookRadius: 13.99
+  lookRadius: 12.1
   rotationSpeed: 4.37
   timer: 1

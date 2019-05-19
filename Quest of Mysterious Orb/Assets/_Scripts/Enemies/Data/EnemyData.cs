@@ -6,7 +6,8 @@ public enum EnemyType
 {
     PATROL,
     CHARGE,
-    TURRET
+    TURRET,
+    BOSS
 }
 
 public class EnemyData : Data
