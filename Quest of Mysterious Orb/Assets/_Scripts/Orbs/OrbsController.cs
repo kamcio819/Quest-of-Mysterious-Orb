@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
-    [SerializeField]
-    private List<OrbObject> orbsList;
+    private List<OrbObject> orbsList = new List<OrbObject>();
 
     public List<OrbObject> OrbsList { get => orbsList; set => orbsList = value; }
 
@@ -40,9 +39,7 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
         }
     }
     
-    public void OnILateUpdate() {
-
-    }
+    public void OnILateUpdate() {}
 
     public void AddToOrbList(OrbGameObject orbObject) {
         orbsList.Add(orbObject);
@@ -52,12 +49,7 @@ public class OrbsController : ExecutableController, IUpdatable, IEnableable, IDi
         orbsList.Remove(orbObject);
     }
 
-    private void SpawnOrb(bool isActive) {
-        
-    }
+    private void SpawnOrb(bool isActive) {}
 
-   public void OnIUpdate()
-   {
-      
-   }
+    public void OnIUpdate() {}
 }

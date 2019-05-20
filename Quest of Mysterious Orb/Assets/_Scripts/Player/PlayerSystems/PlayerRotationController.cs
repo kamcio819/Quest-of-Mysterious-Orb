@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Transform))]
-public class PlayerRotationController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable, ILateUpdatable
+public class PlayerRotationController : ExecutableController<InputData, MovementData>, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
     [SerializeField]
     private Transform playerTransform;
@@ -22,20 +22,18 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
     public Vector3 DeltaCursor { get => deltaCursor; set => deltaCursor = value; }
     public static Vector3 CursorPosition { get => cursorPosition; set => cursorPosition = value; }
 
+    public void OnIAwake() {}
+
     public void OnIEnable()
     {
         InputController.mouseInputProvide += RotatePlayer;
     }
-    public void OnIUpdate()
-    {
-        
-    }
+    public void OnIUpdate() {}
 
     public void OnIDisable()
     {    
         InputController.mouseInputProvide -= RotatePlayer;
     }
-
 
     private void RotatePlayer(Vector2 input) {
        if(input != Vector2.zero) {
@@ -57,17 +55,5 @@ public class PlayerRotationController : ExecutableController<InputData, Movement
        }
     }
 
-    private void OnDrawGizmos() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 50f, layerMask))
-        {
-            Gizmos.DrawCube(new Vector3(hit.point.x, transform.position.y, hit.point.z), new Vector3(1, 1, 1));
-        }
-
-    }
-
-    public void OnILateUpdate() {
-
-    }
+    public void OnILateUpdate() {}
 }

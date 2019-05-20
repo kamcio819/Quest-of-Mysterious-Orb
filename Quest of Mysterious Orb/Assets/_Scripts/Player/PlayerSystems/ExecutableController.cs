@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ExecutableController : Controller
-{
-
-}
+public abstract class ExecutableController : Controller {}
 
 public abstract class ExecutableController<T> : Controller
     where T : Data

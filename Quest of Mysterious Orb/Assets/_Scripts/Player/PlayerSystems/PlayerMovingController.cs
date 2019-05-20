@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovingController : ExecutableController<MovementData>, IUpdatable, IDisaable, IEnableable, ILateUpdatable
+public class PlayerMovingController : ExecutableController<MovementData>, IUpdatable, IDisaable, IEnableable, ILateUpdatable, IAwakable
 {
     [SerializeField]
     private CharacterController characterController;
 
+    public void OnIAwake() {}
 
     public void OnIEnable() {
         InputController.keyboardInputProvide += MoveInputProvided;
     }
 
-    public void OnIUpdate() {
-    }
+    public void OnIUpdate() { }
 
     public void OnIDisable() {
         InputController.keyboardInputProvide -= MoveInputProvided;
@@ -27,7 +27,5 @@ public class PlayerMovingController : ExecutableController<MovementData>, IUpdat
         characterController.Move(moveInput);
     }
 
-    public void OnILateUpdate()
-    {
-    }
+    public void OnILateUpdate() {}
 }

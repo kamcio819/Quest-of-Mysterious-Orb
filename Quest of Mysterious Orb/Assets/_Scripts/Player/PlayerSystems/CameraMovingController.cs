@@ -23,17 +23,11 @@ public class CameraMovingController : ExecutableController<InputData, MovementDa
     public void OnIAwake() {
         transform.position = bodyTransform.position +  offset;
     }
-    public void OnIUpdate() {
-        
-    }
+    public void OnIUpdate() {}
 
-    public void OnIDisable() {
+    public void OnIDisable() {}
 
-    }
-
-    public void OnIEnable() {
-
-    }
+    public void OnIEnable() {}
 
     public void OnILateUpdate()
     {

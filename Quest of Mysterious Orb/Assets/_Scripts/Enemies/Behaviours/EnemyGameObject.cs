@@ -13,7 +13,7 @@ public abstract class EnemyGameObject<T> : EnemyObject
     protected virtual void OnCollisionEnter(Collision collision) {
        
     }
-    protected virtual void OnTriggerEneter(Collider collider) {
+    protected virtual void OnTriggerEnter(Collider collider) {
        
     }
 
@@ -33,7 +33,7 @@ public abstract class EnemyGameObject: EnemyObject
     protected virtual void OnCollisionEnter(Collision collision) {
 
     }
-    protected virtual void OnTriggerEneter(Collider collider) {
+    protected virtual void OnTriggerEnter(Collider collider) {
 
     }
 

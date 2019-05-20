@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
-    private List<EnemyObject> enemiesObject;
+    private List<EnemyObject> enemiesObject = new List<EnemyObject>();
     public List<EnemyObject> EnemiesObject { get => enemiesObject; set => enemiesObject = value; }
 
     [SerializeField]

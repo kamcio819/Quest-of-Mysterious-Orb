@@ -16,9 +16,6 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
     private UIRotatingOrbsController uIRotatingOrbsController;
 
     private OrbObject currentSelectedOrb;
-
-
-    ///TODO: CHANGE CHANGEING CURRENT SELECTED ORB
     public List<OrbObject> InventoryOrbs { get => inventoryOrbs; set => inventoryOrbs = value; }
     public OrbObject CurrentSelectedOrb { get => GetCurrentSelectedOrb(); set => currentSelectedOrb = value; }
 
@@ -32,18 +29,11 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
         PlayerCollisionController.OrbCollected += ProcessOrbCollection;
     }
 
-    public void OnIUpdate()
-    {
+    public void OnIUpdate() {}
 
-    }
+    public void OnILateUpdate() {}
 
-    public void OnILateUpdate() {
-
-    }
-
-    public void OnIAwake() {
-
-    }
+    public void OnIAwake() {}
 
     private void ProcessOrbCollection(OrbObject obj)
     {

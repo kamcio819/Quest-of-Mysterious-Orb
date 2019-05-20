@@ -10,10 +10,7 @@ public class SystemManager : Singleton<SystemManager>
 
     private void Awake() {
         controllers.ForEach((x) =>  {
-            var xd = x as IAwakable;
-            if(xd != null) {
-                xd.OnIAwake();
-            }
+            (x as IAwakable).OnIAwake();
         });
     }
 

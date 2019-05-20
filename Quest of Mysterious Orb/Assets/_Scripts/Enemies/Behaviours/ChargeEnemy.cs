@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
-    // RED ORB
     [SerializeField]
     private Rigidbody rigidbodyComponet;
 
@@ -17,7 +16,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void OnEnable() {
         time = 0f;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;      
     }
 
  
@@ -25,8 +24,13 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     {
     }
 
-    protected override void OnTriggerEneter(Collider collider)
+    protected override void OnTriggerEnter(Collider collider)
     {
+        base.OnTriggerEnter(collider);
+        var player = collider.GetComponent<PlayerObject>();
+        if(player != null) {
+            rigidbodyComponet.AddTorque(transform.up * 80f);
+        }  
     }
 
     public void OnIUpdate()
@@ -36,30 +40,22 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance < 15f) {
-            time += Time.deltaTime;
 
             enemyAnimator.SetBool("isMoving", true);
             enemyAnimator.SetBool("isAttacking", false);
 
-            if(time < 5f) {
+            Vector3 dir = (target.position - transform.position).normalized;
+            dir.y = 0;
+            Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
 
-                time = 0f;
-                Vector3 dir = (target.position - transform.position).normalized;
-                dir.y = 0;
-                Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, dir) * transform.rotation;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+            rigidbodyComponet.velocity += dir * EnemyData.MovingSpeed * Time.deltaTime;
 
-                Vector3 direction = target.position - transform.position;
-                direction.y = 0;
-                rigidbodyComponet.velocity += direction / 2f * 0.5f * Time.deltaTime;
-
-                if(direction.x < 0.5f || direction.z < 0.5f) {
-                    enemyAnimator.SetBool("isAttacking", true);
-                    enemyAnimator.SetBool("isMoving", false);
-                }
-                
+            if(dir.x < 0.5f || dir.z < 0.5f) {
+                enemyAnimator.SetBool("isAttacking", true);
+                enemyAnimator.SetBool("isMoving", false);
             }
-            
+                                    
         }
     }
 
@@ -106,7 +102,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.transform.position = position;

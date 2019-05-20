@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InputController : ExecutableController<InputData>, IUpdatable, ILateUpdatable, IDisaable, IEnableable
+public class InputController : ExecutableController<InputData>, IUpdatable, ILateUpdatable, IDisaable, IEnableable, IAwakable
 {
     public static Action<Vector2> keyboardInputProvide;
     public static Action<Vector2> mouseInputProvide;
@@ -15,9 +15,8 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
     private Vector2 keyboardInput = Vector2.zero;
     private Vector2 mouseInput = Vector2.zero;
 
-    public void OnIEnable() {
-
-    }
+    public void OnIAwake() {}
+    public void OnIEnable() {}
 
     public void OnIUpdate() {
         mouseInput.x = Input.GetAxis("Horizontal") * Time.deltaTime;
@@ -83,12 +82,7 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
            
     }
 
-    public void OnIDisable() {
-        
-    }
+    public void OnIDisable() {}
 
-    public void OnILateUpdate()
-    {
-
-    }
+    public void OnILateUpdate() {}
 }

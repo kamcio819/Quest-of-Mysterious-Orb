@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerCollisionController : ExecutableController, IEnableable, IUpdatable, IDisaable, ILateUpdatable
+public class PlayerCollisionController : ExecutableController, IEnableable, IUpdatable, IDisaable, ILateUpdatable, IAwakable
 {
    [SerializeField]
    private PlayerObject playerObject;
@@ -12,6 +12,19 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
 
    [SerializeField]
    private UIController uIController;
+
+   [SerializeField]
+   private List<Renderer> renderers;
+
+   private Shader normalShader;
+   private Shader transparentShader;
+
+   public void OnIAwake()
+   {
+        normalShader = Shader.Find("Standard");
+        transparentShader = Shader.Find("Transparent/Diffuse");
+   }
+
 
    public void OnIDisable()
    {
@@ -56,10 +69,28 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
       var enemyCollided = other.GetComponent<EnemyObject>();
       if(enemyCollided != null) {
          playerObject.HealthPlayer -= enemyCollided.GetData().EnemyDamage;
+         GetDamage();
          uIController.RemoveHealthFromBar(playerObject.HealthPlayer);
          if(playerObject.HealthPlayer < 0f) {    
             Die();
          }
+      }
+   }
+
+   private void GetDamage() {
+      StartCoroutine(TransparencyToggle());
+   }
+
+   private IEnumerator TransparencyToggle() {
+      for(float i = 0; i < 1.3f; i += Time.deltaTime) {
+         for(int j = 0; j < renderers.Count; ++j) {
+            renderers[j].material.shader = transparentShader;
+         }
+         yield return new WaitForEndOfFrame();
+         for(int j = 0; j < renderers.Count; ++j) {
+            renderers[j].material.shader = normalShader;
+         }
+         yield return new WaitForEndOfFrame();
       }
    }
 }

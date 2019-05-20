@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
-    // BLUE ORB
     [SerializeField]
     private Transform target;
 
@@ -24,7 +23,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
         
     }
 
-    protected override void OnTriggerEneter(Collider collider)
+    protected override void OnTriggerEnter(Collider collider)
     {
         
     }
@@ -116,7 +115,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.transform.position = position;

@@ -29,7 +29,6 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             yield return new WaitForSeconds(10);
             chunk = currentPlayerChunk.GetComponent<Chunk>();
-
             foreach (Transform spawn in chunk.spawnerPoints)
             {
                 if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)

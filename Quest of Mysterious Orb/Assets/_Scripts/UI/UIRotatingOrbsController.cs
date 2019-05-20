@@ -22,9 +22,7 @@ public class UIRotatingOrbsController : ExecutableController<MovementData>, IEna
         InputController.mouseScrollWheelMoved += ChooseSpecificOrb;
     }
 
-    public void OnILateUpdate()
-    {
-    }
+    public void OnILateUpdate() {}
 
     private void ChooseSpecificOrb (float deltaValue) {
         playerOrbSlots[index].DeactivateOrb();

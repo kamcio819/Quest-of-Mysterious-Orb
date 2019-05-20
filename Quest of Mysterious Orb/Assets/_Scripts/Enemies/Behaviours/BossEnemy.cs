@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdatable, IFixedUpdateable, IEnableable, IDisaable
 {
-    // BLUE ORB
     [SerializeField]
     private Transform target;
 
@@ -20,7 +19,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         
     }
 
-    protected override void OnTriggerEneter(Collider collider)
+    protected override void OnTriggerEnter(Collider collider)
     {
         
     }
@@ -121,7 +120,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     {
         DestroyEffect.time = 0;
         DestroyEffect.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.transform.position = position;
