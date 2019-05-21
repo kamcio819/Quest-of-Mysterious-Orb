@@ -3,7 +3,22 @@ guid: 11d374846b8baca4c8fb8724a803eb56
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: copper
+    second: {fileID: 2100000, guid: 442d15a67ca037e428d80f7ed5c841d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 5e6e2c13f40062c4a925268cb6c36501, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: steam
+    second: {fileID: 2100000, guid: 5e6e2c13f40062c4a925268cb6c36501, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
