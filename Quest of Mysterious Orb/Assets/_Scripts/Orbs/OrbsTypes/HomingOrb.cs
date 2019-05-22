@@ -22,15 +22,9 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
       timeTaken = 0f;
    }
 
-   public void OnIDisable()
-   {
-      
-   }
+   public void OnIDisable() {}
 
-   public void OnIEnable()
-   {
-      
-   }
+   public void OnIEnable() {}
 
    private void OnEnable() {
       timeTaken = 0f;
@@ -67,8 +61,5 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
       return this;
    }
 
-   public void OnIUpdate()
-   {
-      
-   }
+   public void OnIUpdate() {}
 }

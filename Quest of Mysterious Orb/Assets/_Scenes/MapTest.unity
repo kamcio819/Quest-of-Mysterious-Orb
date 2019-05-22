@@ -551,47 +551,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[1]
+      propertyPath: controllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 3931239880161729331}
+    - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
+        type: 3}
+      propertyPath: controllers.Array.data[2]
       value: 
       objectReference: {fileID: 156397323}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[3]
+      propertyPath: controllers.Array.data[4]
       value: 
       objectReference: {fileID: 2046012096}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[4]
+      propertyPath: controllers.Array.data[5]
       value: 
       objectReference: {fileID: 568808173441797842}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[5]
+      propertyPath: controllers.Array.data[6]
       value: 
       objectReference: {fileID: 568808173569815580}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[6]
+      propertyPath: controllers.Array.data[7]
       value: 
       objectReference: {fileID: 568808173808352084}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[7]
+      propertyPath: controllers.Array.data[8]
       value: 
       objectReference: {fileID: 568808173830652516}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[8]
+      propertyPath: controllers.Array.data[9]
       value: 
       objectReference: {fileID: 4043374522325664836}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[9]
+      propertyPath: controllers.Array.data[10]
       value: 
       objectReference: {fileID: 5775138983254099258}
     - target: {fileID: 6681723406953313825, guid: c07e03f8f53e6434d8c905d18d80bb8f,
         type: 3}
-      propertyPath: controllers.Array.data[10]
+      propertyPath: controllers.Array.data[11]
       value: 
       objectReference: {fileID: 7299824934247554577}
     - target: {fileID: 8490692926007801841, guid: c07e03f8f53e6434d8c905d18d80bb8f,
@@ -1201,7 +1206,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.5e-44, z: 4.6774e-41, w: 1.02e-43}
+  m_BoundingSphereOverride: {x: 0, y: 3.6661646e+18, z: -2.535282e-23, w: 0.000000038466258}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1685,6 +1690,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93a0dcc3da1fe95448c404ceee06e30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3931239880161729331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3931239880161729331, guid: 402e4b2f513cc804ca6c309a6b40903f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5086916146322945093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334d1e074ccd93e4a8dfd1043d25a870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4043374522325664836 stripped

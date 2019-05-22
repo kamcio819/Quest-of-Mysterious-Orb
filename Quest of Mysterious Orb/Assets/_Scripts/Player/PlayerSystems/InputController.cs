@@ -11,6 +11,7 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
     public static Action<bool> mouseLeftButtonClicked;
     public static Action<float> mouseScrollWheelMoved;
     public static Action<bool> mouseScrollWheelClicked;
+    public static Action<bool> mouseRightButtonPressed;
 
     private Vector2 keyboardInput = Vector2.zero;
     private Vector2 mouseInput = Vector2.zero;
@@ -76,6 +77,24 @@ public class InputController : ExecutableController<InputData>, IUpdatable, ILat
                 mouseLeftButtonClicked(true);
             }
         }
+
+        if(Input.GetMouseButtonUp(1)) {
+            if(mouseRightButtonClicked != null) {
+                mouseRightButtonClicked(true);
+            }
+        }
+
+        if(Input.GetMouseButton(1)) {
+            if(mouseRightButtonPressed != null) {
+                mouseRightButtonPressed(true);
+            }
+        }
+        else {
+            if(mouseRightButtonPressed != null) {
+                mouseRightButtonPressed(false);
+            }
+        }
+
         if(mouseScrollWheelMoved != null) {
             mouseScrollWheelMoved(Input.mouseScrollDelta.y);
         }
