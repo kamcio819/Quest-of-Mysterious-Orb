@@ -1187,7 +1187,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &6290842877958195394
 GameObject:
@@ -1924,8 +1924,7 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114826195859974090, guid: ec1383a81f8b26e41bd5795fba065567, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec1383a81f8b26e41bd5795fba065567, type: 3}
 --- !u!4 &1588354687920203535 stripped
 Transform:
@@ -2051,8 +2050,7 @@ PrefabInstance:
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114657699975798574, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
 --- !u!4 &5905223656596891250 stripped
 Transform:

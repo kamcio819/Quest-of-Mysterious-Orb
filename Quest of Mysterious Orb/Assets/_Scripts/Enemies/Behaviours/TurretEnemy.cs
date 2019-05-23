@@ -11,6 +11,12 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     [SerializeField]
     private LayerMask layerMask;
 
+    [SerializeField]
+    private Transform projectileSpawn;
+
+    [SerializeField]
+    private EnemyController enemyController;
+
     private bool targetLocked = false;
     private float timer = 0f;
 
@@ -62,6 +68,12 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     private void Shoot()
     {
         enemyAnimator.SetTrigger("isShooting");
+        var projectile = MyObjectPoolManager.Instance.GetObject("Projectile", true);
+        projectile.transform.position = projectileSpawn.position;
+        projectile.transform.rotation = projectileSpawn.rotation;
+        projectile.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        projectile.GetComponent<TurretProjectile>().isSpawned = true;
+        enemyController.EnemiesObject.Add(projectile.GetComponent<TurretProjectile>());
     }
 
     private void FaceTarget()

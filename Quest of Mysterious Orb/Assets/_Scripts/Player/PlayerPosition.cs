@@ -50,24 +50,22 @@ public class PlayerPosition : MonoBehaviour
         }
     }
         
-
-
-        private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
         {
-            Gizmos.color = Color.blue;
-            {
-                Vector3 centerOfRactangle = PositionDetector.offset;
+            Vector3 centerOfRactangle = PositionDetector.offset;
 
-                float alpha = transform.rotation.eulerAngles.y;
-                float sin = Mathf.Sin(alpha * Mathf.PI / 180);
-                float cos = Mathf.Cos(alpha * Mathf.PI / 180);
+            float alpha = transform.rotation.eulerAngles.y;
+            float sin = Mathf.Sin(alpha * Mathf.PI / 180);
+            float cos = Mathf.Cos(alpha * Mathf.PI / 180);
 
 
-                Vector3 size = PositionDetector.size;
+            Vector3 size = PositionDetector.size;
 
 
-                Gizmos.DrawCube(new Vector3(centerOfRactangle.z * cos + centerOfRactangle.x * sin, centerOfRactangle.y, centerOfRactangle.x * cos - centerOfRactangle.z * sin) + transform.position,
-                    Mathf.Abs(sin) > 0.9f ? new Vector3(PositionDetector.size.z, PositionDetector.size.y, PositionDetector.size.x) : new Vector3(PositionDetector.size.x, PositionDetector.size.y, PositionDetector.size.z));
-            }
+            Gizmos.DrawCube(new Vector3(centerOfRactangle.z * cos + centerOfRactangle.x * sin, centerOfRactangle.y, centerOfRactangle.x * cos - centerOfRactangle.z * sin) + transform.position,
+                Mathf.Abs(sin) > 0.9f ? new Vector3(PositionDetector.size.z, PositionDetector.size.y, PositionDetector.size.x) : new Vector3(PositionDetector.size.x, PositionDetector.size.y, PositionDetector.size.z));
         }
+    }
     }

@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : ExecutableController, IUpdatable, IEnableable, IDisaable, ILateUpdatable, IAwakable
 {
+    [SerializeField]
     private List<EnemyObject> enemiesObject = new List<EnemyObject>();
     public List<EnemyObject> EnemiesObject { get => enemiesObject; set => enemiesObject = value; }
 
@@ -13,6 +15,9 @@ public class EnemyController : ExecutableController, IUpdatable, IEnableable, ID
     [SerializeField]
     private List<GameObject> patrolToSpawn;
 
+    [SerializeField]
+    private GameObject projectile;
+
     public void OnIAwake()
     { 
         enemiesObject = new List<EnemyObject>();
@@ -21,7 +26,8 @@ public class EnemyController : ExecutableController, IUpdatable, IEnableable, ID
         } 
         for(int i = 0 ; i < patrolToSpawn.Count; ++i) {
             MyObjectPoolManager.Instance.CreatePoolIfNotExists(patrolToSpawn[i].gameObject, 20, 50);
-        } 
+        }
+        MyObjectPoolManager.Instance.CreatePoolIfNotExists(projectile, 20, 50); 
     }
 
     public void OnIDisable()
@@ -31,6 +37,14 @@ public class EnemyController : ExecutableController, IUpdatable, IEnableable, ID
                     (enemiesObject[i] as IDisaable).OnIDisable();
                 }
         }
+    }
+
+    public void DeactivateUnUsed()
+    {
+        for(int i = 0; i < enemiesObject.Count; ++i) {
+            enemiesObject[i].gameObject.SetActive(false);
+        }
+        enemiesObject.Clear();
     }
 
     public void OnIEnable()
@@ -56,6 +70,11 @@ public class EnemyController : ExecutableController, IUpdatable, IEnableable, ID
         if(enemiesObject.Count != 0) {
             for(int i = 0; i < enemiesObject.Count; ++i) {
                 (enemiesObject[i] as IUpdatable).OnIUpdate();
+            }
+        }
+        if(patrolToSpawn.Count != 0) {
+            for(int i = 0; i < patrolToSpawn.Count; ++i) {
+                (patrolToSpawn[i].GetComponentInChildren<PatrolEnemy>() as IUpdatable).OnIUpdate();
             }
         }
     }

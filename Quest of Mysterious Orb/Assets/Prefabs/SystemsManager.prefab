@@ -88,12 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59bc8393e9a51f46b4c5a859a106239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesObject: []
   enemiesToSpawn:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   patrolToSpawn:
   - {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!114 &394306756
 MonoBehaviour:
   m_ObjectHideFlags: 0

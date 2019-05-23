@@ -24,7 +24,7 @@ public class OrbData : Data {
     private float cooldownTime;
 
    [SerializeField]
-   [Range(0f, 10f)]
+   [Range(0f, 50f)]
    private float damageGiven;
 
 

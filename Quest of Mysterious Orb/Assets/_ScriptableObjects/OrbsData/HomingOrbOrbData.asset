@@ -17,5 +17,5 @@ MonoBehaviour:
     type: 3}
   orbRenderTexture: {fileID: 8400000, guid: 971dd72f582c09d429e64eebe14e8c28, type: 2}
   cooldownTime: 2.75
-  damageGiven: 3
+  damageGiven: 35
   movingSpeed: 1.5

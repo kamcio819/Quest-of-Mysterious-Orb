@@ -55,17 +55,29 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     public void OnIUpdate()
     {
-        float distance = Vector3.Distance(transform.position, target.position);
-        if(distance > 6f) {
-            transform.position = Vector3.Lerp(transform.position, points[index].position, (EnemyData as PatrolEnemyData).MovingSpeed * Time.deltaTime);
-            if(Vector3.Distance(transform.position, points[index].position) < 2f) { 
-                index++;
-                index %= 3;
+        if(isSpawned) {
+            float distance = Vector3.Distance(transform.position, target.position);
+            if(distance > 6f) {
+                enemyAnimator.SetBool("isMoving", true);
+                enemyAnimator.SetBool("isShooting", false);
+                RotateTowardsPoint(points[index].position, 5f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, points[index].position, (EnemyData as PatrolEnemyData).MovingSpeed * Time.deltaTime);
+                if(Vector3.Distance(transform.position, points[index].position) < 1f) { 
+                    index++;
+                    index %= 3;
+                }
             }
-        }
-        else {
-            if(distance > 2.5f) {
-                transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * (EnemyData as PatrolEnemyData).MovingSpeed/2);
+            else {
+                if(distance > 0.5f) {
+                    enemyAnimator.SetBool("isShooting", false);
+                    enemyAnimator.SetBool("isMoving", true);
+                    RotateTowardsPoint(target.position, 10f * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, (EnemyData as PatrolEnemyData).MovingSpeed * Time.deltaTime);
+                }
+                else {
+                    enemyAnimator.SetBool("isMoving", false);
+                    enemyAnimator.SetBool("isShooting", true);
+                }
             }
         }
     }
@@ -90,6 +102,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private void Hit()
     {
+        enemyAnimator.SetTrigger("isHit");
         HitEffect.time = 0;
         HitEffect.Play();
     }

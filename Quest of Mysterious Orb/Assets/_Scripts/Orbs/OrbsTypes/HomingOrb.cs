@@ -16,7 +16,14 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
 
    private float timeTaken;
 
-   public EnemyObject NearestEnemyObject { get => closestEnemy.ClosestEnemy; }
+   public EnemyObject NearestEnemyObject { get => GetNearest(); }
+
+   private EnemyObject GetNearest() {
+      if(closestEnemy != null) 
+         return closestEnemy.ClosestEnemy;
+      else 
+         return null;
+   }
 
    public void OnIAwake() {
       timeTaken = 0f;
@@ -34,7 +41,6 @@ public class HomingOrb : OrbGameObject<HomingOrbData>, IEnableable, IUpdatable, 
    {
       if(isSpawned) {
          if(NearestEnemyObject != null) {
-            GetComponent<SphereCollider>().radius = 20f;
             timeTaken += Time.deltaTime;
             Vector3 direction = NearestEnemyObject.transform.position - transform.position;
             rigidbodyComponet.velocity += direction * 0.5f * Time.deltaTime;

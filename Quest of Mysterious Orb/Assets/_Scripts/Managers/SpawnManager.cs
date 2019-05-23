@@ -15,8 +15,12 @@ public class SpawnManager : Singleton<SpawnManager>
     private int DronsPerDwarf;
 
     private Chunk chunk;
+    private Chunk prevChunk;
 
     private Transform enemy;
+
+    private bool turretsOnce = false;
+    private int waveCounter = 0;
     
     public void StartEnemySpawn()
     {
@@ -25,36 +29,66 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private IEnumerator Ressurect()
     {
+        yield return new WaitUntil(() => currentPlayerChunk != null);
+        prevChunk = currentPlayerChunk.GetComponent<Chunk>();
         while (true)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(10f);
             chunk = currentPlayerChunk.GetComponent<Chunk>();
-            foreach (Transform spawn in chunk.spawnerPoints)
-            {
-                if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
-                {
-                    enemy = MyObjectPoolManager.Instance.GetObject("BossEnemy", true).transform;
-                }
-                else
-                {
-                    enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
-                }
-                enemy.transform.position = spawn.position;
-                enemy.GetComponent<EnemyObject>().isSpawned = true;
-                if(enemyController.EnemiesObject.Count <= 50) {
-                    enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
-                } 
+
+            if(chunk != prevChunk) {
+                prevChunk = chunk;
+                turretsOnce = false;
+                waveCounter = 0;
+                enemyController.DeactivateUnUsed();
             }
 
-            foreach (Transform spawn in chunk.spawnerPointsTurrets)
-            {
-                enemy = MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform;
-                enemy.transform.position = spawn.position;
-                enemy.GetComponent<EnemyObject>().isSpawned = true;
-                if(enemyController.EnemiesObject.Count <= 50) {
+            if(chunk != null) {
+                if(chunk.gameObject.name == "Arena(Clone)") {
+                    Transform spawnPoint = chunk.spawnerPoints[Random.Range(0, chunk.spawnerPoints.Length - 1)];
+                    enemy = MyObjectPoolManager.Instance.GetObject("BossEnemy", true).transform;
                     enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
-                } 
+                    enemy.GetComponent<EnemyObject>().isSpawned = true;
+                    enemy.transform.position = spawnPoint.position;
+                    break;
+                }
+                else {
+
+                    if(waveCounter < 3) {
+                        foreach (Transform spawn in chunk.spawnerPoints)
+                        {
+                            if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
+                            {
+                                enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
+                                enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
+                                enemy.GetComponent<EnemyObject>().isSpawned = true; 
+                            }
+                            else
+                            {
+                                enemy = MyObjectPoolManager.Instance.GetObject("PatrolEnemy", true).transform;
+                                enemyController.EnemiesObject.Add(enemy.GetComponentInChildren<EnemyObject>());
+                                enemy.GetComponentInChildren<EnemyObject>().isSpawned = true; 
+                            }
+                            enemy.transform.position = spawn.position;
+                        }
+                        waveCounter++;
+                    }
+
+                    if(!turretsOnce) {
+                        foreach (Transform spawn in chunk.spawnerPointsTurrets)
+                        {
+                            enemy = MyObjectPoolManager.Instance.GetObject("TurretEnemy", true).transform;
+                            enemy.transform.position = spawn.position;
+                            enemy.GetComponent<EnemyObject>().isSpawned = true;
+                            enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
+                        }
+                        turretsOnce = true;
+                    }
+                    
+
+                }
             }
+           
         }
     }
 }

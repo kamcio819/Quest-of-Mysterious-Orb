@@ -8,10 +8,15 @@ public class HomingClosestEnemy : MonoBehaviour
 
     public EnemyObject ClosestEnemy { get => closestEnemy; }
 
+    private bool locked = false;
+
     private void OnTriggerEnter(Collider other) {
-        var enemyObject = other.GetComponent<EnemyObject>();
-        if(enemyObject != null) {
-            closestEnemy = enemyObject;
+        if(!locked) {
+            var enemyObject = other.GetComponent<EnemyObject>();
+            if(enemyObject != null) {
+                locked = true;
+                closestEnemy = enemyObject;
+            }
         }
     }
 }
