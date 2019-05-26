@@ -17,21 +17,17 @@ public class AudioSwitcherController : MonoBehaviour
         {
             if (overLap.Length != 0)
             {
-                Debug.Log("HIT");
-                Debug.Log(overLap[0].name);
                 soundManager.playCombat = true;
                 soundManager.playCalm = false;
             }
             else
             {
-                Debug.Log("NOTHIGN");
                 soundManager.playCombat = false;
                 soundManager.playCalm = true;
             }
         }
         else
         {
-            Debug.Log("NOTHIGN");
             soundManager.playCombat = false;
             soundManager.playCalm = true;
         }
