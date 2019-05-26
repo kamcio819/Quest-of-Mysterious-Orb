@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1278432435176476166}
   - component: {fileID: 7566025956812305335}
   - component: {fileID: 7329297294397009694}
-  - component: {fileID: 1837482130}
+  - component: {fileID: 3373210402178029144}
   m_Layer: 0
   m_Name: ChargingEnemy
   m_TagString: Untagged
@@ -336,8 +336,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!135 &1837482130
-SphereCollider:
+--- !u!136 &3373210402178029144
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -346,9 +346,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0.08, y: 0.39, z: -0.09}
+  m_Radius: 0.62
+  m_Height: 1.76
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!1 &5877125647110242862
 GameObject:
   m_ObjectHideFlags: 0

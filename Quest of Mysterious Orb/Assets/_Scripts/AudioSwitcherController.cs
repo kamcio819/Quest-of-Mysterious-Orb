@@ -12,20 +12,28 @@ public class AudioSwitcherController : MonoBehaviour
 
     private void Update()
     {
-        if(Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size, transform.rotation, layerMask) != null)
+        Collider[] overLap = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size, transform.rotation, layerMask);
+        if(overLap != null)
         {
-            if (Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size, transform.rotation, layerMask).Length != 0)
-                    {
-                soundManager.PlayCombatMusic();
-                    }
+            if (overLap.Length != 0)
+            {
+                Debug.Log("HIT");
+                Debug.Log(overLap[0].name);
+                soundManager.playCombat = true;
+                soundManager.playCalm = false;
+            }
             else
-                    {
-                soundManager.PlayCalmMusic();
-                    }
+            {
+                Debug.Log("NOTHIGN");
+                soundManager.playCombat = false;
+                soundManager.playCalm = true;
+            }
         }
         else
         {
-            soundManager.PlayCalmMusic();
+            Debug.Log("NOTHIGN");
+            soundManager.playCombat = false;
+            soundManager.playCalm = true;
         }
     }
 }

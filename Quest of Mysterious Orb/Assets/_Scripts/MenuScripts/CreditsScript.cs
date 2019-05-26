@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System;
 
 public class CreditsScript : MonoBehaviour
 {
@@ -18,7 +19,18 @@ public class CreditsScript : MonoBehaviour
 
     void Start()
     {
+        videoPlayer.time = 66;
         StartCoroutine(PlayVideo());
+        videoPlayer.loopPointReached += LoopPoint;
+    }
+
+    private void LoopPoint(VideoPlayer source)
+    {
+        source.time = 66;
+    }
+
+    void Update() {
+        
     }
 
 

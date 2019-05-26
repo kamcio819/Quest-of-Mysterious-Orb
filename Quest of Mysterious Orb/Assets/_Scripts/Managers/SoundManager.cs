@@ -27,7 +27,7 @@ public class Sound
 public class SoundManager : Singleton<SoundManager>
 {
 
-    public bool play;
+    public bool playCombat;
     public bool playCalm;
 
     [SerializeField]
@@ -51,8 +51,6 @@ public class SoundManager : Singleton<SoundManager>
     private void Awake()
     {
         notOnBoss = true;
-
-
         foreach (Sound s in sounds)
         {
             s.Adjust();
@@ -62,21 +60,19 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Update()
     {
-        if(play)
+        if(playCombat && notOnBoss)
         {
             PlayCombatMusic();
-            play = false;
         }
-        if (playCalm)
+        if (playCalm && notOnBoss)
         {
             PlayCalmMusic();
-            playCalm = false;
         }
-        if(PlayerCharacter.currentPlayerChunk != null)
-        if (PlayerCharacter.currentPlayerChunk.name == "Arena(Clone)")
-        if (notOnBoss)
-            PlayBossMusic();
-
+        if(PlayerCharacter.currentPlayerChunk != null) {
+            if (PlayerCharacter.currentPlayerChunk.name == "Arena(Clone)") {
+                PlayBossMusic();
+            }
+        }
     }
 
     private void Play(Sound sound, AudioSource source)
@@ -110,16 +106,13 @@ public class SoundManager : Singleton<SoundManager>
         Stop(source);
     }
 
-
-    //Muzyka
-
     public void PlayCombatMusic()
     {
-           if(notOnBoss) SwitchMusic(0);
+           SwitchMusic(0);
     }
     public void PlayCalmMusic()
     {
-           if (notOnBoss) SwitchMusic(1);
+           SwitchMusic(1);
     }
 
     private void SwitchMusic(int type)
@@ -129,8 +122,6 @@ public class SoundManager : Singleton<SoundManager>
             if(PlayerCharacterSourceCalm.isPlaying)
             {
                 StartCoroutine(FadeOut(PlayerCharacterSourceCalm, PlayerCharacterSourceCombat, speed));
-               // StartCoroutine(FadeIn(PlayerCharacterSourceCombat, speed));
-
             }
         }
         else if(type == 1)
@@ -138,8 +129,6 @@ public class SoundManager : Singleton<SoundManager>
             if (PlayerCharacterSourceCombat.isPlaying)
             {
                 StartCoroutine(FadeOut(PlayerCharacterSourceCombat, PlayerCharacterSourceCalm, speed));
-               // StartCoroutine(FadeIn(PlayerCharacterSourceCalm, speed));
-
             }
         }
     }

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SkipIntro : MonoBehaviour
 {
-    public void ChangeScene()
+    private void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(Input.GetMouseButtonDown(0)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }   
     }
 }
 
