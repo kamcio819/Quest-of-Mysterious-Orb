@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +11,14 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField]
     private EnemyController enemyController;
 
+    [SerializeField]
+    private GameObject player;
+
 
     [SerializeField]
     private int DronsPerDwarf;
 
+   
     private Chunk chunk;
     private Chunk prevChunk;
 
@@ -26,6 +31,14 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         StartCoroutine(Ressurect());
     }
+
+    public void SpawnPlayer()
+    {
+        player.transform.position = new Vector3(0, 1, 0.84f);
+        player.GetComponent<PlayerObject>().HealthPlayer = 100f;
+        player.GetComponent<PlayerInventoryController>().ResetOrbs();
+    }
+
 
     private IEnumerator Ressurect()
     {
@@ -45,7 +58,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
             if(chunk != null) {
                 if(chunk.gameObject.name == "Arena(Clone)") {
-                    Transform spawnPoint = chunk.spawnerPoints[Random.Range(0, chunk.spawnerPoints.Length - 1)];
+                    Transform spawnPoint = chunk.spawnerPoints[UnityEngine.Random.Range(0, chunk.spawnerPoints.Length - 1)];
                     enemy = MyObjectPoolManager.Instance.GetObject("BossEnemy", true).transform;
                     enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
                     enemy.GetComponent<EnemyObject>().isSpawned = true;
@@ -57,7 +70,7 @@ public class SpawnManager : Singleton<SpawnManager>
                     if(waveCounter < 3) {
                         foreach (Transform spawn in chunk.spawnerPoints)
                         {
-                            if (Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
+                            if (UnityEngine.Random.Range(0, DronsPerDwarf) >= DronsPerDwarf - 1)
                             {
                                 enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
                                 enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());

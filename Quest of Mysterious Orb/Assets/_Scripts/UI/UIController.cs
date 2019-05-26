@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class UIController : ExecutableController, IEnableable, IDisaable, IUpdat
 
     [SerializeField]
     private Image healthBar;
+
+    [SerializeField]
+    private GameObject defeatInfo;
 
     private int index = 0;
 
@@ -32,5 +36,10 @@ public class UIController : ExecutableController, IEnableable, IDisaable, IUpdat
 
     public void RemoveHealthFromBar(float value) {
         healthBar.fillAmount = value/100;
+    }
+
+    public void DefeatInformation()
+    {
+        defeatInfo.SetActive(true);
     }
 }

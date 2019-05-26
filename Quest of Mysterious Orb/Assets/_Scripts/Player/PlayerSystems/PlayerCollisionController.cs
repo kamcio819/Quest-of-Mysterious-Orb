@@ -53,7 +53,7 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
 
    private void Die()
    {
-      //TODO
+      uIController.DefeatInformation();
    }
 
    private void OnTriggerEnter(Collider other) {

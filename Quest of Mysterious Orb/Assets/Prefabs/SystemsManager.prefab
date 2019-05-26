@@ -110,4 +110,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerChunk: {fileID: 0}
   enemyController: {fileID: 8490692926007801841}
+  player: {fileID: 0}
   DronsPerDwarf: 5

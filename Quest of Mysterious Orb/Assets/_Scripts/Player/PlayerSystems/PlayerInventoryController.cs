@@ -29,6 +29,11 @@ public class PlayerInventoryController : ExecutableController<InventoryData>, IE
         PlayerCollisionController.OrbCollected += ProcessOrbCollection;
     }
 
+    public void ResetOrbs()
+    {
+        //inventoryOrbs.Clear();
+    }
+
     public void OnIUpdate() {}
 
     public void OnILateUpdate() {}
