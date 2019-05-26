@@ -25,6 +25,10 @@ public class PlayerMovingController : ExecutableController<MovementData>, IUpdat
         moveInput.x = Mathf.Lerp(0, moveInput.x, 20f * Time.deltaTime);
         moveInput.z = Mathf.Lerp(0, moveInput.z, 20f * Time.deltaTime);
         characterController.Move(moveInput);
+
+        if(keyboardInput != Vector2.zero) {
+            SoundManager.Instance.PlaySound("LAG - Karyna_movement", GetComponent<AudioSource>());
+        }
     }
 
     public void OnILateUpdate() {}

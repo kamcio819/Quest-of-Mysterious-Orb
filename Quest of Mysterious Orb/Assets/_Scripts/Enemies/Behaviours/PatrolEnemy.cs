@@ -17,6 +17,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     private float startTime;
 
     private float distance;
+    private bool locked = false;
 
     private void OnEnable() {
         startTime = Time.time;
@@ -57,7 +58,12 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     {
         if(isSpawned) {
             float distance = Vector3.Distance(transform.position, target.position);
+
             if(distance > 6f) {
+                if(!locked) {   
+                    SoundManager.Instance.PlaySound("LAG - Dron_movement", GetComponent<AudioSource>());
+                    locked = true;
+                }
                 enemyAnimator.SetBool("isMoving", true);
                 enemyAnimator.SetBool("isShooting", false);
                 RotateTowardsPoint(points[index].position, 5f * Time.deltaTime);
@@ -68,6 +74,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
                 }
             }
             else {
+                locked = false;
                 if(distance > 0.5f) {
                     enemyAnimator.SetBool("isShooting", false);
                     enemyAnimator.SetBool("isMoving", true);
@@ -77,6 +84,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
                 else {
                     enemyAnimator.SetBool("isMoving", false);
                     enemyAnimator.SetBool("isShooting", true);
+                    SoundManager.Instance.PlaySound("LAG - Dron_attack", GetComponent<AudioSource>());
                 }
             }
         }
@@ -102,6 +110,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private void Hit()
     {
+        SoundManager.Instance.PlaySound("LAG - Dron_attack", GetComponent<AudioSource>());
         enemyAnimator.SetTrigger("isHit");
         HitEffect.time = 0;
         HitEffect.Play();
@@ -109,6 +118,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
+        SoundManager.Instance.PlaySound("LAG - Dron_die", GetComponent<AudioSource>());
         var position = gameObject.transform.position;
         StartCoroutine(DieBehaviour(position));
     }
@@ -122,5 +132,6 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 }

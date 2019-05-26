@@ -29,7 +29,9 @@ public class SoundManager : Singleton<SoundManager>
 {
 
     public bool playCombat;
-    public bool playCalm;
+
+   
+   public bool playCalm;
 
     [SerializeField]
     private Sound[] sounds;
@@ -69,7 +71,28 @@ public class SoundManager : Singleton<SoundManager>
             PlayerCharacterSourceCalm.Play();
         }
     }
-   
+
+    public void SetSound(string v, AudioSource audioSource)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == v)
+            {
+                SetSoundSource(sounds[i], audioSource);
+                return;
+            }
+        }
+    }
+
+    private void SetSoundSource(Sound sound, AudioSource audioSource)
+    {
+        audioSource.clip = sound.clip;
+        audioSource.pitch = sound.pitch;
+        audioSource.volume = sound.volume;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
     public void Pause()
     {
         if(playCombat) {
@@ -103,6 +126,7 @@ public class SoundManager : Singleton<SoundManager>
         source.clip = sound.clip;
         source.pitch = sound.pitch;
         source.volume = sound.volume;
+        source.time = 0f;
         source.Play(0);
     }
 
@@ -157,7 +181,7 @@ public class SoundManager : Singleton<SoundManager>
     }
     private static IEnumerator FadeOut(AudioSource audioSourceIn, AudioSource audioSourceOut, float FadeTime)
     {
-        float startVolume = 1;
+        float startVolume = 0.15f;
 
         audioSourceOut.Play();
 
@@ -174,9 +198,9 @@ public class SoundManager : Singleton<SoundManager>
     }
     private static IEnumerator FadeOutOut(AudioSource audioSourceIn, AudioSource audioSourceOut, float FadeTime, AudioClip bossClip)
     {
-        float startVolume = 1;
+        float startVolume = 0.15f;
         audioSourceOut.clip = bossClip;
-        audioSourceOut.volume = 1;
+        audioSourceOut.volume = 0.15f;
         audioSourceOut.Play();
         while (audioSourceIn.volume > 0)
         {

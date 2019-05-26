@@ -17,6 +17,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     private bool targetLocked = false;
     private float timer = 0f;
     private float rotateSpeeder = 1f;
+    private bool roar = false;
 
     protected override void OnCollisionEnter(Collision collision)
     {
@@ -39,19 +40,23 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         if (Physics.Raycast(transform.position, dir , out hit, 50f, layerMask)) {
 
         }
-        else {
+        else {            
             float distance = Vector3.Distance(target.position, transform.position);
             if (distance <= (EnemyData as BossEnemyData).LookRadius)
             { 
+                if(!roar) {
+                    SoundManager.Instance.PlaySound("LAG - Dragon_roar-002", GetComponent<AudioSource>());
+                    roar = true;
+                }
                 targetLocked = true;
             }
             else {
+                roar = false;
                 targetLocked = false;
             }
 
             if (targetLocked)
-            { 
-                
+            {                 
                 timer += Time.deltaTime;
                 if (timer >= 5f)
                 {
@@ -75,6 +80,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     private IEnumerator ShootAnimation()
     {
         enemyAnimator.SetBool("Attack", true);
+        SoundManager.Instance.PlaySound("LAG - Dragon_attack-002", GetComponent<AudioSource>());
         yield return new WaitForSeconds(1.75f);
         flameParticle.Play();
         yield return new WaitForSeconds(1.25f);
@@ -123,6 +129,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
 
     private void Hit()
     {
+        SoundManager.Instance.PlaySound("LAG - Dragon_hit-001", GetComponent<AudioSource>());
         enemyAnimator.SetTrigger("HitFromBack");
         HitEffect.time = 0;
         HitEffect.Play();
@@ -131,6 +138,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
 
     private void Die()
     {
+        SoundManager.Instance.PlaySound("LAG - Dragon_die", GetComponent<AudioSource>());
         var position = gameObject.transform.position;
         StartCoroutine(DieBehaviour(position));
     }
@@ -144,5 +152,6 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 } 

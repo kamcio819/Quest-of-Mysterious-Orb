@@ -69,6 +69,7 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
          orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
          uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
          spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
+         SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
       }
       
    }
@@ -84,6 +85,7 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
          orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
          uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
          spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
+         SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
       }
    }
 }

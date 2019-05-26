@@ -46,6 +46,7 @@ public abstract class OrbGameObject : OrbObject
         if(isSpawned) {
             var enemyObject = collision.collider.GetComponent<EnemyObject>();
             if(enemyObject != null) {
+                SoundManager.Instance.PlaySound("LAG - Orb_attack", GetComponent<AudioSource>());
                 enemyObject.ProcessHitOrb(orbData);
                 gameObject.SetActive(false);
             }
@@ -55,6 +56,7 @@ public abstract class OrbGameObject : OrbObject
         if(isSpawned) {
             var enemyObject = collider.GetComponent<EnemyObject>();
             if(enemyObject != null) {
+                SoundManager.Instance.PlaySound("LAG - Orb_attack", GetComponent<AudioSource>());
                 enemyObject.ProcessHitOrb(orbData);
                 gameObject.SetActive(false);
             }

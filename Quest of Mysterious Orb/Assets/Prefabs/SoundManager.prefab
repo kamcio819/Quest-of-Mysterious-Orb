@@ -43,145 +43,145 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169d46510e125c443944edd1dbe5ffb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  play: 0
-  playCalm: 0
+  playCombat: 0
+  playCalm: 1
   sounds:
   - name: 
     clip: {fileID: 8300000, guid: 5817e17db0bd7a740951e8eb8cf16a64, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 4cbc3e8d355d9f041b29351bff7f3a48, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: bb78c21d46061a043b7212930a840baa, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: f3f27cafaa73ea344ba5abb96fc42852, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 466a237e3535d2341942ce060b950857, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: f3c12e7cce263314a8a4333fe8ffa409, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: a28b470cc353dd447aceb8e91eaa66e9, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 4a8d1fb2c55477340b1f4aa1bd3046f5, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 40d7974070b8a7747ba458dd7ca4e59f, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 05e714ed24479ae479aa0bc7c8d59dd9, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 9e438c6a573fde642b24de34afe13f2c, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 6437797959cf3304dba4d9fbb12cbea0, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 25bd2cfa0b4005941a962ccea7625d38, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 6c3a889d51ae99c44813479b176aa7d6, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 49482849b7565524eac43ae0ad5fa407, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 86706554068692b4b8abf265a3cb0014, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: f6ac784ffea677b48aa85a50688ff655, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 7754b76b15d062e4f9ec3e48bafb7956, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: eccc7d8e4c0447c4492d2daf24452c7a, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: f307a41803350014299ae5eb9c8b7a2c, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: a198844bc1229a240ae895579684a27d, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: f63c345889102dd44a946f9e11f9f4bb, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: e34c635cb89c4734e8ffdf4bc07ec16c, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 4cc10e877ae6b874fb74b422df05b38f, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 33c938ddcf654c149910fcaec11fe26e, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 0f3390235e0c22b43ae439a06a2f6b06, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 76a44b497e2df7b48b28eaf7c097442c, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 15e44bdf909b2604ab16f980001a00e3, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 2adcb1c78847ec244ab8950d4929552e, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 3e5c905296f27da438692c7271fd1ee8, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 602766d7cf82bab4cac8d05d7d6b3979, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 29befb530e1c589409f52f65caeed361, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 849d3e920c5e6ac4ebe7b752284f3a39, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   - name: 
     clip: {fileID: 8300000, guid: 350b86bd5d130e74886cb4f973b11ccc, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
   PlayerCharacter: {fileID: 0}
   PlayerCharacterSourceCombat: {fileID: 0}
   PlayerCharacterSourceCalm: {fileID: 0}

@@ -1106,6 +1106,7 @@ GameObject:
   - component: {fileID: 6044401825443634558}
   - component: {fileID: 344478942}
   - component: {fileID: 5222094006045657165}
+  - component: {fileID: 4322367411515731972}
   m_Layer: 11
   m_Name: BossEnemy
   m_TagString: Untagged
@@ -1203,6 +1204,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!82 &4322367411515731972
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183046573320074638}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6290842877958195394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +2068,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: WFX_FlameThrower Big Alt
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.maxKillSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00053
@@ -2027,27 +2148,23 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.010000001
       objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.maxKillSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 512
       objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
+    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
@@ -2068,26 +2185,6 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: aedd4bb62ac8dfd48ae575c52e6e4267, type: 3}
       propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
@@ -2245,15 +2342,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
---- !u!4 &5905223656596891250 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4400389479008290, guid: e243632bb3aff9549abdcfcc2ef0c4f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5907653441982164560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5998281495181724420 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198755127273645396, guid: e243632bb3aff9549abdcfcc2ef0c4f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5907653441982164560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5905223656596891250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4400389479008290, guid: e243632bb3aff9549abdcfcc2ef0c4f0,
     type: 3}
   m_PrefabInstance: {fileID: 5907653441982164560}
   m_PrefabAsset: {fileID: 0}

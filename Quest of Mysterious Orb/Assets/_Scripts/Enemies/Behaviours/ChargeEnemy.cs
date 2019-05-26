@@ -13,6 +13,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     private Transform target;
 
     private float time;
+    private bool roar = false;
 
     private void OnEnable() {
         time = 0f;
@@ -40,7 +41,10 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance < 15f) {
-
+            if(!roar) {
+                SoundManager.Instance.PlaySound("LAG - Krasnolud_charge(okrzyk)", GetComponent<AudioSource>());
+                roar = true;
+            }
             enemyAnimator.SetBool("isMoving", true);
             enemyAnimator.SetBool("isAttacking", false);
 
@@ -57,6 +61,10 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
             }
                                     
         }
+        else {
+            roar = false;
+        }
+ 
     }
 
     public void OnILateUpdate()
@@ -87,6 +95,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void Hit()
     {
+        SoundManager.Instance.PlaySound("LAG - Krasnolud_die-001", GetComponent<AudioSource>());
         enemyAnimator.SetTrigger("isHit");
         HitEffect.time = 0;
         HitEffect.Play();
@@ -94,6 +103,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
 
     private void Die()
     {
+        SoundManager.Instance.PlaySound("LAG - Krasnolud_die-003", GetComponent<AudioSource>());
         var position = gameObject.transform.position;
         StartCoroutine(DieBehaviour(position));
     }
@@ -107,6 +117,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 }
 

@@ -67,6 +67,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private void Shoot()
     {
+        SoundManager.Instance.PlaySound("LAG - Turret_shot", GetComponent<AudioSource>());
         enemyAnimator.SetTrigger("isShooting");
         var projectile = MyObjectPoolManager.Instance.GetObject("Projectile", true);
         projectile.transform.position = projectileSpawn.position;
@@ -113,12 +114,14 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     }
 
     private void Hit() {
+        SoundManager.Instance.PlaySound("LAG - Dron_attack", GetComponent<AudioSource>());
         HitEffect.time = 0;
         HitEffect.Play();
     }
 
     private void Die()
     {
+        SoundManager.Instance.PlaySound("LAG - Turret_die", GetComponent<AudioSource>());
         var position = gameObject.transform.position;
         StartCoroutine(DieBehaviour(position));
     }
@@ -132,5 +135,6 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 } 

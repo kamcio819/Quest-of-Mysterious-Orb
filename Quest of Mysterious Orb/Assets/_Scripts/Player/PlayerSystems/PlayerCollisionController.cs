@@ -63,11 +63,13 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
          if(OrbCollected != null) {
             OrbCollected(data);
          }
+         SoundManager.Instance.PlaySound("LAG - Orb_pick", GetComponent<AudioSource>());
          pickedOrb.gameObject.SetActive(false);
       }
 
       var enemyCollided = other.GetComponent<EnemyObject>();
       if(enemyCollided != null) {
+         SoundManager.Instance.PlaySound("LAG - Karyna_hit-003", GetComponent<AudioSource>());
          playerObject.HealthPlayer -= enemyCollided.GetData().EnemyDamage;
          GetDamage();
          uIController.RemoveHealthFromBar(playerObject.HealthPlayer);
