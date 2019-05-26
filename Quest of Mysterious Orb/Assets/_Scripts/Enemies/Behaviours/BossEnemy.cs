@@ -118,8 +118,8 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        enemyHealth -= orbData.DamageGiven;
-        if(enemyHealth < 0f) {
+        Health -= orbData.DamageGiven;
+        if(Health < 0f) {
             Die();
         }
         else {
@@ -152,6 +152,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        objectToSpawn.GetComponent<SphereCollider>().isTrigger = true;
         SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 } 

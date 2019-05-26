@@ -25,6 +25,8 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
 
    private List<OrbObject> activeOrbs;
 
+   private float timer = 0f;
+
    public void OnIAwake() {
       activeOrbs = playerInventoryController.InventoryOrbs;
    }
@@ -54,38 +56,45 @@ public class PlayerAttackingController : ExecutableController<AttackingData>, IU
 
    public void OnILateUpdate() {}
 
-   public void OnIUpdate() {}
+   public void OnIUpdate() {
+      timer += Time.deltaTime;
+   }
 
    public void SpawnOrbRandom(bool isActive) {
-      OrbObject orbToSpawn = playerInventoryController.CurrentSelectedOrb;
-      if(orbToSpawn != null) {
-         var spawnedOrb = MyObjectPoolManager.Instance.GetObject(orbToSpawn.GetType().Name, true);
-         spawnedOrb.transform.position = position.position;
-         var randomRotation = playerBody.rotation;
-         randomRotation.y += UnityEngine.Random.Range(-0.17f, 0.17f);
-         spawnedOrb.transform.rotation = randomRotation;
-         spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-         playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
-         orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
-         uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
-         spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
-         SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
+      if(timer > 0.6f) {
+         OrbObject orbToSpawn = playerInventoryController.CurrentSelectedOrb;
+         if(orbToSpawn != null) {
+            var spawnedOrb = MyObjectPoolManager.Instance.GetObject(orbToSpawn.GetType().Name, true);
+            spawnedOrb.transform.position = position.position;
+            var randomRotation = playerBody.rotation;
+            randomRotation.y += UnityEngine.Random.Range(-0.17f, 0.17f);
+            spawnedOrb.transform.rotation = randomRotation;
+            spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
+            orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
+            uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
+            spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
+            SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
+         }
+         timer = 0f;
       }
-      
    }
 
    public void SpawnOrbAccurate(bool isActive) {
-      OrbObject orbToSpawn = playerInventoryController.CurrentSelectedOrb;
-      if(orbToSpawn != null) {
-         var spawnedOrb = MyObjectPoolManager.Instance.GetObject(orbToSpawn.GetType().Name, true);
-         spawnedOrb.transform.position = position.position;
-         spawnedOrb.transform.rotation = playerBody.rotation;
-         spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-         playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
-         orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
-         uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
-         spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
-         SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
+      if(timer > 0.6f) {
+         OrbObject orbToSpawn = playerInventoryController.CurrentSelectedOrb;
+         if(orbToSpawn != null) {
+            var spawnedOrb = MyObjectPoolManager.Instance.GetObject(orbToSpawn.GetType().Name, true);
+            spawnedOrb.transform.position = position.position;
+            spawnedOrb.transform.rotation = playerBody.rotation;
+            spawnedOrb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            playerInventoryController.InventoryOrbs.Remove(orbToSpawn);
+            orbsController.OrbsList.Add(spawnedOrb.GetComponent<OrbObject>());
+            uIRotatingOrbsController.EnableGrayOrbDefalut(spawnedOrb.GetComponent<OrbObject>());
+            spawnedOrb.GetComponent<OrbObject>().isSpawned = true;
+            SoundManager.Instance.PlaySound("LAG - Orb_movement", GetComponent<AudioSource>());
+         }
       }
+      timer = 0f;
    }
 }

@@ -6,8 +6,9 @@ public abstract class EnemyObject : MonoBehaviour
    [SerializeField]
    protected Animator enemyAnimator;
 
-   [SerializeField] [Range(0f, 100f)]
-   protected float enemyHealth = 100f;
+   [SerializeField]
+   [Range(0f, 100f)]
+   private float enemyHealth = 100f;
 
    [SerializeField]
    private ParticleSystem hitEffect;
@@ -17,7 +18,8 @@ public abstract class EnemyObject : MonoBehaviour
 
    public ParticleSystem HitEffect { get => hitEffect; }
    public ParticleSystem DestroyEffect { get => destroyEffect; }
-   
+   public float Health { get => enemyHealth; set => enemyHealth = value; }
+
    public bool isSpawned;
    public virtual EnemyData GetData()
    {

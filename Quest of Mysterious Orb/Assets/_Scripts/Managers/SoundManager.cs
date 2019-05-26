@@ -64,12 +64,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void Play()
     {
-        if(playCombat) {
-            PlayerCharacterSourceCombat.Play();
-        }
-        if(playCalm) {
-            PlayerCharacterSourceCalm.Play();
-        }
+        PlayBossMusic();
     }
 
     public void SetSound(string v, AudioSource audioSource)
@@ -95,12 +90,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void Pause()
     {
-        if(playCombat) {
-            PlayerCharacterSourceCombat.Pause();
-        }
-        if(playCalm) {
-            PlayerCharacterSourceCalm.Pause();
-        }
+        
     }
 
 

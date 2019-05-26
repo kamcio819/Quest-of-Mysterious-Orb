@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 8193439536184114294}
-  enemyHealth: 100
+  enemyHealth: 50
   hitEffect: {fileID: 636090513103438262}
   destroyEffect: {fileID: 5359013886665799126}
   isSpawned: 1
@@ -198,7 +198,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.62
+  m_Radius: 0.8
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0.52, z: 0}

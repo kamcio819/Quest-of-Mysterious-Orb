@@ -472,11 +472,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
-    - target: {fileID: 7241366619544643809, guid: 81a52cea278d0da4dad566b85d1f6aff,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7241366619544643808, guid: 81a52cea278d0da4dad566b85d1f6aff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,11 +820,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 9000653664761500228, guid: d88428e508f8f3d4f870cf8234ef2819,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3199108163758367280, guid: d88428e508f8f3d4f870cf8234ef2819,
         type: 3}
@@ -1409,7 +1399,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.3e-44, z: 2.5666e-41, w: 1.05e-43}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1723,11 +1713,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6183046573320074638, guid: 1c41569048f2f4444b730e9fbdd4a78d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7175854618237634461, guid: 1c41569048f2f4444b730e9fbdd4a78d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2003,11 +1988,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChargingEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5290812155024265583, guid: 9ceaca966b84b484aae7ce8219690038,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9167046561977115516, guid: 9ceaca966b84b484aae7ce8219690038,
         type: 3}

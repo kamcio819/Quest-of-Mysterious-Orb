@@ -35,32 +35,34 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     }
 
     public void OnIUpdate()
-    { 
-        Vector3 dir = target.position - transform.position;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, dir , out hit, 50f, layerMask)) {
+    {
+        if(isSpawned) {
+            Vector3 dir = target.position - transform.position;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, dir , out hit, 50f, layerMask)) {
 
-        }
-        else {
-            float distance = Vector3.Distance(target.position, transform.position);
-            if (distance <= (EnemyData as TurretEnemyData).LookRadius)
-            { 
-                targetLocked = true;
             }
             else {
-                targetLocked = false;
-            }
-            if (targetLocked)
-            {
-                FaceTarget();
-                timer += Time.deltaTime;
-                if (timer >= 5f)
-                {
-                    Shoot();
-                    timer = 0;
+                float distance = Vector3.Distance(target.position, transform.position);
+                if (distance <= (EnemyData as TurretEnemyData).LookRadius)
+                { 
+                    targetLocked = true;
                 }
-            }
-            else {
+                else {
+                    targetLocked = false;
+                }
+                if (targetLocked)
+                {
+                    FaceTarget();
+                    timer += Time.deltaTime;
+                    if (timer >= 6f)
+                    {
+                        Shoot();
+                        timer = 0;
+                    }
+                }
+                else {
+                }
             }
         }       
     }
@@ -104,8 +106,8 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        enemyHealth -= orbData.DamageGiven;
-        if(enemyHealth < 0f) {
+        Health -= orbData.DamageGiven;
+        if(Health < 0f) {
             Die();
         }
         else {
@@ -134,6 +136,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
+        objectToSpawn.GetComponent<SphereCollider>().isTrigger = true;
         objectToSpawn.transform.position = position;
         SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }

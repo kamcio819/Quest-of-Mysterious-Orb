@@ -22,7 +22,7 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
    public void OnIAwake()
    {
         normalShader = Shader.Find("Standard");
-        transparentShader = Shader.Find("Transparent/Diffuse");
+        transparentShader = Shader.Find("Legacy Shaders/Diffuse");
    }
 
 

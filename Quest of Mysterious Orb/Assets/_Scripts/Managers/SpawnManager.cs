@@ -46,7 +46,7 @@ public class SpawnManager : Singleton<SpawnManager>
         prevChunk = currentPlayerChunk.GetComponent<Chunk>();
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(2f);
             chunk = currentPlayerChunk.GetComponent<Chunk>();
 
             if(chunk != prevChunk) {
@@ -75,6 +75,7 @@ public class SpawnManager : Singleton<SpawnManager>
                                 enemy = MyObjectPoolManager.Instance.GetObject("ChargingEnemy", true).transform;
                                 enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
                                 enemy.GetComponent<EnemyObject>().isSpawned = true; 
+                                enemy.GetComponent<EnemyObject>().Health = 75f;
                             }
                             else
                             {
@@ -94,6 +95,7 @@ public class SpawnManager : Singleton<SpawnManager>
                             enemy.transform.position = spawn.position;
                             enemy.GetComponent<EnemyObject>().isSpawned = true;
                             enemyController.EnemiesObject.Add(enemy.GetComponent<EnemyObject>());
+                            enemy.GetComponent<EnemyObject>().Health = 40f;
                         }
                         turretsOnce = true;
                     }

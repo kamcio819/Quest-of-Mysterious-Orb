@@ -59,6 +59,10 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
                 enemyAnimator.SetBool("isAttacking", true);
                 enemyAnimator.SetBool("isMoving", false);
             }
+
+            if(distance < 0.5f) {
+                rigidbodyComponet.velocity -= dir * EnemyData.MovingSpeed * 5f * Time.deltaTime;
+            }
                                     
         }
         else {
@@ -84,8 +88,8 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        enemyHealth -= orbData.DamageGiven;
-        if(enemyHealth < 0f) {
+        Health -= orbData.DamageGiven;
+        if(Health < 0f) {
             Die();
         }
         else {
@@ -117,6 +121,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
+        objectToSpawn.GetComponent<SphereCollider>().isTrigger = true;
         SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }
 }

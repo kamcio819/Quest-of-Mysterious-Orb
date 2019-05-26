@@ -75,7 +75,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
             }
             else {
                 locked = false;
-                if(distance > 0.5f) {
+                if(distance > 0.35f) {
                     enemyAnimator.SetBool("isShooting", false);
                     enemyAnimator.SetBool("isMoving", true);
                     RotateTowardsPoint(target.position, 10f * Time.deltaTime);
@@ -99,8 +99,8 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        enemyHealth -= orbData.DamageGiven;
-        if(enemyHealth < 0f) {
+        Health -= orbData.DamageGiven;
+        if(Health < 0f) {
             Die();
         }
         else {
@@ -131,6 +131,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
+        objectToSpawn.GetComponent<SphereCollider>().isTrigger = true;
         objectToSpawn.transform.position = position;
         SoundManager.Instance.PlaySound("LAG - Orb_appearing", GetComponent<AudioSource>());
     }

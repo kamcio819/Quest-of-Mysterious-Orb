@@ -94,9 +94,9 @@ MonoBehaviour:
   - {fileID: 8182038368798267045, guid: e32f74309cdbefa43947220febdc659a, type: 3}
   EndChunk:
   - {fileID: 4611412046109003913, guid: 7abe86cdbbe38b24cbe084489e8b43c7, type: 3}
-  minL: 10
-  maxL: 16
-  absoluteMinLength: 30
+  minL: 3
+  maxL: 5
+  absoluteMinLength: 10
   stepsCount: 5
-  maxBranchLength: 9
+  maxBranchLength: 5
   MapGenerated: 0

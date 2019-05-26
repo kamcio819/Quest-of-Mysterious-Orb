@@ -32,6 +32,7 @@ public class TurretProjectile :  EnemyGameObject<PatrolEnemyData>, IEnableable, 
             newPos += transform.forward * 3f * Time.deltaTime;
             transform.position = newPos;
             if(time > 10f) {
+                isSpawned = false;
                 gameObject.SetActive(false);
             }
         }  
@@ -54,8 +55,8 @@ public class TurretProjectile :  EnemyGameObject<PatrolEnemyData>, IEnableable, 
     }
 
     public override void ProcessHitOrb(OrbData orbData) {
-        enemyHealth -= orbData.DamageGiven;
-        if(enemyHealth < 0f) {
+        Health -= orbData.DamageGiven;
+        if(Health < 0f) {
             Die();
         }
         else {
@@ -85,6 +86,6 @@ public class TurretProjectile :  EnemyGameObject<PatrolEnemyData>, IEnableable, 
 
     public void OnIAwake()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
