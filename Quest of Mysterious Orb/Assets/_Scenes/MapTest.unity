@@ -2456,11 +2456,6 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 156397323}
-    - target: {fileID: 9116597346506977281, guid: 402e4b2f513cc804ca6c309a6b40903f,
-        type: 3}
-      propertyPath: uIController
-      value: 
-      objectReference: {fileID: 156397323}
     - target: {fileID: 1638519741919801473, guid: 402e4b2f513cc804ca6c309a6b40903f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2516,6 +2511,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9116597346506977281, guid: 402e4b2f513cc804ca6c309a6b40903f,
+        type: 3}
+      propertyPath: uIController
+      value: 
+      objectReference: {fileID: 156397323}
     - target: {fileID: 5086916146998981888, guid: 402e4b2f513cc804ca6c309a6b40903f,
         type: 3}
       propertyPath: spawnManager

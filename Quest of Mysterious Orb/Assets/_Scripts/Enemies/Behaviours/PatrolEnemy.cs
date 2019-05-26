@@ -120,6 +120,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
+        objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
     }
 }

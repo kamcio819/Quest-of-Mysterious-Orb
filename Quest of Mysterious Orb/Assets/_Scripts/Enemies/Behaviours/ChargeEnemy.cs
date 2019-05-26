@@ -105,6 +105,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
+        objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
     }
 }

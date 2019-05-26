@@ -142,6 +142,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
         objectToSpawn.transform.position = position;
     }
 } 

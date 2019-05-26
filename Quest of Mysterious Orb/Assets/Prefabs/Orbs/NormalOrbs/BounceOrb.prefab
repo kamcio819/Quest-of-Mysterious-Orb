@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386df60f07d03944985335c273d81a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawned: 0
+  isSpawned: 1
   orbData: {fileID: 11400000, guid: 3a42e65b9d396534cbcf0db9fccac12f, type: 2}
 --- !u!135 &2592555448479029198
 SphereCollider:

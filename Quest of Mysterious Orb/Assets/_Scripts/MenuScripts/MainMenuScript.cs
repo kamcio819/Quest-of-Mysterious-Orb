@@ -28,7 +28,7 @@ public class MainMenuScript : MonoBehaviour  {
         while (!asyncOperation.isDone)
         {
             loadingScene.fillAmount = asyncOperation.progress;
-            loadingSceneText.text = (asyncOperation.progress * 100f).ToString() + "#";
+            loadingSceneText.text = ((int)(asyncOperation.progress * 100f)).ToString() + "#";
             if (asyncOperation.progress >= 0.90f)
             {
                 asyncOperation.allowSceneActivation = true;
