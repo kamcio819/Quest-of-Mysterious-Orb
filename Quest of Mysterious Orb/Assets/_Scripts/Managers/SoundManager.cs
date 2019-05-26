@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private Sound[] sounds;
 
-    [SerializeField]
+   [SerializeField]
     private SpawnManager PlayerCharacter;
     [SerializeField]
     private AudioSource PlayerCharacterSourceCombat;
@@ -48,8 +49,9 @@ public class SoundManager : Singleton<SoundManager>
 
     private bool notOnBoss;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         notOnBoss = true;
         foreach (Sound s in sounds)
         {
@@ -57,6 +59,27 @@ public class SoundManager : Singleton<SoundManager>
         }
         PlayerCharacterSourceCombat.Pause();
     }
+
+    public void Play()
+    {
+        if(playCombat) {
+            PlayerCharacterSourceCombat.Play();
+        }
+        if(playCalm) {
+            PlayerCharacterSourceCalm.Play();
+        }
+    }
+   
+    public void Pause()
+    {
+        if(playCombat) {
+            PlayerCharacterSourceCombat.Pause();
+        }
+        if(playCalm) {
+            PlayerCharacterSourceCalm.Pause();
+        }
+    }
+
 
     private void Update()
     {

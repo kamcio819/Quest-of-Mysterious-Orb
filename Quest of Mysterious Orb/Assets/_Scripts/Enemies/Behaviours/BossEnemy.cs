@@ -11,8 +11,12 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
     [SerializeField]
     private LayerMask layerMask;
 
+    [SerializeField]
+    private ParticleSystem flameParticle;
+
     private bool targetLocked = false;
     private float timer = 0f;
+    private float rotateSpeeder = 1f;
 
     protected override void OnCollisionEnter(Collision collision)
     {
@@ -46,15 +50,17 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
             }
 
             if (targetLocked)
-            {
-                FaceTarget();
+            { 
+                
                 timer += Time.deltaTime;
                 if (timer >= 5f)
                 {
                     Shoot();
                     timer = 0;
                 }
- 
+                else {
+                    FaceTarget();
+                }
             }
             else {
                 enemyAnimator.SetBool("Attack", false);
@@ -62,8 +68,20 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         }       
     }
 
-    private void Shoot() {
+    private void Shoot() {       
+        StartCoroutine(ShootAnimation());     
+    }
+
+    private IEnumerator ShootAnimation()
+    {
         enemyAnimator.SetBool("Attack", true);
+        yield return new WaitForSeconds(1.75f);
+        flameParticle.Play();
+        yield return new WaitForSeconds(1.25f);
+        flameParticle.Stop();
+        rotateSpeeder = 1f;
+        flameParticle.time = 0f;
+
     }
 
     private void FaceTarget()
@@ -71,7 +89,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         Vector3 direction = (target.position - transform.position).normalized;
         direction.y = 0;
         Quaternion quaternionToRotate = Quaternion.FromToRotation(transform.forward, direction) * transform.rotation;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 20f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternionToRotate, 1.2f * rotateSpeeder);
         enemyAnimator.SetFloat("X", Mathf.Clamp(quaternionToRotate.x, -1, 1));
     }
 
@@ -108,6 +126,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         enemyAnimator.SetTrigger("HitFromBack");
         HitEffect.time = 0;
         HitEffect.Play();
+        rotateSpeeder += 0.6f;
     }
 
     private void Die()

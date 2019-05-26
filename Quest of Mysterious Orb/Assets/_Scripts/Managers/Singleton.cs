@@ -9,7 +9,7 @@ public class Singleton<T> : MonoBehaviour
 
    public static T Instance { get { return instance; } }
 
-   private void Awake() {
+   protected virtual void Awake() {
       if (instance != null && instance != this as T) {
          Destroy(this.gameObject);
       }

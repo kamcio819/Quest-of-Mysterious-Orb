@@ -93,4 +93,14 @@ public class PlayerCollisionController : ExecutableController, IEnableable, IUpd
          yield return new WaitForEndOfFrame();
       }
    }
+
+   public void Hit(float v)
+   {
+      playerObject.HealthPlayer -= v;
+      uIController.RemoveHealthFromBar(playerObject.HealthPlayer);
+      if(playerObject.HealthPlayer < 0f) {    
+         Die();
+      }
+   }
+
 }
