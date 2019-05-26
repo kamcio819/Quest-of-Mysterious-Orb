@@ -22,6 +22,7 @@ public class ArenaFilmController : MonoBehaviour
 
     IEnumerator PlayVideo()
     {
+        SoundManager.Instance.Pause();
         videoPlayer.Prepare();
         WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
         while (!videoPlayer.isPrepared)
@@ -35,5 +36,6 @@ public class ArenaFilmController : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(videoTime);
         gameObject.SetActive(false);
+        SoundManager.Instance.Play();
     }
 }

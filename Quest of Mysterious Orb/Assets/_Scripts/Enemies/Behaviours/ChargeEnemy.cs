@@ -104,7 +104,7 @@ public class ChargeEnemy : EnemyGameObject<ChargeEnemyData>, IUpdatable, ILateUp
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
-        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("BounceOrb", true);
         objectToSpawn.transform.position = position;
     }
 }

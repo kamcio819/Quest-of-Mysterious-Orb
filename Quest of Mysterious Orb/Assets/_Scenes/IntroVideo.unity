@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -384,7 +384,7 @@ MonoBehaviour:
   rawImage: {fileID: 1333766849}
   videoPlayer: {fileID: 1755743728}
   audioSource: {fileID: 1755743729}
-  videoTime: 64
+  videoTime: 61
 --- !u!114 &1618882681
 MonoBehaviour:
   m_ObjectHideFlags: 0

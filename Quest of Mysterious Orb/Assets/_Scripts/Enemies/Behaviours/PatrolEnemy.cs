@@ -119,7 +119,7 @@ public class PatrolEnemy : EnemyGameObject<PatrolEnemyData>, IUpdatable, ILateUp
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.15f);
         this.gameObject.SetActive(false);
-        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
+        var objectToSpawn = MyObjectPoolManager.Instance.GetObject("ChargingOrb", true);
         objectToSpawn.transform.position = position;
     }
 }
