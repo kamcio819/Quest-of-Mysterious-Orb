@@ -1,6 +1,5 @@
 # OrbLAG2019
-LAG 2019 Project
-5 day game-jam project, which me made in our student's group 
+LAG 2019 5 day game-jam project, which me made in our student's group 
 
 # Unity version
 2019.1.2f
