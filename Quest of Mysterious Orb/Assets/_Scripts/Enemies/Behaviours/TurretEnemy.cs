@@ -69,6 +69,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
 
     private void Shoot()
     {
+        Debug.Log("XD");
         SoundManager.Instance.PlaySound("LAG - Turret_shot", GetComponent<AudioSource>());
         enemyAnimator.SetTrigger("isShooting");
         var projectile = MyObjectPoolManager.Instance.GetObject("Projectile", true);
@@ -133,6 +134,7 @@ public class TurretEnemy : EnemyGameObject<TurretEnemyData>, IUpdatable, ILateUp
         DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.15f);
+        this.isSpawned = false;
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;

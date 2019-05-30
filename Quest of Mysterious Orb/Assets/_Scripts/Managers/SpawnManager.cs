@@ -53,7 +53,7 @@ public class SpawnManager : Singleton<SpawnManager>
                 prevChunk = chunk;
                 turretsOnce = false;
                 waveCounter = 0;
-                enemyController.DeactivateUnUsed();
+                //enemyController.DeactivateUnUsed();
             }
 
             if(chunk != null) {

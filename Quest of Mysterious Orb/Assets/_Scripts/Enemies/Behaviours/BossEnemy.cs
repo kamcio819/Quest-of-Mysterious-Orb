@@ -31,6 +31,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
 
     private void OnEnable() {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        FindObjectOfType<EnemyController>().EnemiesObject.Add(this);
     }
 
     public void OnIUpdate()
@@ -148,6 +149,7 @@ public class BossEnemy : EnemyGameObject<BossEnemyData>, IUpdatable, ILateUpdata
         DestroyEffect.time = 0;
         DestroyEffect.Play();
         yield return new WaitForSeconds(0.15f);
+        this.isSpawned = false;
         this.gameObject.SetActive(false);
         var objectToSpawn = MyObjectPoolManager.Instance.GetObject("HomingOrb", true);
         objectToSpawn.GetComponent<OrbObject>().isSpawned = false;
