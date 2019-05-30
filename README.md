@@ -1,5 +1,6 @@
 # OrbLAG2019
 LAG 2019 Project
+5 day game-jam project, which me made in our student's group 
 
 # Unity version
 2019.1.2f
@@ -7,5 +8,9 @@ LAG 2019 Project
 # Theme
 Rougelike
 
-# Trello
-https://trello.com/b/AqIbzR8F/team-green-quest-of-the-mysterious-orb
+# Screenshots
+![Alt text](Media/1.png?raw=true)
+![Alt text](Media/2.png?raw=true)
+![Alt text](Media/3.png?raw=true)
+![Alt text](Media/4.png?raw=true)
+![Alt text](Media/5.png?raw=true)
