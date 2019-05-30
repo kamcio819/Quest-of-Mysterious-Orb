@@ -1,4 +1,4 @@
-# OrbLAG2019
+# Quest of Mysterious orb
 LAG 2019 5 day game-jam project, which me made in our student's group 
 
 # Unity version
