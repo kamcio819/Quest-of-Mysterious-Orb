@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cab6cd33e1ad240a8d0b1fd63a9a5a, type: 3}
+  m_Name: GraySmallOrbOrbData
+  m_EditorClassIdentifier: 
+  orbType: 3
+  orbParticleSystem: {fileID: 1121011091778917980, guid: 179d552c591e20d4f989108450500815,
+    type: 3}
+  orbRenderTexture: {fileID: 8400000, guid: ebb7253be679ce44c97d7b63f853dc27, type: 2}
+  cooldownTime: 2.91
+  damageGiven: 2.46
+  movingSpeed: 2.15

@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6681723406953313830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6681723406953313824}
+  - component: {fileID: 6681723406953313825}
+  - component: {fileID: 614817505}
+  - component: {fileID: 8490692926007801841}
+  - component: {fileID: 394306756}
+  m_Layer: 0
+  m_Name: SystemsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6681723406953313824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1253686, y: -10.966461, z: 7.155877}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6681723406953313825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df1ea4fdeaab7844940a1018c8c3160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllers:
+  - {fileID: 0}
+  - {fileID: 8490692926007801841}
+  - {fileID: 0}
+  - {fileID: 614817505}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &614817505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c3174b62f1e9d4f8ddbb24e8e1f1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &8490692926007801841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59bc8393e9a51f46b4c5a859a106239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesObject: []
+  enemiesToSpawn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  patrolToSpawn:
+  - {fileID: 0}
+  projectile: {fileID: 0}
+--- !u!114 &394306756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681723406953313830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70345e3060651c8439fdb3690081a61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerChunk: {fileID: 0}
+  enemyController: {fileID: 8490692926007801841}
+  player: {fileID: 0}
+  DronsPerDwarf: 5
