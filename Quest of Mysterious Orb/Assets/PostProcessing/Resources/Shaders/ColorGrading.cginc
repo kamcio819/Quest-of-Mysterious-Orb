@@ -16,64 +16,64 @@
 //
 struct ParamsLogC
 {
-    half cut;
-    half a, b, c, d, e, f;
+	half cut;
+	half a, b, c, d, e, f;
 };
 
 static const ParamsLogC LogC =
 {
-    0.011361, // cut
-    5.555556, // a
-    0.047996, // b
-    0.244161, // c
-    0.386036, // d
-    5.301883, // e
-    0.092819  // f
+	0.011361, // cut
+	5.555556, // a
+	0.047996, // b
+	0.244161, // c
+	0.386036, // d
+	5.301883, // e
+	0.092819  // f
 };
 
 half LinearToLogC_Precise(half x)
 {
-    half o;
-    if (x > LogC.cut)
-        o = LogC.c * log10(LogC.a * x + LogC.b) + LogC.d;
-    else
-        o = LogC.e * x + LogC.f;
-    return o;
+	half o;
+	if (x > LogC.cut)
+		o = LogC.c * log10(LogC.a * x + LogC.b) + LogC.d;
+	else
+		o = LogC.e * x + LogC.f;
+	return o;
 }
 
 half3 LinearToLogC(half3 x)
 {
 #if COLOR_GRADING_PRECISE_LOG
-    return half3(
-        LinearToLogC_Precise(x.x),
-        LinearToLogC_Precise(x.y),
-        LinearToLogC_Precise(x.z)
-    );
+	return half3(
+		LinearToLogC_Precise(x.x),
+		LinearToLogC_Precise(x.y),
+		LinearToLogC_Precise(x.z)
+		);
 #else
-    return LogC.c * log10(LogC.a * x + LogC.b) + LogC.d;
+	return LogC.c * log10(LogC.a * x + LogC.b) + LogC.d;
 #endif
 }
 
 half LogCToLinear_Precise(half x)
 {
-    half o;
-    if (x > LogC.e * LogC.cut + LogC.f)
-        o = (pow(10.0, (x - LogC.d) / LogC.c) - LogC.b) / LogC.a;
-    else
-        o = (x - LogC.f) / LogC.e;
-    return o;
+	half o;
+	if (x > LogC.e * LogC.cut + LogC.f)
+		o = (pow(10.0, (x - LogC.d) / LogC.c) - LogC.b) / LogC.a;
+	else
+		o = (x - LogC.f) / LogC.e;
+	return o;
 }
 
 half3 LogCToLinear(half3 x)
 {
 #if COLOR_GRADING_PRECISE_LOG
-    return half3(
-        LogCToLinear_Precise(x.x),
-        LogCToLinear_Precise(x.y),
-        LogCToLinear_Precise(x.z)
-    );
+	return half3(
+		LogCToLinear_Precise(x.x),
+		LogCToLinear_Precise(x.y),
+		LogCToLinear_Precise(x.z)
+		);
 #else
-    return (pow(10.0, (x - LogC.d) / LogC.c) - LogC.b) / LogC.a;
+	return (pow(10.0, (x - LogC.d) / LogC.c) - LogC.b) / LogC.a;
 #endif
 }
 
@@ -82,22 +82,22 @@ half3 LogCToLinear(half3 x)
 // Recommended workspace: ACEScg (linear)
 //
 static const half3x3 LIN_2_LMS_MAT = {
-    3.90405e-1, 5.49941e-1, 8.92632e-3,
-    7.08416e-2, 9.63172e-1, 1.35775e-3,
-    2.31082e-2, 1.28021e-1, 9.36245e-1
+	3.90405e-1, 5.49941e-1, 8.92632e-3,
+	7.08416e-2, 9.63172e-1, 1.35775e-3,
+	2.31082e-2, 1.28021e-1, 9.36245e-1
 };
 
 static const half3x3 LMS_2_LIN_MAT = {
-     2.85847e+0, -1.62879e+0, -2.48910e-2,
-    -2.10182e-1,  1.15820e+0,  3.24281e-4,
-    -4.18120e-2, -1.18169e-1,  1.06867e+0
+	 2.85847e+0, -1.62879e+0, -2.48910e-2,
+	-2.10182e-1,  1.15820e+0,  3.24281e-4,
+	-4.18120e-2, -1.18169e-1,  1.06867e+0
 };
 
 half3 WhiteBalance(half3 c, half3 balance)
 {
-    half3 lms = mul(LIN_2_LMS_MAT, c);
-    lms *= balance;
-    return mul(LMS_2_LIN_MAT, lms);
+	half3 lms = mul(LIN_2_LMS_MAT, c);
+	lms *= balance;
+	return mul(LMS_2_LIN_MAT, lms);
 }
 
 //
@@ -105,7 +105,7 @@ half3 WhiteBalance(half3 c, half3 balance)
 //
 half AcesLuminance(half3 c)
 {
-    return dot(c, half3(0.2126, 0.7152, 0.0722));
+	return dot(c, half3(0.2126, 0.7152, 0.0722));
 }
 
 //
@@ -114,9 +114,9 @@ half AcesLuminance(half3 c)
 //
 half3 OffsetPowerSlope(half3 c, half3 offset, half3 power, half3 slope)
 {
-    half3 so = c * slope + offset;
-    so = so > (0.0).xxx ? pow(so, power) : so;
-    return so;
+	half3 so = c * slope + offset;
+	so = so > (0.0).xxx ? pow(so, power) : so;
+	return so;
 }
 
 //
@@ -125,13 +125,13 @@ half3 OffsetPowerSlope(half3 c, half3 offset, half3 power, half3 slope)
 //
 half3 LiftGammaGain(half3 c, half3 lift, half3 invgamma, half3 gain)
 {
-    //return gain * (lift * (1.0 - c) + pow(max(c, kEpsilon), invgamma));
-    //return pow(gain * (c + lift * (1.0 - c)), invgamma);
+	//return gain * (lift * (1.0 - c) + pow(max(c, kEpsilon), invgamma));
+	//return pow(gain * (c + lift * (1.0 - c)), invgamma);
 
-    half3 power = invgamma;
-    half3 offset = lift * gain;
-    half3 slope = ((1.0).xxx - lift) * gain;
-    return OffsetPowerSlope(c, offset, power, slope);
+	half3 power = invgamma;
+	half3 offset = lift * gain;
+	half3 slope = ((1.0).xxx - lift) * gain;
+	return OffsetPowerSlope(c, offset, power, slope);
 }
 
 //
@@ -141,8 +141,8 @@ half3 LiftGammaGain(half3 c, half3 lift, half3 invgamma, half3 gain)
 //
 half3 Saturation(half3 c, half sat)
 {
-    half luma = AcesLuminance(c);
-    return luma.xxx + sat * (c - luma.xxx);
+	half luma = AcesLuminance(c);
+	return luma.xxx + sat * (c - luma.xxx);
 }
 
 //
@@ -152,7 +152,7 @@ half3 Saturation(half3 c, half sat)
 //
 half3 ContrastLog(half3 c, half con)
 {
-    return (c - ACEScc_MIDGRAY) * con + ACEScc_MIDGRAY;
+	return (c - ACEScc_MIDGRAY) * con + ACEScc_MIDGRAY;
 }
 
 //
@@ -164,28 +164,28 @@ half3 ContrastLog(half3 c, half con)
 //
 half3 RgbToHsv(half3 c)
 {
-    half4 K = half4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-    half4 p = lerp(half4(c.bg, K.wz), half4(c.gb, K.xy), step(c.b, c.g));
-    half4 q = lerp(half4(p.xyw, c.r), half4(c.r, p.yzx), step(p.x, c.r));
-    half d = q.x - min(q.w, q.y);
-    half e = EPSILON;
-    return half3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+	half4 K = half4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+	half4 p = lerp(half4(c.bg, K.wz), half4(c.gb, K.xy), step(c.b, c.g));
+	half4 q = lerp(half4(p.xyw, c.r), half4(c.r, p.yzx), step(p.x, c.r));
+	half d = q.x - min(q.w, q.y);
+	half e = EPSILON;
+	return half3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
 }
 
 half3 HsvToRgb(half3 c)
 {
-    half4 K = half4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-    half3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
-    return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
+	half4 K = half4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+	half3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+	return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
 }
 
 half RotateHue(half value, half low, half hi)
 {
-    return (value < low)
-            ? value + hi
-            : (value > hi)
-                ? value - hi
-                : value;
+	return (value < low)
+		? value + hi
+		: (value > hi)
+		? value - hi
+		: value;
 }
 
 //
@@ -193,21 +193,21 @@ half RotateHue(half value, half low, half hi)
 //
 half3 YrgbCurve(half3 c, sampler2D curveTex)
 {
-    const float kHalfPixel = (1.0 / 128.0) / 2.0;
+	const float kHalfPixel = (1.0 / 128.0) / 2.0;
 
-    // Y
-    c += kHalfPixel.xxx;
-    float mr = tex2D(curveTex, float2(c.r, 0.75)).a;
-    float mg = tex2D(curveTex, float2(c.g, 0.75)).a;
-    float mb = tex2D(curveTex, float2(c.b, 0.75)).a;
-    c = saturate(float3(mr, mg, mb));
+	// Y
+	c += kHalfPixel.xxx;
+	float mr = tex2D(curveTex, float2(c.r, 0.75)).a;
+	float mg = tex2D(curveTex, float2(c.g, 0.75)).a;
+	float mb = tex2D(curveTex, float2(c.b, 0.75)).a;
+	c = saturate(float3(mr, mg, mb));
 
-    // RGB
-    c += kHalfPixel.xxx;
-    float r = tex2D(curveTex, float2(c.r, 0.75)).r;
-    float g = tex2D(curveTex, float2(c.g, 0.75)).g;
-    float b = tex2D(curveTex, float2(c.b, 0.75)).b;
-    return saturate(half3(r, g, b));
+	// RGB
+	c += kHalfPixel.xxx;
+	float r = tex2D(curveTex, float2(c.r, 0.75)).r;
+	float g = tex2D(curveTex, float2(c.g, 0.75)).g;
+	float b = tex2D(curveTex, float2(c.b, 0.75)).b;
+	return saturate(half3(r, g, b));
 }
 
 //
@@ -217,10 +217,10 @@ half3 YrgbCurve(half3 c, sampler2D curveTex)
 //
 half SecondaryHueHue(half hue, sampler2D curveTex)
 {
-    half offset = saturate(tex2D(curveTex, half2(hue, 0.25)).x) - 0.5;
-    hue += offset;
-    hue = RotateHue(hue, 0.0, 1.0);
-    return hue;
+	half offset = saturate(tex2D(curveTex, half2(hue, 0.25)).x) - 0.5;
+	hue += offset;
+	hue = RotateHue(hue, 0.0, 1.0);
+	return hue;
 }
 
 //
@@ -230,7 +230,7 @@ half SecondaryHueHue(half hue, sampler2D curveTex)
 //
 half SecondaryHueSat(half hue, sampler2D curveTex)
 {
-    return saturate(tex2D(curveTex, half2(hue, 0.25)).y) * 2.0;
+	return saturate(tex2D(curveTex, half2(hue, 0.25)).y) * 2.0;
 }
 
 //
@@ -240,7 +240,7 @@ half SecondaryHueSat(half hue, sampler2D curveTex)
 //
 half SecondarySatSat(half sat, sampler2D curveTex)
 {
-    return saturate(tex2D(curveTex, half2(sat, 0.25)).z) * 2.0;
+	return saturate(tex2D(curveTex, half2(sat, 0.25)).z) * 2.0;
 }
 
 //
@@ -250,7 +250,7 @@ half SecondarySatSat(half sat, sampler2D curveTex)
 //
 half SecondaryLumSat(half lum, sampler2D curveTex)
 {
-    return saturate(tex2D(curveTex, half2(lum, 0.25)).w) * 2.0;
+	return saturate(tex2D(curveTex, half2(lum, 0.25)).w) * 2.0;
 }
 
 //
@@ -260,11 +260,11 @@ half SecondaryLumSat(half lum, sampler2D curveTex)
 //
 half3 ChannelMixer(half3 c, half3 red, half3 green, half3 blue)
 {
-    return half3(
-        dot(c, red),
-        dot(c, green),
-        dot(c, blue)
-    );
+	return half3(
+		dot(c, red),
+		dot(c, green),
+		dot(c, blue)
+		);
 }
 
 //
@@ -273,18 +273,18 @@ half3 ChannelMixer(half3 c, half3 red, half3 green, half3 blue)
 //
 half3 ApplyLut2d(sampler2D tex, half3 uvw, half3 scaleOffset)
 {
-    // Strip format where `height = sqrt(width)`
-    uvw.z *= scaleOffset.z;
-    half shift = floor(uvw.z);
-    uvw.xy = uvw.xy * scaleOffset.z * scaleOffset.xy + scaleOffset.xy * 0.5;
-    uvw.x += shift * scaleOffset.y;
-    uvw.xyz = lerp(tex2D(tex, uvw.xy).rgb, tex2D(tex, uvw.xy + half2(scaleOffset.y, 0)).rgb, uvw.z - shift);
-    return uvw;
+	// Strip format where `height = sqrt(width)`
+	uvw.z *= scaleOffset.z;
+	half shift = floor(uvw.z);
+	uvw.xy = uvw.xy * scaleOffset.z * scaleOffset.xy + scaleOffset.xy * 0.5;
+	uvw.x += shift * scaleOffset.y;
+	uvw.xyz = lerp(tex2D(tex, uvw.xy).rgb, tex2D(tex, uvw.xy + half2(scaleOffset.y, 0)).rgb, uvw.z - shift);
+	return uvw;
 }
 
 half3 ApplyLut3d(sampler3D tex, half3 uvw)
 {
-    return tex3D(tex, uvw).rgb;
+	return tex3D(tex, uvw).rgb;
 }
 
 #endif // __COLOR_GRADING__

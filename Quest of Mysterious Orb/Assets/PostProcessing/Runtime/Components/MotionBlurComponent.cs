@@ -8,35 +8,35 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _VelocityScale     = Shader.PropertyToID("_VelocityScale");
-            internal static readonly int _MaxBlurRadius     = Shader.PropertyToID("_MaxBlurRadius");
-            internal static readonly int _RcpMaxBlurRadius  = Shader.PropertyToID("_RcpMaxBlurRadius");
-            internal static readonly int _VelocityTex       = Shader.PropertyToID("_VelocityTex");
-            internal static readonly int _MainTex           = Shader.PropertyToID("_MainTex");
-            internal static readonly int _Tile2RT           = Shader.PropertyToID("_Tile2RT");
-            internal static readonly int _Tile4RT           = Shader.PropertyToID("_Tile4RT");
-            internal static readonly int _Tile8RT           = Shader.PropertyToID("_Tile8RT");
-            internal static readonly int _TileMaxOffs       = Shader.PropertyToID("_TileMaxOffs");
-            internal static readonly int _TileMaxLoop       = Shader.PropertyToID("_TileMaxLoop");
-            internal static readonly int _TileVRT           = Shader.PropertyToID("_TileVRT");
-            internal static readonly int _NeighborMaxTex    = Shader.PropertyToID("_NeighborMaxTex");
-            internal static readonly int _LoopCount         = Shader.PropertyToID("_LoopCount");
-            internal static readonly int _TempRT            = Shader.PropertyToID("_TempRT");
+            internal static readonly int _VelocityScale = Shader.PropertyToID("_VelocityScale");
+            internal static readonly int _MaxBlurRadius = Shader.PropertyToID("_MaxBlurRadius");
+            internal static readonly int _RcpMaxBlurRadius = Shader.PropertyToID("_RcpMaxBlurRadius");
+            internal static readonly int _VelocityTex = Shader.PropertyToID("_VelocityTex");
+            internal static readonly int _MainTex = Shader.PropertyToID("_MainTex");
+            internal static readonly int _Tile2RT = Shader.PropertyToID("_Tile2RT");
+            internal static readonly int _Tile4RT = Shader.PropertyToID("_Tile4RT");
+            internal static readonly int _Tile8RT = Shader.PropertyToID("_Tile8RT");
+            internal static readonly int _TileMaxOffs = Shader.PropertyToID("_TileMaxOffs");
+            internal static readonly int _TileMaxLoop = Shader.PropertyToID("_TileMaxLoop");
+            internal static readonly int _TileVRT = Shader.PropertyToID("_TileVRT");
+            internal static readonly int _NeighborMaxTex = Shader.PropertyToID("_NeighborMaxTex");
+            internal static readonly int _LoopCount = Shader.PropertyToID("_LoopCount");
+            internal static readonly int _TempRT = Shader.PropertyToID("_TempRT");
 
-            internal static readonly int _History1LumaTex   = Shader.PropertyToID("_History1LumaTex");
-            internal static readonly int _History2LumaTex   = Shader.PropertyToID("_History2LumaTex");
-            internal static readonly int _History3LumaTex   = Shader.PropertyToID("_History3LumaTex");
-            internal static readonly int _History4LumaTex   = Shader.PropertyToID("_History4LumaTex");
+            internal static readonly int _History1LumaTex = Shader.PropertyToID("_History1LumaTex");
+            internal static readonly int _History2LumaTex = Shader.PropertyToID("_History2LumaTex");
+            internal static readonly int _History3LumaTex = Shader.PropertyToID("_History3LumaTex");
+            internal static readonly int _History4LumaTex = Shader.PropertyToID("_History4LumaTex");
 
             internal static readonly int _History1ChromaTex = Shader.PropertyToID("_History1ChromaTex");
             internal static readonly int _History2ChromaTex = Shader.PropertyToID("_History2ChromaTex");
             internal static readonly int _History3ChromaTex = Shader.PropertyToID("_History3ChromaTex");
             internal static readonly int _History4ChromaTex = Shader.PropertyToID("_History4ChromaTex");
 
-            internal static readonly int _History1Weight    = Shader.PropertyToID("_History1Weight");
-            internal static readonly int _History2Weight    = Shader.PropertyToID("_History2Weight");
-            internal static readonly int _History3Weight    = Shader.PropertyToID("_History3Weight");
-            internal static readonly int _History4Weight    = Shader.PropertyToID("_History4Weight");
+            internal static readonly int _History1Weight = Shader.PropertyToID("_History1Weight");
+            internal static readonly int _History2Weight = Shader.PropertyToID("_History2Weight");
+            internal static readonly int _History3Weight = Shader.PropertyToID("_History3Weight");
+            internal static readonly int _History4Weight = Shader.PropertyToID("_History4Weight");
         }
 
         enum Pass

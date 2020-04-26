@@ -4,7 +4,7 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _UserLut        = Shader.PropertyToID("_UserLut");
+            internal static readonly int _UserLut = Shader.PropertyToID("_UserLut");
             internal static readonly int _UserLut_Params = Shader.PropertyToID("_UserLut_Params");
         }
 

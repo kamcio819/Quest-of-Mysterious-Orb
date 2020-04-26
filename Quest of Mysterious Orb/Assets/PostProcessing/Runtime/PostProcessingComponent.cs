@@ -14,10 +14,10 @@ namespace UnityEngine.PostProcessing
         public abstract bool active { get; }
 
         public virtual void OnEnable()
-        {}
+        { }
 
         public virtual void OnDisable()
-        {}
+        { }
 
         public abstract PostProcessingModel GetModel();
     }
@@ -53,6 +53,6 @@ namespace UnityEngine.PostProcessing
         where T : PostProcessingModel
     {
         public virtual void Prepare(Material material)
-        {}
+        { }
     }
 }

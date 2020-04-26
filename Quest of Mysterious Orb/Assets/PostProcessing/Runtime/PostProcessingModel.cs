@@ -22,6 +22,6 @@ namespace UnityEngine.PostProcessing
         public abstract void Reset();
 
         public virtual void OnValidate()
-        {}
+        { }
     }
 }

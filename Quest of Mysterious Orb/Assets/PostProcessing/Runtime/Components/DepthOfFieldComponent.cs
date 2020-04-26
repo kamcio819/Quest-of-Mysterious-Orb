@@ -8,16 +8,16 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _DepthOfFieldTex    = Shader.PropertyToID("_DepthOfFieldTex");
+            internal static readonly int _DepthOfFieldTex = Shader.PropertyToID("_DepthOfFieldTex");
             internal static readonly int _DepthOfFieldCoCTex = Shader.PropertyToID("_DepthOfFieldCoCTex");
-            internal static readonly int _Distance           = Shader.PropertyToID("_Distance");
-            internal static readonly int _LensCoeff          = Shader.PropertyToID("_LensCoeff");
-            internal static readonly int _MaxCoC             = Shader.PropertyToID("_MaxCoC");
-            internal static readonly int _RcpMaxCoC          = Shader.PropertyToID("_RcpMaxCoC");
-            internal static readonly int _RcpAspect          = Shader.PropertyToID("_RcpAspect");
-            internal static readonly int _MainTex            = Shader.PropertyToID("_MainTex");
-            internal static readonly int _CoCTex             = Shader.PropertyToID("_CoCTex");
-            internal static readonly int _TaaParams          = Shader.PropertyToID("_TaaParams");
+            internal static readonly int _Distance = Shader.PropertyToID("_Distance");
+            internal static readonly int _LensCoeff = Shader.PropertyToID("_LensCoeff");
+            internal static readonly int _MaxCoC = Shader.PropertyToID("_MaxCoC");
+            internal static readonly int _RcpMaxCoC = Shader.PropertyToID("_RcpMaxCoC");
+            internal static readonly int _RcpAspect = Shader.PropertyToID("_RcpAspect");
+            internal static readonly int _MainTex = Shader.PropertyToID("_MainTex");
+            internal static readonly int _CoCTex = Shader.PropertyToID("_CoCTex");
+            internal static readonly int _TaaParams = Shader.PropertyToID("_TaaParams");
             internal static readonly int _DepthOfFieldParams = Shader.PropertyToID("_DepthOfFieldParams");
         }
 
@@ -84,10 +84,10 @@ namespace UnityEngine.PostProcessing
             var cocFormat = SelectFormat(RenderTextureFormat.R8, RenderTextureFormat.RHalf);
 
             // Avoid using R8 on OSX with Metal. #896121, https://goo.gl/MgKqu6
-            #if (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX) && !UNITY_2017_1_OR_NEWER
+#if (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX) && !UNITY_2017_1_OR_NEWER
             if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Metal)
                 cocFormat = SelectFormat(RenderTextureFormat.RHalf, RenderTextureFormat.Default);
-            #endif
+#endif
 
             // Material setup
             var f = CalculateFocalLength();

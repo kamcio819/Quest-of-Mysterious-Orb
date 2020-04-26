@@ -30,24 +30,24 @@ float4 _MainTex_ST;
 
 struct AttributesDefault
 {
-    float4 vertex : POSITION;
-    float4 texcoord : TEXCOORD0;
+	float4 vertex : POSITION;
+	float4 texcoord : TEXCOORD0;
 };
 
 struct VaryingsDefault
 {
-    float4 pos : SV_POSITION;
-    float2 uv : TEXCOORD0;
-    float2 uvSPR : TEXCOORD1; // Single Pass Stereo UVs
+	float4 pos : SV_POSITION;
+	float2 uv : TEXCOORD0;
+	float2 uvSPR : TEXCOORD1; // Single Pass Stereo UVs
 };
 
 VaryingsDefault VertDefault(AttributesDefault v)
 {
-    VaryingsDefault o;
-    o.pos = UnityObjectToClipPos(v.vertex);
-    o.uv = v.texcoord.xy;
-    o.uvSPR = UnityStereoScreenSpaceUVAdjust(v.texcoord.xy, _MainTex_ST);
-    return o;
+	VaryingsDefault o;
+	o.pos = UnityObjectToClipPos(v.vertex);
+	o.uv = v.texcoord.xy;
+	o.uvSPR = UnityStereoScreenSpaceUVAdjust(v.texcoord.xy, _MainTex_ST);
+	return o;
 }
 
 // -----------------------------------------------------------------------------
@@ -101,42 +101,42 @@ inline half4 SafeHDR(half4 c) { return min(c, HALF_MAX); }
 #if (SHADER_TARGET < 50 && !defined(SHADER_API_PSSL))
 float rcp(float value)
 {
-    return 1.0 / value;
+	return 1.0 / value;
 }
 #endif
 
 // Tonemapper from http://gpuopen.com/optimized-reversible-tonemapper-for-resolve/
 float4 FastToneMap(in float4 color)
 {
-    return float4(color.rgb * rcp(Max3(color.rgb) + 1.), color.a);
+	return float4(color.rgb * rcp(Max3(color.rgb) + 1.), color.a);
 }
 
 float4 FastToneMap(in float4 color, in float weight)
 {
-    return float4(color.rgb * rcp(weight * Max3(color.rgb) + 1.), color.a);
+	return float4(color.rgb * rcp(weight * Max3(color.rgb) + 1.), color.a);
 }
 
 float4 FastToneUnmap(in float4 color)
 {
-    return float4(color.rgb * rcp(1. - Max3(color.rgb)), color.a);
+	return float4(color.rgb * rcp(1. - Max3(color.rgb)), color.a);
 }
 
 // Interleaved gradient function from Jimenez 2014 http://goo.gl/eomGso
 float GradientNoise(float2 uv)
 {
-    uv = floor(uv * _ScreenParams.xy);
-    float f = dot(float2(0.06711056, 0.00583715), uv);
-    return frac(52.9829189 * frac(f));
+	uv = floor(uv * _ScreenParams.xy);
+	float f = dot(float2(0.06711056, 0.00583715), uv);
+	return frac(52.9829189 * frac(f));
 }
 
 // Z buffer depth to linear 0-1 depth
 // Handles orthographic projection correctly
 float LinearizeDepth(float z)
 {
-    float isOrtho = unity_OrthoParams.w;
-    float isPers = 1.0 - unity_OrthoParams.w;
-    z *= _ZBufferParams.x;
-    return (1.0 - isOrtho * z) / (isPers * z + _ZBufferParams.y);
+	float isOrtho = unity_OrthoParams.w;
+	float isPers = 1.0 - unity_OrthoParams.w;
+	z *= _ZBufferParams.x;
+	return (1.0 - isOrtho * z) / (isPers * z + _ZBufferParams.y);
 }
 
 // -----------------------------------------------------------------------------
@@ -145,21 +145,21 @@ float LinearizeDepth(float z)
 half4 EncodeHDR(float3 rgb)
 {
 #if USE_RGBM
-    rgb *= 1.0 / 8.0;
-    float m = max(max(rgb.r, rgb.g), max(rgb.b, 1e-6));
-    m = ceil(m * 255.0) / 255.0;
-    return half4(rgb / m, m);
+	rgb *= 1.0 / 8.0;
+	float m = max(max(rgb.r, rgb.g), max(rgb.b, 1e-6));
+	m = ceil(m * 255.0) / 255.0;
+	return half4(rgb / m, m);
 #else
-    return half4(rgb, 0.0);
+	return half4(rgb, 0.0);
 #endif
 }
 
 float3 DecodeHDR(half4 rgba)
 {
 #if USE_RGBM
-    return rgba.rgb * rgba.a * 8.0;
+	return rgba.rgb * rgba.a * 8.0;
 #else
-    return rgba.rgb;
+	return rgba.rgb;
 #endif
 }
 

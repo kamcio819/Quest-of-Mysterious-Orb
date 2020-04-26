@@ -10,12 +10,12 @@ namespace UnityEngine.PostProcessing
         static class Uniforms
         {
             internal static readonly int _DepthScale = Shader.PropertyToID("_DepthScale");
-            internal static readonly int _TempRT     = Shader.PropertyToID("_TempRT");
-            internal static readonly int _Opacity    = Shader.PropertyToID("_Opacity");
-            internal static readonly int _MainTex    = Shader.PropertyToID("_MainTex");
-            internal static readonly int _TempRT2    = Shader.PropertyToID("_TempRT2");
-            internal static readonly int _Amplitude  = Shader.PropertyToID("_Amplitude");
-            internal static readonly int _Scale      = Shader.PropertyToID("_Scale");
+            internal static readonly int _TempRT = Shader.PropertyToID("_TempRT");
+            internal static readonly int _Opacity = Shader.PropertyToID("_Opacity");
+            internal static readonly int _MainTex = Shader.PropertyToID("_MainTex");
+            internal static readonly int _TempRT2 = Shader.PropertyToID("_TempRT2");
+            internal static readonly int _Amplitude = Shader.PropertyToID("_Amplitude");
+            internal static readonly int _Scale = Shader.PropertyToID("_Scale");
         }
 
         const string k_ShaderString = "Hidden/Post FX/Builtin Debug Views";

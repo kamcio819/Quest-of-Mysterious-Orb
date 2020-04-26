@@ -4,12 +4,12 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _Params               = Shader.PropertyToID("_Params");
-            internal static readonly int _Speed                = Shader.PropertyToID("_Speed");
-            internal static readonly int _ScaleOffsetRes       = Shader.PropertyToID("_ScaleOffsetRes");
+            internal static readonly int _Params = Shader.PropertyToID("_Params");
+            internal static readonly int _Speed = Shader.PropertyToID("_Speed");
+            internal static readonly int _ScaleOffsetRes = Shader.PropertyToID("_ScaleOffsetRes");
             internal static readonly int _ExposureCompensation = Shader.PropertyToID("_ExposureCompensation");
-            internal static readonly int _AutoExposure         = Shader.PropertyToID("_AutoExposure");
-            internal static readonly int _DebugWidth           = Shader.PropertyToID("_DebugWidth");
+            internal static readonly int _AutoExposure = Shader.PropertyToID("_AutoExposure");
+            internal static readonly int _DebugWidth = Shader.PropertyToID("_DebugWidth");
         }
 
         ComputeShader m_EyeCompute;

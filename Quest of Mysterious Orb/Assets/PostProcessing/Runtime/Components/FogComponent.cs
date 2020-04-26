@@ -7,10 +7,10 @@ namespace UnityEngine.PostProcessing
         static class Uniforms
         {
             internal static readonly int _FogColor = Shader.PropertyToID("_FogColor");
-            internal static readonly int _Density  = Shader.PropertyToID("_Density");
-            internal static readonly int _Start    = Shader.PropertyToID("_Start");
-            internal static readonly int _End      = Shader.PropertyToID("_End");
-            internal static readonly int _TempRT   = Shader.PropertyToID("_TempRT");
+            internal static readonly int _Density = Shader.PropertyToID("_Density");
+            internal static readonly int _Start = Shader.PropertyToID("_Start");
+            internal static readonly int _End = Shader.PropertyToID("_End");
+            internal static readonly int _TempRT = Shader.PropertyToID("_TempRT");
         }
 
         const string k_ShaderString = "Hidden/Post FX/Fog";

@@ -4,11 +4,11 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _Vignette_Color    = Shader.PropertyToID("_Vignette_Color");
-            internal static readonly int _Vignette_Center   = Shader.PropertyToID("_Vignette_Center");
+            internal static readonly int _Vignette_Color = Shader.PropertyToID("_Vignette_Color");
+            internal static readonly int _Vignette_Center = Shader.PropertyToID("_Vignette_Center");
             internal static readonly int _Vignette_Settings = Shader.PropertyToID("_Vignette_Settings");
-            internal static readonly int _Vignette_Mask     = Shader.PropertyToID("_Vignette_Mask");
-            internal static readonly int _Vignette_Opacity  = Shader.PropertyToID("_Vignette_Opacity");
+            internal static readonly int _Vignette_Mask = Shader.PropertyToID("_Vignette_Mask");
+            internal static readonly int _Vignette_Opacity = Shader.PropertyToID("_Vignette_Opacity");
         }
 
         public override bool active

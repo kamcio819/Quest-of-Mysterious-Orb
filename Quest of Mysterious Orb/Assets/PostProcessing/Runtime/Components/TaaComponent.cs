@@ -6,11 +6,11 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static int _Jitter               = Shader.PropertyToID("_Jitter");
-            internal static int _SharpenParameters    = Shader.PropertyToID("_SharpenParameters");
+            internal static int _Jitter = Shader.PropertyToID("_Jitter");
+            internal static int _SharpenParameters = Shader.PropertyToID("_SharpenParameters");
             internal static int _FinalBlendParameters = Shader.PropertyToID("_FinalBlendParameters");
-            internal static int _HistoryTex           = Shader.PropertyToID("_HistoryTex");
-            internal static int _MainTex              = Shader.PropertyToID("_MainTex");
+            internal static int _HistoryTex = Shader.PropertyToID("_HistoryTex");
+            internal static int _MainTex = Shader.PropertyToID("_MainTex");
         }
 
         const string k_ShaderString = "Hidden/Post FX/Temporal Anti-aliasing";

@@ -8,16 +8,16 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _Intensity         = Shader.PropertyToID("_Intensity");
-            internal static readonly int _Radius            = Shader.PropertyToID("_Radius");
-            internal static readonly int _FogParams         = Shader.PropertyToID("_FogParams");
-            internal static readonly int _Downsample        = Shader.PropertyToID("_Downsample");
-            internal static readonly int _SampleCount       = Shader.PropertyToID("_SampleCount");
+            internal static readonly int _Intensity = Shader.PropertyToID("_Intensity");
+            internal static readonly int _Radius = Shader.PropertyToID("_Radius");
+            internal static readonly int _FogParams = Shader.PropertyToID("_FogParams");
+            internal static readonly int _Downsample = Shader.PropertyToID("_Downsample");
+            internal static readonly int _SampleCount = Shader.PropertyToID("_SampleCount");
             internal static readonly int _OcclusionTexture1 = Shader.PropertyToID("_OcclusionTexture1");
             internal static readonly int _OcclusionTexture2 = Shader.PropertyToID("_OcclusionTexture2");
-            internal static readonly int _OcclusionTexture  = Shader.PropertyToID("_OcclusionTexture");
-            internal static readonly int _MainTex           = Shader.PropertyToID("_MainTex");
-            internal static readonly int _TempRT            = Shader.PropertyToID("_TempRT");
+            internal static readonly int _OcclusionTexture = Shader.PropertyToID("_OcclusionTexture");
+            internal static readonly int _MainTex = Shader.PropertyToID("_MainTex");
+            internal static readonly int _TempRT = Shader.PropertyToID("_TempRT");
         }
 
         const string k_BlitShaderString = "Hidden/Post FX/Blit";

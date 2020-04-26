@@ -4,7 +4,7 @@ namespace UnityEngine.PostProcessing
 {
     public class PostProcessingProfile : ScriptableObject
     {
-        #pragma warning disable 0169 // "field x is never used"
+#pragma warning disable 0169 // "field x is never used"
 
         public BuiltinDebugViewsModel debugViews = new BuiltinDebugViewsModel();
         public FogModel fog = new FogModel();

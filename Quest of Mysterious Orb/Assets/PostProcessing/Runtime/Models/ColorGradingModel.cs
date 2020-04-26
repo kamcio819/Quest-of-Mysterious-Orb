@@ -181,16 +181,16 @@ namespace UnityEngine.PostProcessing
             }
         }
 
-	    public enum ColorWheelMode
-	    {
-		    Linear,
-			Log
-	    }
+        public enum ColorWheelMode
+        {
+            Linear,
+            Log
+        }
 
         [Serializable]
         public struct ColorWheelsSettings
         {
-	        public ColorWheelMode mode;
+            public ColorWheelMode mode;
 
             [TrackballGroup]
             public LogWheelsSettings log;
@@ -204,7 +204,7 @@ namespace UnityEngine.PostProcessing
                 {
                     return new ColorWheelsSettings
                     {
-						mode = ColorWheelMode.Log,
+                        mode = ColorWheelMode.Log,
                         log = LogWheelsSettings.defaultSettings,
                         linear = LinearWheelsSettings.defaultSettings
                     };
@@ -238,12 +238,12 @@ namespace UnityEngine.PostProcessing
                     return new CurvesSettings
                     {
                         master = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
-                        red    = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
-                        green  = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
-                        blue   = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
+                        red = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
+                        green = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
+                        blue = new ColorGradingCurve(new AnimationCurve(new Keyframe(0f, 0f, 1f, 1f), new Keyframe(1f, 1f, 1f, 1f)), 0f, false, new Vector2(0f, 1f)),
 
-                        hueVShue = new ColorGradingCurve(new AnimationCurve(), 0.5f, true,  new Vector2(0f, 1f)),
-                        hueVSsat = new ColorGradingCurve(new AnimationCurve(), 0.5f, true,  new Vector2(0f, 1f)),
+                        hueVShue = new ColorGradingCurve(new AnimationCurve(), 0.5f, true, new Vector2(0f, 1f)),
+                        hueVSsat = new ColorGradingCurve(new AnimationCurve(), 0.5f, true, new Vector2(0f, 1f)),
                         satVSsat = new ColorGradingCurve(new AnimationCurve(), 0.5f, false, new Vector2(0f, 1f)),
                         lumVSsat = new ColorGradingCurve(new AnimationCurve(), 0.5f, false, new Vector2(0f, 1f)),
 

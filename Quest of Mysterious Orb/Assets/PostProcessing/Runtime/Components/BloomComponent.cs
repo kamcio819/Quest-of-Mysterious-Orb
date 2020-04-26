@@ -4,15 +4,15 @@ namespace UnityEngine.PostProcessing
     {
         static class Uniforms
         {
-            internal static readonly int _AutoExposure        = Shader.PropertyToID("_AutoExposure");
-            internal static readonly int _Threshold           = Shader.PropertyToID("_Threshold");
-            internal static readonly int _Curve               = Shader.PropertyToID("_Curve");
-            internal static readonly int _PrefilterOffs       = Shader.PropertyToID("_PrefilterOffs");
-            internal static readonly int _SampleScale         = Shader.PropertyToID("_SampleScale");
-            internal static readonly int _BaseTex             = Shader.PropertyToID("_BaseTex");
-            internal static readonly int _BloomTex            = Shader.PropertyToID("_BloomTex");
-            internal static readonly int _Bloom_Settings      = Shader.PropertyToID("_Bloom_Settings");
-            internal static readonly int _Bloom_DirtTex       = Shader.PropertyToID("_Bloom_DirtTex");
+            internal static readonly int _AutoExposure = Shader.PropertyToID("_AutoExposure");
+            internal static readonly int _Threshold = Shader.PropertyToID("_Threshold");
+            internal static readonly int _Curve = Shader.PropertyToID("_Curve");
+            internal static readonly int _PrefilterOffs = Shader.PropertyToID("_PrefilterOffs");
+            internal static readonly int _SampleScale = Shader.PropertyToID("_SampleScale");
+            internal static readonly int _BaseTex = Shader.PropertyToID("_BaseTex");
+            internal static readonly int _BloomTex = Shader.PropertyToID("_BloomTex");
+            internal static readonly int _Bloom_Settings = Shader.PropertyToID("_Bloom_Settings");
+            internal static readonly int _Bloom_DirtTex = Shader.PropertyToID("_Bloom_DirtTex");
             internal static readonly int _Bloom_DirtIntensity = Shader.PropertyToID("_Bloom_DirtIntensity");
         }
 

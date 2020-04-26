@@ -69,7 +69,7 @@ namespace DG.Tweening
         // Fires OnApplicationPause in DOTweenComponent even when Editor is paused (otherwise it's only fired at runtime)
 #if UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_5 || UNITY_2017_1
         static void PlaymodeStateChanged()
-        #else
+#else
         static void PlaymodeStateChanged(UnityEditor.PlayModeStateChange state)
 #endif
         {
@@ -128,15 +128,19 @@ namespace DG.Tweening
 #endif
             public static TweenerCore<Vector3, Path, PathOptions> CreateDOTweenPathTween(
                 MonoBehaviour target, bool tweenRigidbody, bool isLocal, Path path, float duration, PathMode pathMode
-            ){
+            )
+            {
                 TweenerCore<Vector3, Path, PathOptions> t;
 #if true // PHYSICS_MARKER
                 Rigidbody rBody = tweenRigidbody ? target.GetComponent<Rigidbody>() : null;
-                if (tweenRigidbody && rBody != null) {
+                if (tweenRigidbody && rBody != null)
+                {
                     t = isLocal
                         ? rBody.DOLocalPath(path, duration, pathMode)
                         : rBody.DOPath(path, duration, pathMode);
-                } else {
+                }
+                else
+                {
                     t = isLocal
                         ? target.transform.DOLocalPath(path, duration, pathMode)
                         : target.transform.DOPath(path, duration, pathMode);
